@@ -3,15 +3,20 @@ package movimientoCentroPackage;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+
 
 
 
 public class BDController {
 
 	private Connection miConexion;
-	PreparedStatement consulta_dameEquipoJugador;
 	
+	
+	/* ------ Conexión a la base de datos ------ */
 	public BDController () {
 		try {
 			try {
@@ -25,6 +30,160 @@ public class BDController {
 		} catch (SQLException e) {
 			System.out.println("Error en constructor BDController" + e.getMessage());
 		}
+	}
+	
+	
+	/* ------ Consultas a la base de datos ------ */
+	public ArrayList<Asistente> dameAsistentes() {
+		ArrayList<Asistente> asistentes = new ArrayList<Asistente>();
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+			ResultSet rs = miStatement.executeQuery("select* from asistentes");
+			while (rs.next() == true) {
+				asistentes.add(new Asistente(rs.getInt(1), rs.getInt(2)));
+			}
+			miStatement.close();
+			rs.close();
 
+		} catch (SQLException e) {
+			System.out.println("Error en dameAsistente del BDController" + e.getMessage());
+		}
+		return asistentes;
+	}
+	
+	public ArrayList<Campanna> dameCampannas() {
+		ArrayList<Campanna> campannas = new ArrayList<Campanna>();
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+			ResultSet rs = miStatement.executeQuery("select* from campannas");
+			while (rs.next() == true) {
+				campannas.add(new Campanna(rs.getInt(1), rs.getString(2), rs.getString(3)));
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameCampannas del BDController" + e.getMessage());
+		}
+		return campannas;
+	}
+	
+	public ArrayList<Candidato> dameCandidatos() {
+		ArrayList<Candidato> candidatos = new ArrayList<Candidato>();
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+			ResultSet rs = miStatement.executeQuery("select* from candidatos");
+			while (rs.next() == true) {
+				candidatos.add(new Candidato(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8)));
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameCandidatos del BDController" + e.getMessage());
+		}
+		return candidatos;
+	}
+	
+	public ArrayList<Candidatura> dameCandidaturas() {
+		ArrayList<Candidatura> candidaturas = new ArrayList<Candidatura>();
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+			ResultSet rs = miStatement.executeQuery("select* from candidaturas");
+			while (rs.next() == true) {
+				candidaturas.add(new Candidatura(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getInt(4)));
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameCandidaturas del BDController" + e.getMessage());
+		}
+		return candidaturas;
+	}
+	
+	public ArrayList<Evento> dameEventos() {
+		ArrayList<Evento> eventos = new ArrayList<Evento>();
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+			ResultSet rs = miStatement.executeQuery("select* from eventos");
+			while (rs.next() == true) {
+				eventos.add(new Evento(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5), rs.getString(6), rs.getInt(7), rs.getString(8)));
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameEventos del BDController" + e.getMessage());
+		}
+		return eventos;
+	}
+	
+	public ArrayList<Noticia> dameNoticias() {
+		ArrayList<Noticia> noticias = new ArrayList<Noticia>();
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+			ResultSet rs = miStatement.executeQuery("select* from noticias");
+			while (rs.next() == true) {
+				noticias.add(new Noticia(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4)));
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameNoticias del BDController" + e.getMessage());
+		}
+		return noticias;
+	}
+	
+	public ArrayList<Programa> dameProgramas() {
+		ArrayList<Programa> programas = new ArrayList<Programa>();
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+			ResultSet rs = miStatement.executeQuery("select* from programas");
+			while (rs.next() == true) {
+				programas.add(new Programa(rs.getInt(1), rs.getString(2), rs.getInt(3)));
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameProgramas del BDController" + e.getMessage());
+		}
+		return programas;
+	}
+	
+	public ArrayList<Voluntariado> dameVoluntariados() {
+		ArrayList<Voluntariado> voluntariados = new ArrayList<Voluntariado>();
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+			ResultSet rs = miStatement.executeQuery("select* from voluntariados");
+			while (rs.next() == true) {
+				voluntariados.add(new Voluntariado(rs.getInt(1), rs.getInt(2)));
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameVoluntariados del BDController" + e.getMessage());
+		}
+		return voluntariados;
+	}
+	
+	public ArrayList<Voluntario> dameVoluntario() {
+		ArrayList<Voluntario> voluntarios = new ArrayList<Voluntario>();
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+			ResultSet rs = miStatement.executeQuery("select* from voluntarios");
+			while (rs.next() == true) {
+				voluntarios.add(new Voluntario(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8)));
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameVoluntario del BDController" + e.getMessage());
+		}
+		return voluntarios;
 	}
 }
