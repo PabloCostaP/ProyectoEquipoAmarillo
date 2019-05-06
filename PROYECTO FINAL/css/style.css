@@ -90,7 +90,23 @@ ul  {
 .eventos p {
 	text-align: justify;
 }
-footer {
+
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #efefef;
+  text-align: center;
+}
+.footer {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	padding: 1rem;
+	text-align: center;
 	margin-top: 2.5%;
 	justify-content: center;
 	background-color: #303F9F;
@@ -121,12 +137,20 @@ footer p {
 }
 
 /* -- Formulario participa -- */
-#formContainer{
-  background-color: white;
-  text-align: center;
 
-  height: 200px;
-  margin-top: 10%;
+
+#formContainer .container{
+	position: fixed;
+	background-color: white;
+	text-align: center;
+	margin-left: 9%;
+	width: 40%;
+	border: 1px solid #ccc;
+	margin-top: 5%;
+	padding: 5%;
+	-webkit-box-shadow: 10px 10px 5px 2px rgba(209,209,209,0.5);
+	-moz-box-shadow: 10px 10px 5px 2px rgba(209,209,209,0.5);
+	box-shadow: 10px 10px 5px 2px rgba(209,209,209,0.5);
 }
 
 .opcion {
@@ -137,6 +161,8 @@ footer p {
 	transition: width 1s, height 1s, transform 1s;
 	cursor: pointer;
 	color: black;
+	padding-left: 5%;
+	padding-right: 5%;
 }
 
 .marcado {

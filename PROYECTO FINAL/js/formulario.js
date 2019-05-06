@@ -4,6 +4,12 @@ window.onload = function() {
 
 function init() {
 	var element = document.getElementsByClassName("opcion");
+	var boton = document.getElementsByClassName("boton");
+	for(var i = 0; i < boton.length; i++) {
+		element[i].addEventListener("click", function() {
+			click(this);
+	});
+	}
 	for(var i = 0; i < element.length; i++) {
 		element[i].addEventListener("click", function() {
 			click(this);
@@ -17,6 +23,12 @@ function init() {
 		element[i].addEventListener("mouseout", function() {
 			mouseout(this);
 	});
+	}
+}
+
+function next(element) {
+	if(element.id=="boton1") {
+		
 	}
 }
 
