@@ -119,3 +119,36 @@ footer p {
        font-size: 20px;
     }
 }
+
+/* -- Formulario participa -- */
+#formContainer{
+  background-color: white;
+  text-align: center;
+
+  height: 200px;
+  margin-top: 10%;
+}
+
+.opcion {
+	margin: 1%;
+	margin-left: 0%;
+	border: 1px solid #ccc;
+	border-radius: 16px;
+	transition: width 1s, height 1s, transform 1s;
+	cursor: pointer;
+	color: black;
+}
+
+.marcado {
+	transform : scale(1.1);
+	background-color: #0f65ef;
+    color: #fff;
+}
+
+.seleccionado {
+	background-color: #0f65ef;
+    color: #fff;
+}
+
+
+/* -- Fin Formulario participa -- */
