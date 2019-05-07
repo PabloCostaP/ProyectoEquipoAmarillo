@@ -65,7 +65,6 @@ ul  {
 }
 .noticias {
 	justify-content: center;
-	margin-top: 2%;
 	text-align: center;
 }
 .noticias img {
@@ -87,33 +86,20 @@ ul  {
 .eventos p, h4 {
 	color: black;
 }
+.eventos img {
+	width: 100%;
+}
 .eventos p {
 	text-align: justify;
 }
-
-.footer {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  padding: 1rem;
-  background-color: #efefef;
-  text-align: center;
-}
-.footer {
-	position: absolute;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	padding: 1rem;
-	text-align: center;
+#footer {
 	margin-top: 2.5%;
 	justify-content: center;
 	background-color: #303F9F;
-	height: 100px;
 }
-footer p {
+#footer p {
 	margin-top: 2.5%;
+	color: white;
 }
 .participa {
 	margin-top: 2%;
@@ -128,12 +114,18 @@ footer p {
 	color: black;
 }
 .noticias .titulos {
-	margin-bottom: 5%;
+	margin-bottom: 2%;
 }
 @media (max-width:700px) and (min-width:500px) {
     .noticias h3{
        font-size: 20px;
     }
+}
+.eventos .col-lg-8 {
+	padding: 0px;
+}
+.eventos .col-lg-4 {
+	padding: 0px;
 }
 
 /* -- Formulario participa -- */
@@ -178,3 +170,80 @@ footer p {
 
 
 /* -- Fin Formulario participa -- */
+
+/* Pagina elecciones nacionales*/
+
+/* Fondo */
+.modal {
+  display: none; /* Oculto */
+  position: fixed; /* se queda fijo en una positición */
+  z-index: 1; /* Por encima de todo lo de la web */
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto;
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0,0.4); 
+}
+
+/* Contenido */
+.contenidoModal {
+  background-color: #fefefe;
+  margin: 10% auto; /* 15% de la altura de margen y centrado */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; 
+  height: 60%;
+  margin-bottom: 100px;
+  
+  transition: margin 0.2s ease-out;
+}
+
+/* Boton cerrar */
+.botonCerrar {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.botonCerrar:hover,
+.botonCerrar:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+}
+
+.active, .accordion:hover {
+  background-color: #117FC9;
+  color: white;
+}
+
+.panel {
+  padding: 0 18px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  border: 1px solid #117FC9;
+}
+
+.enlace {
+  padding-bottom: 2%;
+}
+
+/* Fin Pagina elecciones nacionales*/
