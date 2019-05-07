@@ -7,7 +7,7 @@ function init() {
 	var boton = document.getElementsByClassName("boton");
 	for(var i = 0; i < boton.length; i++) {
 		element[i].addEventListener("click", function() {
-			click(this);
+			next(this);
 	});
 	}
 	for(var i = 0; i < element.length; i++) {
@@ -27,8 +27,9 @@ function init() {
 }
 
 function next(element) {
-	if(element.id=="boton1") {
-		
+	var cont = 0;
+	if(cont==0) {
+		$("boton1").
 	}
 }
 
