@@ -93,6 +93,10 @@ ul  {
 	text-align: justify;
 }
 #footer {
+	position: absolute;
+	right: 0px;
+	left: 0px;
+	bottom: 0px;
 	margin-top: 2.5%;
 	justify-content: center;
 	background-color: #303F9F;
@@ -129,6 +133,10 @@ ul  {
 }
 
 /* -- Formulario participa -- */
+
+#formContainer {
+	padding-bottom: 200px;
+}
 
 
 #formContainer .container{
