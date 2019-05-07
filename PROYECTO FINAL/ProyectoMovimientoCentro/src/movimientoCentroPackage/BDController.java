@@ -9,8 +9,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 
-
-
 public class BDController {
 
 	private Connection miConexion;
@@ -85,7 +83,7 @@ public class BDController {
 		return candidatos;
 	}
 	
-	public ArrayList<Candidatura> dameCandidaturas() {
+	/* public ArrayList<Candidatura> dameCandidaturas() {
 		ArrayList<Candidatura> candidaturas = new ArrayList<Candidatura>();
 		try {
 			Statement miStatement = this.miConexion.createStatement();
@@ -100,7 +98,7 @@ public class BDController {
 			System.out.println("Error en dameCandidaturas del BDController" + e.getMessage());
 		}
 		return candidaturas;
-	}
+	} */
 	
 	public ArrayList<Evento> dameEventos() {
 		ArrayList<Evento> eventos = new ArrayList<Evento>();
@@ -186,4 +184,53 @@ public class BDController {
 		}
 		return voluntarios;
 	}
+	
+	/* ------ Altas en la base de datos ------ */
+	
+	public int dameUltimoCodCandidato () {
+		int codigo=0;
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+			ResultSet rs = miStatement.executeQuery("SELECT max(cod_candidato) from candidatos");
+			if (rs.first() == true) {
+				codigo=rs.getInt(1)+1;
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameUltimoCodCandidato del BDController" + e.getMessage());
+		}
+		return codigo;
+	}
+	
+	public void altaCandidato (int codigo, Candidato candidato) {
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+			String sql = "INSERT INTO candidatos VALUES (" + codigo + ",'" + candidato.getNombre() + "', '" + candidato.getApellidos() + "', '"
+					+ candidato.getFecha_nac() + "', '" + candidato.getLugar_nac() + "', '" + candidato.getMunicipio() + "', '"
+					+ candidato.getProvincia() + "', '" + candidato.getAutonomia() + "')";
+			miStatement.executeUpdate(sql);
+			// esto se cierra para dejar de consumir memoria
+			miStatement.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Error en altaCandidato del BDController" + e.getMessage());
+		}
+	}
+	
+	public void bajaCandidato (int codigo) {
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+			String sql = "delete from candidatos where cod_candidato="+codigo;
+			miStatement.executeUpdate(sql);
+			// esto se cierra para dejar de consumir memoria
+			miStatement.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Error en bajaCandidato del BDController" + e.getMessage());
+		}
+	}
+	
+	
 }
