@@ -3,9 +3,6 @@ package movimientoCentroPackage;
 public class Voluntario {
 
 	private int cod_voluntario;
-	private String nombre;
-	private String apellidos;
-	private String fecha_nac;
 	private String email;
 	private String telefono;
 	private String autoriza_com;
@@ -19,9 +16,6 @@ public class Voluntario {
 			String telefono, String autoriza_com, String autoriza_gdpd) {
 		super();
 		this.cod_voluntario = cod_voluntario;
-		this.nombre = nombre;
-		this.apellidos = apellidos;
-		this.fecha_nac = fecha_nac;
 		this.email = email;
 		this.telefono = telefono;
 		this.autoriza_com = autoriza_com;
@@ -33,24 +27,6 @@ public class Voluntario {
 	}
 	public void setCod_voluntario(int cod_voluntario) {
 		this.cod_voluntario = cod_voluntario;
-	}
-	public String getNombre() {
-		return nombre;
-	}
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-	public String getApellidos() {
-		return apellidos;
-	}
-	public void setApellidos(String apellidos) {
-		this.apellidos = apellidos;
-	}
-	public String getFecha_nac() {
-		return fecha_nac;
-	}
-	public void setFecha_nac(String fecha_nac) {
-		this.fecha_nac = fecha_nac;
 	}
 	public String getEmail() {
 		return email;
