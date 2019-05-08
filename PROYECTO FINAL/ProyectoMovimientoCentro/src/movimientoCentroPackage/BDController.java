@@ -206,6 +206,8 @@ public class BDController {
 	
 	/* ------ Altas en la base de datos ------ */
 	
+	
+	/* CANDIDATOS */
 	public int dameUltimoCodCandidato () {
 		int codigo=0;
 		try {
@@ -250,6 +252,54 @@ public class BDController {
 			System.out.println("Error en bajaCandidato del BDController" + e.getMessage());
 		}
 	}
+	/* FIN CANDIDATOS */
 	
+	/* CANDIDATURAS */
+	public void altaCandidatura (Candidato candidato, Campanna campanna, int cabezaLista, int posicion) {
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+			String sql = "INSERT INTO candidaturas VALUES (" + candidato.getCod_candidato() + "," + campanna.getCod_campanna() + ", " + cabezaLista + ", "
+					+ posicion + ")";
+			miStatement.executeUpdate(sql);
+			// esto se cierra para dejar de consumir memoria
+			miStatement.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Error en altaCandidatura del BDController" + e.getMessage());
+		}
+	}
+	/* FIN CANDIDATURAS */
+	
+	/* NOTICIAS */
+	public void altaNoticia (String titulo, String cuerpo, Campanna campanna) {
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+			String sql = "INSERT INTO noticias VALUES ('" + titulo + "', '" + cuerpo + "', " + campanna.getCod_campanna() + ")";
+			miStatement.executeUpdate(sql);
+			// esto se cierra para dejar de consumir memoria
+			miStatement.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Error en altaCandidatura del BDController" + e.getMessage());
+		}
+	}
+	
+	public int dameUltimoCodNoticia () {
+		int codigo=0;
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+			ResultSet rs = miStatement.executeQuery("SELECT max(cod_candidato) from candidatos");
+			if (rs.first() == true) {
+				codigo=rs.getInt(1)+1;
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameUltimoCodCandidato del BDController" + e.getMessage());
+		}
+		return codigo;
+	}
+	/* FIN NOTICIAS */
 	
 }

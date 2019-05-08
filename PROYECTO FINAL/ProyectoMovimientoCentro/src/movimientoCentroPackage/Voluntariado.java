@@ -9,6 +9,7 @@ public class Voluntariado {
 	public Voluntariado() {
 		
 	}
+
 	public Voluntariado(int cod_voluntario, int cod_campanna) {
 		super();
 		this.cod_voluntario = cod_voluntario;
