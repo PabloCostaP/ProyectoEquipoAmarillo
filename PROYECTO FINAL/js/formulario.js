@@ -26,24 +26,27 @@ function init() {
 	}
 }
 
-function next(boton, element) {
+function next(boton) {
+	var element = getSelectedElement();
 	var cont = 0;
-	debugger;
+
+	
 	if(cont==0) {
-		if(element.getAttribute("value")==1) {
-			$("container1").css("display", "none");
-			$("containerVoluntarios1").css("display", "initial");
-		}else if(element.getAttribute("value")==2) {
+		if(element==1) {
+			$("#container1").css("display", "none");
+			$("#containerVoluntarios1").css("display", "initial");
+			cont++;
+			
+		}else if(element==2) {
 
 		}
-	}
+	}else
+	$("div.seleccionado").removeClass("seleccionado");
 }
 
 function click(element) {
-	var elements = document.getElementsByClassName("opcion");
-	
-	element.classList.add("seleccionado");
-	next(this);
+	$(element).parent().siblings().children().removeClass("seleccionado");
+	$(element).addClass("seleccionado");
 }
 
 function mouseover(element) {
@@ -52,4 +55,8 @@ function mouseover(element) {
 
 function mouseout(element) {
 	element.classList.remove("marcado");
+}
+
+function getSelectedElement() {
+	return $("div.seleccionado").attr("value");
 }
