@@ -6,7 +6,7 @@ function init() {
 	var element = document.getElementsByClassName("opcion");
 	var boton = document.getElementsByClassName("boton");
 	for(var i = 0; i < boton.length; i++) {
-		element[i].addEventListener("click", function() {
+		boton[i].addEventListener("click", function() {
 			next(this);
 	});
 	}
@@ -26,15 +26,24 @@ function init() {
 	}
 }
 
-function next(element) {
+function next(boton, element) {
 	var cont = 0;
+	debugger;
 	if(cont==0) {
-		$("boton1").
+		if(element.getAttribute("value")==1) {
+			$("container1").css("display", "none");
+			$("containerVoluntarios1").css("display", "initial");
+		}else if(element.getAttribute("value")==2) {
+
+		}
 	}
 }
 
 function click(element) {
+	var elements = document.getElementsByClassName("opcion");
+	
 	element.classList.add("seleccionado");
+	next(this);
 }
 
 function mouseover(element) {
