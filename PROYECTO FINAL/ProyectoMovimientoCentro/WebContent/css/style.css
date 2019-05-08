@@ -1,0 +1,265 @@
+@import url('https://fonts.googleapis.com/css?family=Pacifico');
+@import url('https://fonts.googleapis.com/css?family=Acme');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
+
+body {
+	width: 100%;
+	color: white;
+	text-align: justify;
+	background-color: #FFFFFF;
+}
+nav a {
+	color: #FFFFFF;
+	text-decoration: none;
+	background-color: #303F9F;
+}
+nav a:hover {
+	background-color: #303F9F !important;
+	color: #FFC107;
+}
+nav {
+	background-color: #303F9F;
+	padding-top: 0.5%;
+	padding-bottom: 0.5%;
+	padding-left: 1%;
+}
+ul  {
+	display: inline-block !important;
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #303F9F;
+  min-width: 160px;
+  text-decoration: none;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+}
+.dropdown-content a{
+  text-decoration: none;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.logo {
+	margin-top: 1%;
+	background-color: white;
+	width: 100%;
+	height: 120px;
+	justify-content: center;
+}
+.row {
+	width: 100%;
+}
+.logo img {
+	width: 70%;
+	min-width: 100px;
+}
+.logo span{
+	color: #303F9F;
+}
+.noticias {
+	justify-content: center;
+	text-align: center;
+}
+.noticias img {
+	width: 100%; 
+}
+.eventos img {
+	padding: 10px;
+	float: left;
+	width: 30%;
+	min-width: 150px;
+}
+.noticias p{
+	text-align: justify;
+}
+.noticias p, h3{
+	color: black;
+}
+
+.eventos p, h4 {
+	color: black;
+}
+.eventos img {
+	width: 100%;
+}
+.eventos p {
+	text-align: justify;
+}
+#footer {
+	position: absolute;
+	right: 0px;
+	left: 0px;
+	bottom: 0px;
+	margin-top: 2.5%;
+	justify-content: center;
+	background-color: #303F9F;
+}
+#footer p {
+	margin-top: 2.5%;
+	color: white;
+}
+.participa {
+	margin-top: 2%;
+	margin-bottom: 2%;
+	text-align: center;
+}
+.participa img {
+	width: 100%;
+}
+.titulos {
+	margin-left: 2%;
+	color: black;
+}
+.noticias .titulos {
+	margin-bottom: 2%;
+}
+@media (max-width:700px) and (min-width:500px) {
+    .noticias h3{
+       font-size: 20px;
+    }
+}
+.eventos .col-lg-8 {
+	padding: 0px;
+}
+.eventos .col-lg-4 {
+	padding: 0px;
+}
+
+/* -- Formulario participa -- */
+
+#formContainer {
+	padding-bottom: 200px;
+}
+
+
+#formContainer .container{
+	position: fixed;
+	background-color: white;
+	text-align: center;
+	margin-left: 9%;
+	width: 40%;
+	border: 1px solid #ccc;
+	margin-top: 5%;
+	padding: 5%;
+	-webkit-box-shadow: 10px 10px 5px 2px rgba(209,209,209,0.5);
+	-moz-box-shadow: 10px 10px 5px 2px rgba(209,209,209,0.5);
+	box-shadow: 10px 10px 5px 2px rgba(209,209,209,0.5);
+}
+
+.opcion {
+	margin: 1%;
+	margin-left: 0%;
+	border: 1px solid #ccc;
+	border-radius: 16px;
+	transition: width 1s, height 1s, transform 1s;
+	cursor: pointer;
+	color: black;
+	padding-left: 5%;
+	padding-right: 5%;
+}
+
+.marcado {
+	transform : scale(1.1);
+	background-color: #0f65ef;
+    color: #fff;
+}
+
+.seleccionado {
+	background-color: #0f65ef;
+    color: #fff;
+}
+
+
+/* -- Fin Formulario participa -- */
+
+/* Pagina elecciones nacionales*/
+
+/* Fondo */
+.modal {
+  display: none; /* Oculto */
+  position: fixed; /* se queda fijo en una positición */
+  z-index: 1; /* Por encima de todo lo de la web */
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto;
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0,0.4); 
+}
+
+/* Contenido */
+.contenidoModal {
+  background-color: #fefefe;
+  margin: 10% auto; /* 15% de la altura de margen y centrado */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; 
+  height: 60%;
+  margin-bottom: 100px;
+  
+  transition: margin 0.2s ease-out;
+}
+
+/* Boton cerrar */
+.botonCerrar {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.botonCerrar:hover,
+.botonCerrar:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+}
+
+.active, .accordion:hover {
+  background-color: #117FC9;
+  color: white;
+}
+
+.panel {
+  padding: 0 18px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  border: 1px solid #117FC9;
+}
+
+.enlace {
+  padding-bottom: 2%;
+}
+
+.textoMiembro{
+	color: black;
+}
+.estiloDrop{
+	margin: 40px;
+
+}
+
+/* Fin Pagina elecciones nacionales*/

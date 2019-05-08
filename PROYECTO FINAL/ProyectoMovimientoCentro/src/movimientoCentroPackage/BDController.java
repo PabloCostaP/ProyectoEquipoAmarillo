@@ -66,6 +66,7 @@ public class BDController {
 		return campannas;
 	}
 	
+	
 	public ArrayList<Candidato> dameCandidatos() {
 		ArrayList<Candidato> candidatos = new ArrayList<Candidato>();
 		try {
@@ -80,6 +81,24 @@ public class BDController {
 		} catch (SQLException e) {
 			System.out.println("Error en dameCandidatos del BDController" + e.getMessage());
 		}
+		return candidatos;
+	}
+	public ArrayList<Candidato> dameCandidatos_eleccionesNacionales(){
+		ArrayList<Candidato> candidatos = new ArrayList<Candidato>();
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+			ResultSet rs = miStatement.executeQuery("SELECT * FROM candidatos LEFT JOIN candidaturas ON candidatos.cod_candidato = candidaturas.cod_candidato WHERE candidaturas.cod_campanna = 1");
+			while (rs.next() == true) {
+				candidatos.add(new Candidato(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8)));
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameCandidatos del BDController" + e.getMessage());
+		}
+		
+		
 		return candidatos;
 	}
 	

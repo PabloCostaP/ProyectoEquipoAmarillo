@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 
 --
 -- Base de datos: `movimientobd`
+CREATE database movimientobd;
+use movimientobd;
 --
 
 -- --------------------------------------------------------
