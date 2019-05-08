@@ -22,7 +22,7 @@ public class BDController {
 			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
 			}
-			this.miConexion = DriverManager.getConnection("jdbc:mysql://localhost/proyecto", "root", "");
+			this.miConexion = DriverManager.getConnection("jdbc:mysql://localhost/movimientobd", "root", "");
 			//this.miConexion = DriverManager.getConnection("jdbc:mysql://localhost/FIFA", "root", "");
 			
 		} catch (SQLException e) {
@@ -83,13 +83,13 @@ public class BDController {
 		return candidatos;
 	}
 	
-	/* public ArrayList<Candidatura> dameCandidaturas() {
+	public ArrayList<Candidatura> dameCandidaturas() {
 		ArrayList<Candidatura> candidaturas = new ArrayList<Candidatura>();
 		try {
 			Statement miStatement = this.miConexion.createStatement();
 			ResultSet rs = miStatement.executeQuery("select* from candidaturas");
 			while (rs.next() == true) {
-				candidaturas.add(new Candidatura(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getInt(4)));
+				candidaturas.add(new Candidatura(rs.getInt(1), rs.getInt(2), rs.getBoolean(3), rs.getInt(4)));
 			}
 			miStatement.close();
 			rs.close();
@@ -98,7 +98,7 @@ public class BDController {
 			System.out.println("Error en dameCandidaturas del BDController" + e.getMessage());
 		}
 		return candidaturas;
-	} */
+	}
 	
 	public ArrayList<Evento> dameEventos() {
 		ArrayList<Evento> eventos = new ArrayList<Evento>();
@@ -204,10 +204,10 @@ public class BDController {
 		return codigo;
 	}
 	
-	public void altaCandidato (int codigo, Candidato candidato) {
+	public void altaCandidato (Candidato candidato) {
 		try {
 			Statement miStatement = this.miConexion.createStatement();
-			String sql = "INSERT INTO candidatos VALUES (" + codigo + ",'" + candidato.getNombre() + "', '" + candidato.getApellidos() + "', '"
+			String sql = "INSERT INTO candidatos VALUES (" + candidato.getCod_candidato() + ",'" + candidato.getNombre() + "', '" + candidato.getApellidos() + "', '"
 					+ candidato.getFecha_nac() + "', '" + candidato.getLugar_nac() + "', '" + candidato.getMunicipio() + "', '"
 					+ candidato.getProvincia() + "', '" + candidato.getAutonomia() + "')";
 			miStatement.executeUpdate(sql);
