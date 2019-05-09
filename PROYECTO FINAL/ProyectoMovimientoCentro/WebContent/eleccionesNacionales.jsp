@@ -24,10 +24,6 @@
 </head>
 <body>
 
-<%BDController controladorBD = new BDController(); 
-ArrayList<Candidato> candidatos = controladorBD.dameCandidatos_eleccionesNacionales();
-%>
-
 <!-- Logo -->
 	<div class="container">
 		<div class="row logo">
@@ -62,58 +58,58 @@ ArrayList<Candidato> candidatos = controladorBD.dameCandidatos_eleccionesNaciona
 <!-- MIEMPROS Y PUNTOS -->
 	<div clas="container">
 		<div class="row">
-<%
-candidatos = controladorBD.dameCandidatos_eleccionesNacionales();
-for(int i=0; i<candidatos.size();i++){%>
 
-<!-- INI Miembros -->
+<!-- Miembros -->
 
+
+			<!--REPETIR EN BUCLE CON TODOS LOS MIEMBROS -->
 			<div class="col-6 ">
 				<h2 class="titulos" style="text-align: center;">Miembros</h2>	
 
 				<div class="container">
  					<h2>Miembros</h2>
   					<div>
-	  					<div id="boton" class="accordion" >
-	  					<p  style="text-align: center;"><%%> hola</p>
-	  					</div>
+	  					<div id="boton" onclick="pulsarBoton()" class="accordion" >
+	  						<p  style="text-align: center;">indroducir nombre miembro por java</p>
+	  				    </div>
+					</div>
+				</div>
+			<!--REPETIR EN BUCLE CON TODOS LOS MIEMBROS -->
+
+		
+					
 
 			
+
+<!-- modal info miembro -->
+					<!-- CAMBIAR INFORMACION DE LOS CAMPOS -->
+					<div id="fondoModal" class="modal">
+						<div class="contenidoModal">
+							<span class="botonCerrar">X</span>
+
+								<div style="float: left; height: 100%; width: 40%">
+									<img id="imagenMiembro" src="imagenes/candidatos/candidato.jpg" style="height: 100%; width:70%">
+								</div>
+
+								<div style="float: right; margin-right: 10%; height: 50%; width: 50%">
+									<p class="textoMiembro" style="font-size: 30px">Nombre: nombre</p>
+									<p class="textoMiembro" style=" font-size: 25px">Apellidos: apellidos</p>
+									<p class="textoMiembro">Fecha de nacimiento: fechaNacimiento</p>
+									<p class="textoMiembro">Lugar de nacimiento: fechaNacimineto</p>
+									<p class="textoMiembro" id="Campania" ">CampaÃ±a: tipoDeCampaÃ±a</p>
+									<p class="textoMiembro" id="Campania" ">Introducir ambito</p>
+
+									<p style="color: black;">posicion de lista: 1</p>
+									<p style="color: black; display: none;">cabeza de lista</p>
+								</div>
+						</div>
 					</div>
-				</div>	
-
+					<!-- CAMBIAR INFORMACION DE LOS CAMPOS -->
+				
 			</div>
-
 <!-- modal info miembro -->
+<!-- Miembros -->
 
-	<div id="fondoModal" class="modal">
-
-		<div class="contenidoModal">
-			<span class="botonCerrar">X</span>
-
-			<div style="float: left; height: 100%; width: 40%">
-			<img id="imagenMiembro" src="imagenes/candidatos/candidato.jpg" style="height: 100%; width:70%">
-			</div>
-
-			<div style="float: right; margin-right: 10%; height: 50%; width: 50%">
-				<p class="textoMiembro" style="font-size: 30px">Nombre: nombre</p>
-				<p class="textoMiembro" style=" font-size: 25px">Apellidos: apellidos</p>
-				<p class="textoMiembro">Fecha de nacimiento: fechaNacimiento</p>
-				<p class="textoMiembro">Lugar de nacimiento: fechaNacimineto</p>
-				<p class="textoMiembro" id="Campania" ">CampaÃ±a: tipoDeCampaÃ±a</p>
-				<p class="textoMiembro" id="Campania" ">Introducir ambito</p>
-
-				<p style="color: black;">posicion de lista: 1</p>
-				<p style="color: black; display: none;">cabeza de lista</p>
-
-			</div>
-		</div>
-		
-	</div>
-<!-- modal info miembro -->
-
-<!-- FIN Miembros -->
-<%} %>
 
 
 <!-- Puntos del programa -->
@@ -130,8 +126,29 @@ for(int i=0; i<candidatos.size();i++){%>
 					</div>
 				</div>	
 
+				<div class="container">
+ 					<h2>Puntos del programa</h2>
+  					<div>
+	  					<button class="accordion">titulo punto</button>
+						<div class="panel">						
+	  						<h4>Detalles del punto</h4>
+						</div>
+					</div>
+				</div>	
+
+				<div class="container">
+ 					<h2>Puntos del programa</h2>
+  					<div>
+	  					<button class="accordion">titulo punto</button>
+						<div class="panel">						
+	  						<h4>Detalles del punto</h4>
+						</div>
+					</div>
+				</div>	
+
 			</div>
-<!-- Puntos del programa -->Â¡
+<!-- Puntos del programa -->
+
 		</div>
 	</div>
 <!-- MIEMPROS Y PUNTOS -->
