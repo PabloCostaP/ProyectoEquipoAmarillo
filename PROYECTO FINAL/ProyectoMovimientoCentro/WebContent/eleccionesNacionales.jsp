@@ -69,7 +69,7 @@ for(int i=0; i<candidatos.size();i++){%>
 <!-- INI Miembros -->
 
 			<div class="col-6 ">
-				<h2 class="titulos" style="text-align: center;"><% candidatos.get(i).getNombre();%></h2>	
+				<h2 class="titulos" style="text-align: center;">Miembros</h2>	
 
 				<div class="container">
  					<h2>Miembros</h2>
