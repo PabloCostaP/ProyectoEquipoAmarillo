@@ -36,7 +36,6 @@ function next(boton) {
 			$("#container1").css("display", "none");
 			$("#containerVoluntarios1").css("display", "initial");
 			cont++;
-			
 		}else if(element==2) {
 
 		}
