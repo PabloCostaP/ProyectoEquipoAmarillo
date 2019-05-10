@@ -1,6 +1,6 @@
 package movimientoCentroPackage;
 
-public class Voluntario {
+public class Voluntario extends Persona{
 
 	private int cod_voluntario;
 	private String email;
@@ -9,12 +9,16 @@ public class Voluntario {
 	private String autoriza_gdpd;
 	
 	
-	public Voluntario() {
+	
+	public Voluntario(String nombre, String apellidos, String fecha_nac) {
+		super(nombre, apellidos, fecha_nac);
+	}
+	public Voluntario () {
 		super();
 	}
 	public Voluntario(int cod_voluntario, String nombre, String apellidos, String fecha_nac, String email,
 			String telefono, String autoriza_com, String autoriza_gdpd) {
-		super();
+		super(nombre, apellidos, fecha_nac);
 		this.cod_voluntario = cod_voluntario;
 		this.email = email;
 		this.telefono = telefono;

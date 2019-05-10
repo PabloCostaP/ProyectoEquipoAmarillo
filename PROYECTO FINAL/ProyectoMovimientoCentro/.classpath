@@ -13,6 +13,7 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+<<<<<<< HEAD
 	<classpathentry kind="lib" path="C:/Users/nsiddeg/Desktop/CLASSROOM/PROGRAMACION(java)/conector/commons-fileupload-1.4.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
@@ -28,5 +29,8 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
+=======
+	<classpathentry kind="lib" path="C:/Software/mysql-connector-java-5.1.47.jar"/>
+>>>>>>> pruebasbd
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

@@ -125,7 +125,7 @@ public class BDController {
 			Statement miStatement = this.miConexion.createStatement();
 			ResultSet rs = miStatement.executeQuery("select* from eventos");
 			while (rs.next() == true) {
-				eventos.add(new Evento(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5), rs.getString(6), rs.getInt(7), rs.getString(8)));
+				eventos.add(new Evento(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5), rs.getString(6), rs.getString(7),rs.getString(8), rs.getInt(9)));
 			}
 			miStatement.close();
 			rs.close();
@@ -271,10 +271,10 @@ public class BDController {
 	/* FIN CANDIDATURAS */
 	
 	/* NOTICIAS */
-	public void altaNoticia (Noticia noticia, String titulo, String cuerpo, Campanna campanna) {
+	public void altaNoticia (Noticia noticia) {
 		try {
 			Statement miStatement = this.miConexion.createStatement();
-			String sql = "INSERT INTO noticias VALUES ("+ noticia.getCod_noticia() + ", '" + titulo + "', '" + cuerpo + "', " + campanna.getCod_campanna() + ")";
+			String sql = "INSERT INTO noticias VALUES ("+ noticia.getCod_noticia() + ", '" + noticia.getTitulo() + "', '" + noticia.getCuerpo() + "', " + noticia.getCod_campanna() + ")";
 			miStatement.executeUpdate(sql);
 			// esto se cierra para dejar de consumir memoria
 			miStatement.close();
@@ -302,4 +302,91 @@ public class BDController {
 	}
 	/* FIN NOTICIAS */
 	
+	/* EVENTOS */
+	
+	public void altaEvento (Evento evento) {
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+			String sql = "INSERT INTO eventos VALUES ("+ evento.getCod_evento() + ", '" + evento.getDescripcion() + "', '" + evento.getUbicacion() + "', " + evento.getDia() + 
+					", '" + evento.getHora() + "', '" +evento.getNombre()+ "', '" + evento.getTipo() + "', '" + evento.getMunicipio() +"', "+ evento.getCod_campanna() +")";
+			miStatement.executeUpdate(sql);
+			// esto se cierra para dejar de consumir memoria
+			miStatement.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Error en altaEventos del BDController" + e.getMessage());
+		}
+	}
+	public int dameUltimoCodEvento () {
+		int codigo=0;
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+			ResultSet rs = miStatement.executeQuery("SELECT max(cod_evento) from eventos");
+			if (rs.first() == true) {
+				codigo=rs.getInt(1)+1;
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameUltimoCodEvento del BDController" + e.getMessage());
+		}
+		return codigo;
+	}
+	
+	/* FIN EVENTOS */
+	
+	/* PUNTOS DEL PROGRAMA */
+	public void altaPrograma (Programa programa) {
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+			String sql = "INSERT INTO programa VALUES ("+ programa.getCod_punto() + ", '" + programa.getDescripcion() + "',"+ programa.getCod_campanna() +")";
+			miStatement.executeUpdate(sql);
+			// esto se cierra para dejar de consumir memoria
+			miStatement.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Error en altaPrograma del BDController" + e.getMessage());
+		}
+	}
+	
+	public int dameUltimoCodPrograma () {
+		int codigo=0;
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+			ResultSet rs = miStatement.executeQuery("SELECT max(cod_punto) from programa");
+			if (rs.first() == true) {
+				codigo=rs.getInt(1)+1;
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameUltimoCodPrograma del BDController" + e.getMessage());
+		}
+		return codigo;
+	}
+	
+	/* FIN PUNTOS DEL PROGRAMA */
+	
+	/* VOLUNTARIOS, VOLUNTARIADOS Y ASISTENTES */
+	
+	public void altaVoluntario (Voluntario voluntario) {
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+			String sql = "INSERT INTO voluntarios VALUES ("+ voluntario.getCod_voluntario() + ", '" + voluntario.getNombre() + "', '"+ voluntario.getApellidos() +"', '"+voluntario.getFecha_nac()+
+					"', '"+ voluntario.getEmail() +"', '"+voluntario.getTelefono()+"', "+ voluntario.getAutoriza_com() +", "+voluntario.getAutoriza_gdpd()+")";
+			miStatement.executeUpdate(sql);
+			// esto se cierra para dejar de consumir memoria
+			miStatement.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Error en altaVoluntario del BDController" + e.getMessage());
+		}
+	}
+	
+	
+	
+	
+	/* FIN VOLUNTARIOS, VOLUNTARIADOS Y ASISTENTES */
 }
