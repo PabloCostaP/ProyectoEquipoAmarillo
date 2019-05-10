@@ -53,7 +53,7 @@ public class BDController {
 		ArrayList<Campanna> campannas = new ArrayList<Campanna>();
 		try {
 			Statement miStatement = this.miConexion.createStatement();
-			ResultSet rs = miStatement.executeQuery("select* from campannas");
+			ResultSet rs = miStatement.executeQuery("SELECT * FROM campanna");
 			while (rs.next() == true) {
 				campannas.add(new Campanna(rs.getInt(1), rs.getString(2), rs.getString(3)));
 			}
@@ -271,10 +271,10 @@ public class BDController {
 	/* FIN CANDIDATURAS */
 	
 	/* NOTICIAS */
-	public void altaNoticia (String titulo, String cuerpo, Campanna campanna) {
+	public void altaNoticia (Noticia noticia, String titulo, String cuerpo, Campanna campanna) {
 		try {
 			Statement miStatement = this.miConexion.createStatement();
-			String sql = "INSERT INTO noticias VALUES ('" + titulo + "', '" + cuerpo + "', " + campanna.getCod_campanna() + ")";
+			String sql = "INSERT INTO noticias VALUES ("+ noticia.getCod_noticia() + ", '" + titulo + "', '" + cuerpo + "', " + campanna.getCod_campanna() + ")";
 			miStatement.executeUpdate(sql);
 			// esto se cierra para dejar de consumir memoria
 			miStatement.close();
@@ -288,7 +288,7 @@ public class BDController {
 		int codigo=0;
 		try {
 			Statement miStatement = this.miConexion.createStatement();
-			ResultSet rs = miStatement.executeQuery("SELECT max(cod_candidato) from candidatos");
+			ResultSet rs = miStatement.executeQuery("SELECT max(cod_noticia) from noticias");
 			if (rs.first() == true) {
 				codigo=rs.getInt(1)+1;
 			}
@@ -296,7 +296,7 @@ public class BDController {
 			rs.close();
 
 		} catch (SQLException e) {
-			System.out.println("Error en dameUltimoCodCandidato del BDController" + e.getMessage());
+			System.out.println("Error en dameUltimoCodNoticia del BDController" + e.getMessage());
 		}
 		return codigo;
 	}
