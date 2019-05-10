@@ -37,7 +37,7 @@ function next(boton) {
 			$("#containerVoluntarios1").css("display", "initial");
 			cont++;
 		}else if(element==2) {
-
+			
 		}
 	}else
 	$("div.seleccionado").removeClass("seleccionado");
