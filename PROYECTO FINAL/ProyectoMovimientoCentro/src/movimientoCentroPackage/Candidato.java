@@ -8,6 +8,15 @@ public class Candidato extends Persona{
 	private String provincia;
 	private String autonomia;
 	
+	
+	
+
+
+	public Candidato() {
+		super();
+	}
+
+
 
 	public Candidato(int cod_candidato, String nombre, String apellidos, String fecha_nac, String lugar_nac,
 			String municipio, String provincia, String autonomia) {

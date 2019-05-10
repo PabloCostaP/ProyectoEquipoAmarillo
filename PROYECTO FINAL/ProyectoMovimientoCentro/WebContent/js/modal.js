@@ -2,15 +2,20 @@
 var modal = document.getElementById('fondoModal');
 
 
-var btn = document.getElementById("boton");
+
+
+//var btn = document.getElementById("boton");
 
 
 var span = document.getElementsByClassName("botonCerrar")[0];
 
-
-btn.onclick = function() {
-  	modal.style.display = "block";
+function botonCandidato(){
+	modal.style.display = "block";
 }
+
+//btn.onclick = function() {
+  //	modal.style.display = "block";
+//}
 
 
 span.onclick = function() {

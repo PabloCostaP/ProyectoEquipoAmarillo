@@ -59,25 +59,31 @@
 	<div clas="container">
 		<div class="row">
 
-<!-- Miembros -->
-
-
-			<!--REPETIR EN BUCLE CON TODOS LOS MIEMBROS -->
+	<!--REPETIR EN BUCLE CON TODOS LOS MIEMBROS -->
 			<div class="col-6 ">
 				<h2 class="titulos" style="text-align: center;">Miembros</h2>	
 
-				<div class="container">
- 					<h2>Miembros</h2>
+<!-- Miembros -->
+<% 
+BDController controladorBD = new BDController();
+
+ArrayList<Candidato> candidatos = controladorBD.dameCandidatos();
+for(int i=0; i < candidatos.size() ;i++){
+
+%>
+
+		
+				<div class="container" >
   					<div>
-	  					<div id="boton" onclick="pulsarBoton()" class="accordion" >
-	  						<p  style="text-align: center;">indroducir nombre miembro por java</p>
+	  					<div id="boton" onclick="botonCandidato()" class="accordion" >
+	  						<p  style="text-align: center;"><%=candidatos.get(i).getNombre() %></p>
 	  				    </div>
 					</div>
 				</div>
 			<!--REPETIR EN BUCLE CON TODOS LOS MIEMBROS -->
 
-		
-					
+
+				
 
 			
 
@@ -92,7 +98,7 @@
 								</div>
 
 								<div style="float: right; margin-right: 10%; height: 50%; width: 50%">
-									<p class="textoMiembro" style="font-size: 30px">Nombre: nombre</p>
+									<p class="textoMiembro" style="font-size: 30px">Nombre: <%=candidatos.get(i).getNombre() %></p>
 									<p class="textoMiembro" style=" font-size: 25px">Apellidos: apellidos</p>
 									<p class="textoMiembro">Fecha de nacimiento: fechaNacimiento</p>
 									<p class="textoMiembro">Lugar de nacimiento: fechaNacimineto</p>
@@ -105,7 +111,7 @@
 						</div>
 					</div>
 					<!-- CAMBIAR INFORMACION DE LOS CAMPOS -->
-				
+					<% }%>
 			</div>
 <!-- modal info miembro -->
 <!-- Miembros -->
@@ -115,26 +121,6 @@
 <!-- Puntos del programa -->
 			<div class="col-6 ">
 				<h2 class="titulos" style="text-align: center;">Puntos del Programa</h2>
-
-				<div class="container">
- 					<h2>Puntos del programa</h2>
-  					<div>
-	  					<button class="accordion">titulo punto</button>
-						<div class="panel">						
-	  						<h4>Detalles del punto</h4>
-						</div>
-					</div>
-				</div>	
-
-				<div class="container">
- 					<h2>Puntos del programa</h2>
-  					<div>
-	  					<button class="accordion">titulo punto</button>
-						<div class="panel">						
-	  						<h4>Detalles del punto</h4>
-						</div>
-					</div>
-				</div>	
 
 				<div class="container">
  					<h2>Puntos del programa</h2>

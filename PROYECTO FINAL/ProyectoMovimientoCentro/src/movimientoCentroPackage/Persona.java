@@ -7,6 +7,11 @@ public class Persona {
 	private String fecha_nac;
 	
 	
+	
+	public Persona() {
+		super();
+	}
+
 	public Persona(String nombre, String apellidos, String fecha_nac) {
 		super();
 		this.nombre = nombre;
