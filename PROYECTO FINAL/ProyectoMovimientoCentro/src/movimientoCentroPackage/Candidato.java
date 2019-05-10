@@ -19,8 +19,6 @@ public class Candidato extends Persona{
 		this.autonomia = autonomia;
 	}
 
-
-
 	public int getCod_candidato() {
 		return cod_candidato;
 	}

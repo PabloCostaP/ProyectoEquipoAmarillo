@@ -11,13 +11,40 @@ public class Main {
 		// TODO Auto-generated method stub
 
 		BDController controlador = new BDController();
-		//ArrayList<Campanna> campannas = controlador.dameCampannas();
-		//Noticia noticia = new Noticia(controlador.dameUltimoCodNoticia(), "Noticia importante", "Todo el cuerpazo de esta noticia importante", campannas.get(2).getCod_campanna());
 		
-		Candidato candidato = new Candidato(controlador.dameUltimoCodCandidato(), "Pepe", "Pepin Pepon", "1980-04-08", "Madrid", "Madrid", "Madrid", "Madrid");
+		
+		
+		
+		
+		
+		
+		/* Alta de una noticia
+		
+		ArrayList<Campanna> campannas = controlador.dameCampannas();
+		Noticia noticia = new Noticia(controlador.dameUltimoCodNoticia(), "Noticia importante 2", "Todo edssgsfg fgdfdfg gdfcia importante", campannas.get(2).getCod_campanna());
+		controlador.altaNoticia(noticia); */
+		
+		
+		// Alta de un candidato
+		
+		/* Candidato candidato = new Candidato(controlador.dameUltimoCodCandidato(), "Aaaa", "fdsfdsfdsfds fdfds", "1980-04-08", "Madrid", "Madrid", "Madrid", "Madrid");
 		
 		controlador.altaCandidato(candidato);
-		System.out.println(candidato.getNombre()+" "+candidato.getCod_candidato());
+		
+		// Alta de una candidatura (Hace falta dar de alta un candidato)
+		
+		Campanna campanna = new Campanna(3, "Nacional", "Nacional");
+		controlador.altaCandidatura(candidato, campanna, 1, 1); */
+		//Campanna campanna = new Campanna(3, "Nacional", "Nacional");
+	
+		// Alta de un evento
+		/* 
+		Evento evento = new Evento(1, "Descripcion", "Madrid", 17, "11:00:00","Nombre del evento","Tipo del evento", "Madrid", 3);
+		controlador.altaEvento(evento); */
+		
+		// Alta de los puntos de programa
+		
+		Programa programa = new Programa (controlador.dameUltimoCodPrograma(), "AFDSF SFDSF DSF SFS del punto", 2);
+		controlador.altaPrograma(programa); 
 	}
-
 }
