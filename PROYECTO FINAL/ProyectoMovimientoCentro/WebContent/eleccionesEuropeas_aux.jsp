@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Elecciones Nacionales plantilla</title>
+	<title>Elecciones Europeas</title>
 
 	<!-- CSS aÃ±adido por Naggy para el modal y el acordeon -->
 	<link rel="stylesheet" type="text/css" href="css/paginaEleccionesEstilo.css">
@@ -22,7 +22,7 @@
 	<meta charset="utf-8">
 
 </head>
-<body >
+<body onload="botonCandidato();">
 
 <!-- Logo -->
 	<div class="container">
@@ -53,7 +53,8 @@
 	<!-- Fin Navegador -->
 
 
-<h2 class="titulos" style="text-align: center;">Elecciones Nacionales</h2>	
+
+<h2 class="titulos" style="text-align: center;">Elecciones Europeas</h2>	
 
 <!-- MIEMPROS Y PUNTOS -->
 	<div class="container">
@@ -74,7 +75,7 @@ for(int i=0; i < candidatos.size() ;i++){
 
 		
 	
-	<a href="eleccionesNacionales_aux.jsp?codMiembro=<%=candidatos.get(i).getCod_candidato()%>">
+	<a href="eleccionesEuropeas_aux.jsp?codMiembro=<%=candidatos.get(i).getCod_candidato()%>">
 				<div style="with:40%; margin-top: 30px;" class="container">
   					<div>
 	  					<div id="boton"  class="accordion" >
@@ -97,11 +98,48 @@ for(int i=0; i < candidatos.size() ;i++){
 		 </a>
 <% }%>
 
+				
+
+	<%
+	String codigoMiembro=request.getParameter("codMiembro");
+		
+		int cod_miembro= Integer.parseInt(codigoMiembro);
+		ArrayList<Candidato> candidatos_aux = controladorBD.dameCandidatos();
+		Candidato candidatoActual = new Candidato();
+		
+		for(int j=0; j < candidatos_aux.size() ;j++){
 			
+			if(candidatos_aux.get(j).getCod_candidato() == cod_miembro){
+				candidatoActual=candidatos_aux.get(j);
+			}
+		}
+		
+		
+%>		
 
 <!-- modal info miembro -->
 					<!-- CAMBIAR INFORMACION DE LOS CAMPOS -->
-					
+					<div id="fondoModal" class="modal">
+						<div class="contenidoModal">
+							<span class="botonCerrar">X</span>
+
+								<div style="float: left; height: 100%; width: 40%">
+									<img id="imagenMiembro" src="imagenes/candidatos/<%=candidatoActual.getCod_candidato()%>.jpg" style="height: 100%; width:70%">
+								</div>
+
+								<div style="float: right; margin-right: 10%; height: 50%; width: 50%">
+									<p class="textoMiembro" style="font-size: 30px">Nombre: <%=candidatoActual.getNombre() %></p>
+									<p class="textoMiembro" style=" font-size: 25px">Apellidos: <%=candidatoActual.getApellidos() %></p>
+									<p class="textoMiembro">Fecha de nacimiento: <%=candidatoActual.getFecha_nac() %></p>
+									<p class="textoMiembro">Lugar de nacimiento: <%=candidatoActual.getLugar_nac() %></p>
+									<p class="textoMiembro" id="Campania" ">CampaÃ±a: tipoDeCampaÃ±a</p>
+									<p class="textoMiembro" id="Campania" ">Introducir ambito</p>
+
+									<p style="color: black;">posicion de lista: 1</p>
+									<p style="color: black; display: none;">cabeza de lista</p>
+								</div>
+						</div>
+					</div>
 					<!-- CAMBIAR INFORMACION DE LOS CAMPOS -->
 					
 			</div>
@@ -114,7 +152,8 @@ for(int i=0; i < candidatos.size() ;i++){
 			<div class="col-6 ">
 				<h2 class="titulos" style="text-align: center;">Puntos del Programa</h2>
 
-<!-- Repetir --> 
+
+				<!-- Repetir --> 
 <%ArrayList<Programa> programas = controladorBD.dameProgramas();
 for(int i=0;i<programas.size();i++){
 %>

@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Elecciones Nacionales plantilla</title>
+	<title>Elecciones Europeas</title>
 
 	<!-- CSS aÃ±adido por Naggy para el modal y el acordeon -->
 	<link rel="stylesheet" type="text/css" href="css/paginaEleccionesEstilo.css">
@@ -53,7 +53,7 @@
 	<!-- Fin Navegador -->
 
 
-<h2 class="titulos" style="text-align: center;">Elecciones Nacionales</h2>	
+<h2 class="titulos" style="text-align: center;">Elecciones Europeas</h2>	
 
 <!-- MIEMPROS Y PUNTOS -->
 	<div class="container">
@@ -74,7 +74,7 @@ for(int i=0; i < candidatos.size() ;i++){
 
 		
 	
-	<a href="eleccionesNacionales_aux.jsp?codMiembro=<%=candidatos.get(i).getCod_candidato()%>">
+	<a href="eleccionesEuropeas_aux.jsp?codMiembro=<%=candidatos.get(i).getCod_candidato()%>">
 				<div style="with:40%; margin-top: 30px;" class="container">
   					<div>
 	  					<div id="boton"  class="accordion" >
@@ -101,7 +101,27 @@ for(int i=0; i < candidatos.size() ;i++){
 
 <!-- modal info miembro -->
 					<!-- CAMBIAR INFORMACION DE LOS CAMPOS -->
-					
+					<div id="fondoModal" class="modal">
+						<div class="contenidoModal">
+							<span class="botonCerrar">X</span>
+
+								<div style="float: left; height: 100%; width: 40%">
+									<img id="imagenMiembro" src="imagenes/candidatos/candidato.jpg" style="height: 100%; width:70%">
+								</div>
+
+								<div style="float: right; margin-right: 10%; height: 50%; width: 50%">
+									<p class="textoMiembro" style="font-size: 30px">Nombre: </p>
+									<p class="textoMiembro" style=" font-size: 25px">Apellidos: apellidos</p>
+									<p class="textoMiembro">Fecha de nacimiento: fechaNacimiento</p>
+									<p class="textoMiembro">Lugar de nacimiento: fechaNacimineto</p>
+									<p class="textoMiembro" id="Campania" ">CampaÃ±a: tipoDeCampaÃ±a</p>
+									<p class="textoMiembro" id="Campania" ">Introducir ambito</p>
+
+									<p style="color: black;">posicion de lista: 1</p>
+									<p style="color: black; display: none;">cabeza de lista</p>
+								</div>
+						</div>
+					</div>
 					<!-- CAMBIAR INFORMACION DE LOS CAMPOS -->
 					
 			</div>
