@@ -180,6 +180,17 @@ ul  {
 	margin-top: 10px;
 }
 
+#datosPersonales .header {
+    color: #36A0FF;
+    font-size: 27px;
+    padding: 10px;
+}
+
+#datosPersonales .bigicon {
+    font-size: 35px;
+    color: #36A0FF;
+}
+
 
 /* -- Fin Formulario participa -- */
 
