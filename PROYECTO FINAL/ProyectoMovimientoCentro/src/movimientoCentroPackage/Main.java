@@ -43,8 +43,20 @@ public class Main {
 		controlador.altaEvento(evento); */
 		
 		// Alta de los puntos de programa
-		
+		/*
 		Programa programa = new Programa (controlador.dameUltimoCodPrograma(), "AFDSF SFDSF DSF SFS del punto", 2);
-		controlador.altaPrograma(programa); 
+		controlador.altaPrograma(programa); */
+		
+		
+		// Alta de voluntarios, voluntariados y asistentes.
+		
+		/*
+		Voluntario voluntario = new Voluntario(controlador.dameUltimoCodVoluntario(), "Yaiiiyyyss", "Cruz", "1980-05-15", "jordi@gmail.com", "672135613", 0, 1);
+		controlador.altaVoluntario(voluntario);
+		Voluntariado voluntariado = new Voluntariado(voluntario.getCod_voluntario(), 2);
+		controlador.altaVoluntariado(voluntariado);
+		Asistente asistente = new Asistente(1, 1);
+		controlador.altaAsistente(asistente); */
+		
 	}
 }
