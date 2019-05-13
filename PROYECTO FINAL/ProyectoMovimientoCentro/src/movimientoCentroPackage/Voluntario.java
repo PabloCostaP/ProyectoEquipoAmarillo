@@ -5,8 +5,8 @@ public class Voluntario extends Persona{
 	private int cod_voluntario;
 	private String email;
 	private String telefono;
-	private String autoriza_com;
-	private String autoriza_gdpd;
+	private int autoriza_com;
+	private int autoriza_gdpd;
 	
 	
 	
@@ -17,7 +17,7 @@ public class Voluntario extends Persona{
 		super();
 	}
 	public Voluntario(int cod_voluntario, String nombre, String apellidos, String fecha_nac, String email,
-			String telefono, String autoriza_com, String autoriza_gdpd) {
+			String telefono, int autoriza_com, int autoriza_gdpd) {
 		super(nombre, apellidos, fecha_nac);
 		this.cod_voluntario = cod_voluntario;
 		this.email = email;
@@ -44,16 +44,16 @@ public class Voluntario extends Persona{
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
-	public String getAutoriza_com() {
+	public int getAutoriza_com() {
 		return autoriza_com;
 	}
-	public void setAutoriza_com(String autoriza_com) {
+	public void setAutoriza_com(int autoriza_com) {
 		this.autoriza_com = autoriza_com;
 	}
-	public String getAutoriza_gdpd() {
+	public int getAutoriza_gdpd() {
 		return autoriza_gdpd;
 	}
-	public void setAutoriza_gdpd(String autoriza_gdpd) {
+	public void setAutoriza_gdpd(int autoriza_gdpd) {
 		this.autoriza_gdpd = autoriza_gdpd;
 	}
 }

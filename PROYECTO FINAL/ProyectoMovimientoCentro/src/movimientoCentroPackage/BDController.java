@@ -1,5 +1,6 @@
 package movimientoCentroPackage;
 
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -7,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+
 
 
 public class BDController {
@@ -193,7 +195,7 @@ public class BDController {
 			Statement miStatement = this.miConexion.createStatement();
 			ResultSet rs = miStatement.executeQuery("select* from voluntarios");
 			while (rs.next() == true) {
-				voluntarios.add(new Voluntario(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8)));
+				voluntarios.add(new Voluntario(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7), rs.getInt(8)));
 			}
 			miStatement.close();
 			rs.close();
@@ -385,8 +387,47 @@ public class BDController {
 		}
 	}
 	
+	public int dameUltimoCodVoluntario () {
+		int codigo=0;
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+			ResultSet rs = miStatement.executeQuery("SELECT max(cod_voluntario) from voluntarios");
+			if (rs.first() == true) {
+				codigo=rs.getInt(1)+1;
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameUltimoCodVoluntarios del BDController" + e.getMessage());
+		}
+		return codigo;
+	}
 	
+	public void altaVoluntariado (Voluntariado voluntariado) {
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+			String sql = "INSERT INTO voluntariados VALUES ("+ voluntariado.getCod_voluntario() + ", " + voluntariado.getCod_campanna() + ")";
+			miStatement.executeUpdate(sql);
+			// esto se cierra para dejar de consumir memoria
+			miStatement.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Error en altaVoluntariado del BDController" + e.getMessage());
+		}
+	}
 	
-	
+	public void altaAsistente (Asistente asistente) {
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+			String sql = "INSERT INTO asistentes VALUES ("+ asistente.getCod_voluntario() + ", " + asistente.getCod_evento() + ")";
+			miStatement.executeUpdate(sql);
+			// esto se cierra para dejar de consumir memoria
+			miStatement.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Error en altaAsistente del BDController" + e.getMessage());
+		}
+	}
 	/* FIN VOLUNTARIOS, VOLUNTARIADOS Y ASISTENTES */
 }
