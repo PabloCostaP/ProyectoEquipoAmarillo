@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-<%@ page import="movimientoCentropackage.*" %>
+<%@ page import="movimientoCentroPackage.*" %>
 <%@ page import="java.util.*" %>
 <!DOCTYPE html>
 <html>
@@ -62,12 +62,12 @@
 	<!--REPETIR EN BUCLE CON TODOS LOS MIEMBROS -->
 			<div class="col-6 ">
 				<h2 class="titulos" style="text-align: center;">Miembros</h2>	
-
+		<div style="with:40%; " class="container">
 <!-- Miembros -->
 <% 
 BDController controladorBD = new BDController();
 
-ArrayList<Candidato> candidatos = controladorBD.dameCandidatos();
+ArrayList<Candidato> candidatos = controladorBD.dameCandidatos_eleccionesNacionales();
 for(int i=0; i < candidatos.size() ;i++){
 
 %>
@@ -75,14 +75,14 @@ for(int i=0; i < candidatos.size() ;i++){
 		
 	
 	<a href="eleccionesNacionales_aux.jsp?codMiembro=<%=candidatos.get(i).getCod_candidato()%>">
-				<div style="with:40%; margin-top: 30px;" class="container">
+				
   					<div>
 	  					<div id="boton"  class="accordion" >
 	  						<div class= "row">
 	  							<div class= "col-6">
 	  								<img id="imagenMiembro" src="imagenes/candidatos/<%=candidatos.get(i).getCod_candidato()%>.jpg" style="height: 100px; width:150px;">
 	  							</div>
-	  							<div class="col-6" style="margin-top: 15px;">
+	  							<div class="col-6" style="">
 	  								<p style="text-align: center;"><%=candidatos.get(i).getNombre() %></p>
 	  								<p style="text-align: center;"><%=candidatos.get(i).getApellidos() %></p>
 	  							</div>
@@ -90,14 +90,14 @@ for(int i=0; i < candidatos.size() ;i++){
 	  						</div>
 	  				    </div>
 					</div>
-				</div>
+				
 			<!--REPETIR EN BUCLE CON TODOS LOS MIEMBROS -->
 
 
 		 </a>
 <% }%>
 
-			
+			</div>
 
 <!-- modal info miembro -->
 					<!-- CAMBIAR INFORMACION DE LOS CAMPOS -->
@@ -111,24 +111,27 @@ for(int i=0; i < candidatos.size() ;i++){
 
 
 <!-- Puntos del programa -->
-			<div class="col-6 ">
+			<div class="col-6">
 				<h2 class="titulos" style="text-align: center;">Puntos del Programa</h2>
+				<div class="container">
+			
 
 <!-- Repetir --> 
-<%ArrayList<Programa> programas = controladorBD.dameProgramas();
+<%ArrayList<Programa> programas = controladorBD.dameProgramasEleccionesNacionales();
 for(int i=0;i<programas.size();i++){
 %>
-				<div class="container">
- 					<h2>Puntos del programa</h2>
-  					<div>
-	  					<button class="accordion"><%=programas.get(i).getDescripcion()%></button>
+				
+					  					
+	  					<button class="accordion"> Punto: <%=i+1%></button>
 						<div class="panel">						
 	  						<h4><%=programas.get(i).getDescripcion()%></h4>
 						</div>
-					</div>
-				</div>	
+					
+			
 <%}; %>
 <!-- Repetir --> 
+
+			</div>	
 
 			</div>
 <!-- Puntos del programa -->

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-<%@ page import="movimientoCentropackage.*" %>
+<%@ page import="movimientoCentroPackage.*" %>
 <%@ page import="java.util.*" %>
 <!DOCTYPE html>
 <html>
@@ -105,6 +105,7 @@ for(int i=0; i < candidatos.size() ;i++){
 		
 		int cod_miembro= Integer.parseInt(codigoMiembro);
 		ArrayList<Candidato> candidatos_aux = controladorBD.dameCandidatos();
+		
 		Candidato candidatoActual = new Candidato();
 		
 		for(int j=0; j < candidatos_aux.size() ;j++){

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-<%@ page import="movimientoCentropackage.*" %>
+<%@ page import="movimientoCentroPackage.*" %>
 <%@ page import="java.util.*" %>
 <!DOCTYPE html>
 <html>

@@ -18,9 +18,7 @@ public class Persona {
 		this.apellidos = apellidos;
 		this.fecha_nac = fecha_nac;
 	}
-	 public Persona () {
-		 
-	 }
+
 	public String getNombre() {
 		return nombre;
 	}

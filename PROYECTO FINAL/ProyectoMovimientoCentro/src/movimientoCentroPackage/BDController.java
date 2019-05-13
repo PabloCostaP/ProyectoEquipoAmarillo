@@ -169,6 +169,22 @@ public class BDController {
 		}
 		return programas;
 	}
+	public ArrayList<Programa> dameProgramasEleccionesNacionales() {
+		ArrayList<Programa> programas = new ArrayList<Programa>();
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+			ResultSet rs = miStatement.executeQuery("select * from programa where cod_campanna = 1 ");
+			while (rs.next() == true) {
+				programas.add(new Programa(rs.getInt(1), rs.getString(2), rs.getInt(3)));
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameProgramasEleccionesNacionales del BDController" + e.getMessage());
+		}
+		return programas;
+	}
 	
 	public ArrayList<Voluntariado> dameVoluntariados() {
 		ArrayList<Voluntariado> voluntariados = new ArrayList<Voluntariado>();
