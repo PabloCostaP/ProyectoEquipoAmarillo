@@ -40,8 +40,8 @@
 	      	<a href="entradas.html">ELECCIONES</a>
 	      	<div class="dropdown-content">
 	  			<a href="eleccionesNacionales.jsp">Elecciones Nacionales</a>
-				<a href="eleccionesAutonomicas.jsp">Elecciones AutonÃ³micas</a>
-				<a href="eleccionesMunicipales.jsp">Elecciones Municipales</a>
+				<a href="eleccionesAutonomicas.html">Elecciones AutonÃ³micas</a>
+				<a href="eleccionesMunicipales.html">Elecciones Municipales</a>
 				<a href="eleccionesEuropeas.jsp">Elecciones Europeas</a>>
 	      	</div>
 	      </li>
@@ -60,23 +60,24 @@
 	<div class="container">
 		<div class="row">
 
-	<!--REPETIR EN BUCLE CON TODOS LOS MIEMBROS -->
+	
 			<div class="col-6 ">
 				<h2 class="titulos" style="text-align: center;">Miembros</h2>	
+				<div style="with:40%;" class="container">
 
 <!-- Miembros -->
 <% 
 BDController controladorBD = new BDController();
 
-ArrayList<Candidato> candidatos = controladorBD.dameCandidatos();
+ArrayList<Candidato> candidatos = controladorBD.dameCandidatos_eleccionesEuropeas();
 for(int i=0; i < candidatos.size() ;i++){
 
 %>
 
 		
-	
-	<a href="eleccionesEuropeas_aux.jsp?codMiembro=<%=candidatos.get(i).getCod_candidato()%>">
-				<div style="with:40%; margin-top: 30px;" class="container">
+	<!--REPETIR EN BUCLE CON TODOS LOS MIEMBROS -->
+	<a href="eleccionesNacionales_aux.jsp?codMiembro=<%=candidatos.get(i).getCod_candidato()%>">
+				
   					<div>
 	  					<div id="boton"  class="accordion" >
 	  						<div class= "row">
@@ -91,32 +92,56 @@ for(int i=0; i < candidatos.size() ;i++){
 	  						</div>
 	  				    </div>
 					</div>
-				</div>
+				
 			<!--REPETIR EN BUCLE CON TODOS LOS MIEMBROS -->
 
 
 		 </a>
 <% }%>
 
-				
-
+</div>
 	<%
+	/*Java para seleccionar el candidato Actual*/
+	
+	/*Traemos el candidato correspondiente  */
 	String codigoMiembro=request.getParameter("codMiembro");
-		
 		int cod_miembro= Integer.parseInt(codigoMiembro);
-		ArrayList<Candidato> candidatos_aux = controladorBD.dameCandidatos();
 		
+		ArrayList<Candidato> candidatos_modal = controladorBD.dameCandidatos_eleccionesEuropeas();
 		Candidato candidatoActual = new Candidato();
 		
-		for(int j=0; j < candidatos_aux.size() ;j++){
-			
-			if(candidatos_aux.get(j).getCod_candidato() == cod_miembro){
-				candidatoActual=candidatos_aux.get(j);
+		/*Si el codigo seleccionado es el mismo que el codigo recibido (codMiembro) lo seleccionamos como candidato Actual*/
+		for(int i=0; i < candidatos_modal.size() ;i++){
+			if(candidatos_modal.get(i).getCod_candidato() == cod_miembro){
+				candidatoActual=candidatos_modal.get(i);
 			}
 		}
 		
+		/*candidaturas nacionales*/
+		ArrayList<Candidatura> candidaturasEu = controladorBD.dameCandidaturas_eleccioneEuropeas();
+		Candidatura candidaturaActual = new Candidatura();
+		
+		for(int i=0; i<candidaturasEu.size();i++){
+			if(candidaturasEu.get(i).getCod_candidato() == candidatoActual.getCod_candidato()){
+				
+				candidaturaActual = candidaturasEu.get(i);
+				
+			}
+		}
+		
+		/*Si es cabeza de lista display blovk para mostrarlo*/
+		String display;
+		if(candidaturaActual.getCabeza_lista() == 1){
+			 display = "block";
+		}else{
+			display="none";
+		}
+			
 		
 %>		
+
+
+
 
 <!-- modal info miembro -->
 					<!-- CAMBIAR INFORMACION DE LOS CAMPOS -->
@@ -133,11 +158,12 @@ for(int i=0; i < candidatos.size() ;i++){
 									<p class="textoMiembro" style=" font-size: 25px">Apellidos: <%=candidatoActual.getApellidos() %></p>
 									<p class="textoMiembro">Fecha de nacimiento: <%=candidatoActual.getFecha_nac() %></p>
 									<p class="textoMiembro">Lugar de nacimiento: <%=candidatoActual.getLugar_nac() %></p>
-									<p class="textoMiembro" id="Campania" ">CampaÃ±a: tipoDeCampaÃ±a</p>
-									<p class="textoMiembro" id="Campania" ">Introducir ambito</p>
+									<p class="textoMiembro" id="Campania" ">Campaña: Europea</p>
+									
 
-									<p style="color: black;">posicion de lista: 1</p>
-									<p style="color: black; display: none;">cabeza de lista</p>
+									<p style="color: black;">posicion de lista:<%=candidaturaActual.getPosicion() %></p>
+									
+									<p style="color: black; display:<%=display%>;">Cabeza de lista</p>
 								</div>
 						</div>
 					</div>
@@ -152,23 +178,23 @@ for(int i=0; i < candidatos.size() ;i++){
 <!-- Puntos del programa -->
 			<div class="col-6 ">
 				<h2 class="titulos" style="text-align: center;">Puntos del Programa</h2>
+				<div class="container">
 
-
-				<!-- Repetir --> 
+<!-- Repetir --> 
 <%ArrayList<Programa> programas = controladorBD.dameProgramas();
 for(int i=0;i<programas.size();i++){
 %>
-				<div class="container">
- 					<h2>Puntos del programa</h2>
+				
   					<div>
-	  					<button class="accordion"><%=programas.get(i).getDescripcion()%></button>
+	  					<button class="accordion"> Punto: <%=i+1%></button>
 						<div class="panel">						
 	  						<h4><%=programas.get(i).getDescripcion()%></h4>
 						</div>
 					</div>
-				</div>	
+			
 <%}; %>
 <!-- Repetir --> 
+			</div>	
 
 			</div>
 <!-- Puntos del programa -->
