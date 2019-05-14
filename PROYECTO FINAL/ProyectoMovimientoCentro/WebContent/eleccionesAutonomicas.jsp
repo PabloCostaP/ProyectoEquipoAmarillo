@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Elecciones Nacionales plantilla</title>
+	<title>Elecciones Autonomicas</title>
 
 	<!-- CSS aÃ±adido por Naggy para el modal y el acordeon -->
 	<link rel="stylesheet" type="text/css" href="css/paginaEleccionesEstilo.css">
@@ -54,7 +54,13 @@
 
 
 
-<h2 class="titulos" style="text-align: center;">Elecciones Nacionales</h2>	
+<h2 class="titulos" style="text-align: center;">Elecciones Autonomicas</h2>
+
+<!--  Introducir dropdown -->
+
+<!--  Introducir dropdown -->
+
+
 
 <!-- MIEMPROS Y PUNTOS -->
 	<div class="container">
@@ -69,7 +75,7 @@
 <% 
 BDController controladorBD = new BDController();
 
-ArrayList<Candidato> candidatos = controladorBD.dameCandidatos_eleccionesNacionales();
+ArrayList<Candidato> candidatos = controladorBD.dameCandidatos_eleccionesAutonomicas();
 for(int i=0; i < candidatos.size() ;i++){
 
 %>
@@ -109,7 +115,7 @@ for(int i=0; i < candidatos.size() ;i++){
 	<%
 	
 		/*candidaturas nacionales*/
-		ArrayList<Candidatura> candidaturasNacionales = controladorBD.dameCandidaturas_eleccionesNacioales();
+		ArrayList<Candidatura> candidaturasNacionales = controladorBD.dameCandidaturas_eleccionesAutonomicas();
 		Candidatura candidaturaActual = new Candidatura();
 		
 		
@@ -184,7 +190,7 @@ for(int i=0; i < candidatos.size() ;i++){
 				<div class="container">
 
 <!-- Repetir --> 
-<%ArrayList<Programa> programas = controladorBD.dameProgramasEleccionesNacionales();
+<%ArrayList<Programa> programas = controladorBD.dameProgramasEleccionesAutonomicas();
 for(int i=0;i<programas.size();i++){
 %>
 				

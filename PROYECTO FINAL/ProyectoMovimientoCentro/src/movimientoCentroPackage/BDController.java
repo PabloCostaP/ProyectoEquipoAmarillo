@@ -102,6 +102,23 @@ public class BDController {
 		return campannas;
 	}
 	
+	public ArrayList<Campanna> dameCampannas_autonomicas() {
+		ArrayList<Campanna> campannas = new ArrayList<Campanna>();
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+			ResultSet rs = miStatement.executeQuery("SELECT * FROM campanna where cod_campanna = 3");
+			while (rs.next() == true) {
+				campannas.add(new Campanna(rs.getInt(1), rs.getString(2), rs.getString(3)));
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameCampannas autonomicas del BDController" + e.getMessage());
+		}
+		return campannas;
+	}
+	
 	
 	public ArrayList<Candidato> dameCandidatos() {
 		ArrayList<Candidato> candidatos = new ArrayList<Candidato>();
@@ -151,6 +168,25 @@ public class BDController {
 
 		} catch (SQLException e) {
 			System.out.println("Error en dameCandidato Europeas del BDController" + e.getMessage());
+		}
+		
+		
+		return candidatos;
+	}
+	
+	public ArrayList<Candidato> dameCandidatos_eleccionesAutonomicas(){
+		ArrayList<Candidato> candidatos = new ArrayList<Candidato>();
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+			ResultSet rs = miStatement.executeQuery("SELECT * FROM candidatos LEFT JOIN candidaturas ON candidatos.cod_candidato = candidaturas.cod_candidato WHERE candidaturas.cod_campanna = 3");
+			while (rs.next() == true) {
+				candidatos.add(new Candidato(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8)));
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameCandidato Autonomicas del BDController" + e.getMessage());
 		}
 		
 		
@@ -210,6 +246,24 @@ public class BDController {
 
 		} catch (SQLException e) {
 			System.out.println("Error en dameCandidaturas del BDController" + e.getMessage());
+		}
+		return candidaturas;
+	}
+	
+	public ArrayList<Candidatura> dameCandidaturas_eleccionesAutonomicas() {
+		ArrayList<Candidatura> candidaturas = new ArrayList<Candidatura>();
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+			ResultSet rs = miStatement.executeQuery("select * from candidaturas where cod_campanna = 3");
+
+			while (rs.next() == true) {
+				candidaturas.add(new Candidatura(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getInt(4)));
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameCandidaturas Autonomicas del BDController" + e.getMessage());
 		}
 		return candidaturas;
 	}
@@ -311,6 +365,23 @@ public class BDController {
 
 		} catch (SQLException e) {
 			System.out.println("Error en dameProgramasEleccionesNacionales del BDController" + e.getMessage());
+		}
+		return programas;
+	}
+	
+	public ArrayList<Programa> dameProgramasEleccionesAutonomicas() {
+		ArrayList<Programa> programas = new ArrayList<Programa>();
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+			ResultSet rs = miStatement.executeQuery("select * from programa where cod_campanna = 3 ");
+			while (rs.next() == true) {
+				programas.add(new Programa(rs.getInt(1), rs.getString(2), rs.getInt(3)));
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameProgramasEleccionesNacionales Autonomicas del BDController" + e.getMessage());
 		}
 		return programas;
 	}
