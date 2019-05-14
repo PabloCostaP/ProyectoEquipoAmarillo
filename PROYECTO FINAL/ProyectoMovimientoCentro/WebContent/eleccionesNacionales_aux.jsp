@@ -74,9 +74,10 @@ for(int i=0; i < candidatos.size() ;i++){
 
 %>
 
-		
+	
 	<!--REPETIR EN BUCLE CON TODOS LOS MIEMBROS -->
-	<a href="eleccionesNacionales_aux.jsp?codMiembro=<%=candidatos.get(i).getCod_candidato()%>">
+	<div id=modalCandidatoActual value=<%=candidatos.get(i).getCod_candidato()%> onClick= "botonCandidatoActual();">
+	
 				
   					<div>
 	  					<div id="boton"  class="accordion" >
@@ -96,7 +97,7 @@ for(int i=0; i < candidatos.size() ;i++){
 			<!--REPETIR EN BUCLE CON TODOS LOS MIEMBROS -->
 
 
-		 </a>
+		 </div>
 <% }%>
 
 </div>
@@ -104,7 +105,13 @@ for(int i=0; i < candidatos.size() ;i++){
 	/*Java para seleccionar el candidato Actual*/
 	
 	/*Traemos el candidato correspondiente  */
-	String codigoMiembro=request.getParameter("codMiembro");
+	String codigoMiembro;
+	if(request.getParameter("codMiembro").isEmpty()){
+		
+		codigoMiembro="1";
+		
+	}else{
+	    codigoMiembro=request.getParameter("codMiembro");
 		int cod_miembro= Integer.parseInt(codigoMiembro);
 		
 		ArrayList<Candidato> candidatos_modal = controladorBD.dameCandidatos_eleccionesNacionales();
@@ -137,7 +144,7 @@ for(int i=0; i < candidatos.size() ;i++){
 			display="none";
 		}
 			
-		
+	
 %>		
 
 
@@ -192,7 +199,8 @@ for(int i=0;i<programas.size();i++){
 						</div>
 					</div>
 			
-<%}; %>
+<%}; 
+}%>
 <!-- Repetir --> 
 			</div>	
 
