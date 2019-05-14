@@ -60,7 +60,7 @@
 	<div class="container">
 		<div class="row">
 
-	<!--REPETIR EN BUCLE CON TODOS LOS MIEMBROS -->
+	
 			<div class="col-6 ">
 				<h2 class="titulos" style="text-align: center;">Miembros</h2>	
 				<div style="with:40%;" class="container">
@@ -75,7 +75,7 @@ for(int i=0; i < candidatos.size() ;i++){
 %>
 
 		
-	
+	<!--REPETIR EN BUCLE CON TODOS LOS MIEMBROS -->
 	<a href="eleccionesNacionales_aux.jsp?codMiembro=<%=candidatos.get(i).getCod_candidato()%>">
 				
   					<div>
@@ -101,22 +101,47 @@ for(int i=0; i < candidatos.size() ;i++){
 
 </div>
 	<%
+	/*Java para seleccionar el candidato Actual*/
+	
+	/*Traemos el candidato correspondiente  */
 	String codigoMiembro=request.getParameter("codMiembro");
-		
 		int cod_miembro= Integer.parseInt(codigoMiembro);
-		ArrayList<Candidato> candidatos_aux = controladorBD.dameCandidatos();
 		
+		ArrayList<Candidato> candidatos_modal = controladorBD.dameCandidatos_eleccionesNacionales();
 		Candidato candidatoActual = new Candidato();
 		
-		for(int j=0; j < candidatos_aux.size() ;j++){
-			
-			if(candidatos_aux.get(j).getCod_candidato() == cod_miembro){
-				candidatoActual=candidatos_aux.get(j);
+		/*Si el codigo seleccionado es el mismo que el codigo recibido (codMiembro) lo seleccionamos como candidato Actual*/
+		for(int i=0; i < candidatos_modal.size() ;i++){
+			if(candidatos_modal.get(i).getCod_candidato() == cod_miembro){
+				candidatoActual=candidatos_modal.get(i);
 			}
 		}
 		
+		/*candidaturas nacionales*/
+		ArrayList<Candidatura> candidaturasNacionales = controladorBD.dameCandidaturas_eleccionesNacioales();
+		Candidatura candidaturaActual = new Candidatura();
+		
+		for(int i=0; i<candidaturasNacionales.size();i++){
+			if(candidaturasNacionales.get(i).getCod_candidato() == candidatoActual.getCod_candidato()){
+				
+				candidaturaActual = candidaturasNacionales.get(i);
+				
+			}
+		}
+		
+		/*Si es cabeza de lista display blovk para mostrarlo*/
+		String display;
+		if(candidaturaActual.getCabeza_lista() == 1){
+			 display = "block";
+		}else{
+			display="none";
+		}
+			
 		
 %>		
+
+
+
 
 <!-- modal info miembro -->
 					<!-- CAMBIAR INFORMACION DE LOS CAMPOS -->
@@ -133,11 +158,12 @@ for(int i=0; i < candidatos.size() ;i++){
 									<p class="textoMiembro" style=" font-size: 25px">Apellidos: <%=candidatoActual.getApellidos() %></p>
 									<p class="textoMiembro">Fecha de nacimiento: <%=candidatoActual.getFecha_nac() %></p>
 									<p class="textoMiembro">Lugar de nacimiento: <%=candidatoActual.getLugar_nac() %></p>
-									<p class="textoMiembro" id="Campania" ">CampaÃ±a: tipoDeCampaÃ±a</p>
-									<p class="textoMiembro" id="Campania" ">Introducir ambito</p>
+									<p class="textoMiembro" id="Campania" ">Campaña: Nacional</p>
+									<p class="textoMiembro" id="Campania" ">Ambito: Nacional</p>
 
-									<p style="color: black;">posicion de lista: 1</p>
-									<p style="color: black; display: none;">cabeza de lista</p>
+									<p style="color: black;">posicion de lista:<%=candidaturaActual.getPosicion() %></p>
+									
+									<p style="color: black; display:<%=display%>;">Cabeza de lista</p>
 								</div>
 						</div>
 					</div>

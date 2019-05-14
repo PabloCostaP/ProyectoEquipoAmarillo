@@ -68,6 +68,40 @@ public class BDController {
 		return campannas;
 	}
 	
+	public ArrayList<Campanna> dameCampannas_nacionales() {
+		ArrayList<Campanna> campannas = new ArrayList<Campanna>();
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+			ResultSet rs = miStatement.executeQuery("SELECT * FROM campanna where cod_campanna = 1");
+			while (rs.next() == true) {
+				campannas.add(new Campanna(rs.getInt(1), rs.getString(2), rs.getString(3)));
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameCampannas del BDController" + e.getMessage());
+		}
+		return campannas;
+	}
+	
+	public ArrayList<Campanna> dameCampannas_europeas() {
+		ArrayList<Campanna> campannas = new ArrayList<Campanna>();
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+			ResultSet rs = miStatement.executeQuery("SELECT * FROM campanna where cod_campanna = 2");
+			while (rs.next() == true) {
+				campannas.add(new Campanna(rs.getInt(1), rs.getString(2), rs.getString(3)));
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameCampannas Europeas del BDController" + e.getMessage());
+		}
+		return campannas;
+	}
+	
 	
 	public ArrayList<Candidato> dameCandidatos() {
 		ArrayList<Candidato> candidatos = new ArrayList<Candidato>();
@@ -104,13 +138,66 @@ public class BDController {
 		return candidatos;
 	}
 	
+	public ArrayList<Candidato> dameCandidatos_eleccionesEuropeas(){
+		ArrayList<Candidato> candidatos = new ArrayList<Candidato>();
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+			ResultSet rs = miStatement.executeQuery("SELECT * FROM candidatos LEFT JOIN candidaturas ON candidatos.cod_candidato = candidaturas.cod_candidato WHERE candidaturas.cod_campanna = 2");
+			while (rs.next() == true) {
+				candidatos.add(new Candidato(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8)));
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameCandidato Europeas del BDController" + e.getMessage());
+		}
+		
+		
+		return candidatos;
+	}
+	
 	public ArrayList<Candidatura> dameCandidaturas() {
 		ArrayList<Candidatura> candidaturas = new ArrayList<Candidatura>();
 		try {
 			Statement miStatement = this.miConexion.createStatement();
-			ResultSet rs = miStatement.executeQuery("select* from candidaturas");
+			ResultSet rs = miStatement.executeQuery("select * from candidaturas");
 			while (rs.next() == true) {
-				candidaturas.add(new Candidatura(rs.getInt(1), rs.getInt(2), rs.getBoolean(3), rs.getInt(4)));
+				candidaturas.add(new Candidatura(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getInt(4)));
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameCandidaturas del BDController" + e.getMessage());
+		}
+		return candidaturas;
+	}
+	
+	public ArrayList<Candidatura> dameCandidaturas_eleccionesNacioales() {
+		ArrayList<Candidatura> candidaturas = new ArrayList<Candidatura>();
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+			ResultSet rs = miStatement.executeQuery("select * from candidaturas where cod_campanna = 1");
+			while (rs.next() == true) {
+				candidaturas.add(new Candidatura(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getInt(4)));
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameCandidaturas del BDController" + e.getMessage());
+		}
+		return candidaturas;
+	}
+	
+	public ArrayList<Candidatura> dameCandidaturas_eleccioneEuropeas() {
+		ArrayList<Candidatura> candidaturas = new ArrayList<Candidatura>();
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+			ResultSet rs = miStatement.executeQuery("select * from candidaturas where cod_campanna = 2");
+			while (rs.next() == true) {
+				candidaturas.add(new Candidatura(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getInt(4)));
 			}
 			miStatement.close();
 			rs.close();
@@ -159,7 +246,7 @@ public class BDController {
 		ArrayList<Programa> programas = new ArrayList<Programa>();
 		try {
 			Statement miStatement = this.miConexion.createStatement();
-			ResultSet rs = miStatement.executeQuery("select* from programas");
+			ResultSet rs = miStatement.executeQuery("select * from programa");
 			while (rs.next() == true) {
 				programas.add(new Programa(rs.getInt(1), rs.getString(2), rs.getInt(3)));
 			}
@@ -176,6 +263,40 @@ public class BDController {
 		try {
 			Statement miStatement = this.miConexion.createStatement();
 			ResultSet rs = miStatement.executeQuery("select * from programa where cod_campanna = 1 ");
+			while (rs.next() == true) {
+				programas.add(new Programa(rs.getInt(1), rs.getString(2), rs.getInt(3)));
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameProgramasEleccionesNacionales del BDController" + e.getMessage());
+		}
+		return programas;
+	}
+	
+	public ArrayList<Programa> dameProgramasEleccionesEuropeas() {
+		ArrayList<Programa> programas = new ArrayList<Programa>();
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+			ResultSet rs = miStatement.executeQuery("select * from programa where cod_campanna = 2 ");
+			while (rs.next() == true) {
+				programas.add(new Programa(rs.getInt(1), rs.getString(2), rs.getInt(3)));
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameProgramasEleccionesEuropeas del BDController" + e.getMessage());
+		}
+		return programas;
+	}
+	
+	public ArrayList<Programa> dameProgramasEleccionesEurpeas() {
+		ArrayList<Programa> programas = new ArrayList<Programa>();
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+			ResultSet rs = miStatement.executeQuery("select * from programa where cod_campanna = 2 ");
 			while (rs.next() == true) {
 				programas.add(new Programa(rs.getInt(1), rs.getString(2), rs.getInt(3)));
 			}
