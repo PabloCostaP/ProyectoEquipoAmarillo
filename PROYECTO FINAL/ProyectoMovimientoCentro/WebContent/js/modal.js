@@ -1,7 +1,6 @@
 
 var modal = document.getElementById('fondoModal');
-
-
+var modales = document.getElementsByClassName("modalAcambiar")
 
 
 //var btn = document.getElementById("boton");
@@ -9,9 +8,30 @@ var modal = document.getElementById('fondoModal');
 
 var span = document.getElementsByClassName("botonCerrar")[0];
 
-function botonCandidato(){
+var cod_candidato;
+var valueModalActual;
+
+function botonCandidatoActual(id){
+	
+	
+	
+
+
+	
+	
+
+	modales[1].style.display ="block"
 	modal.style.display = "block";
+	
+	
 }
+
+function doSomething(id) {
+	  var value = document.getElementById(id).value;
+	  console.log(value);
+	  //...
+	}
+
 
 //btn.onclick = function() {
   //	modal.style.display = "block";

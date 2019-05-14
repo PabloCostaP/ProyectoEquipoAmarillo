@@ -67,7 +67,7 @@
 <% 
 BDController controladorBD = new BDController();
 
-ArrayList<Candidato> candidatos = controladorBD.dameCandidatos_eleccionesNacionales();
+ArrayList<Candidato> candidatos = controladorBD.dameCandidatos();
 for(int i=0; i < candidatos.size() ;i++){
 
 %>

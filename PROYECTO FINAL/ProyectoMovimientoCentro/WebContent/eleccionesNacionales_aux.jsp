@@ -22,7 +22,7 @@
 	<meta charset="utf-8">
 
 </head>
-<body onload="botonCandidato();">
+<body onload="">
 
 <!-- Logo -->
 	<div class="container">
@@ -74,9 +74,10 @@ for(int i=0; i < candidatos.size() ;i++){
 
 %>
 
-		
+	
 	<!--REPETIR EN BUCLE CON TODOS LOS MIEMBROS -->
-	<a href="eleccionesNacionales_aux.jsp?codMiembro=<%=candidatos.get(i).getCod_candidato()%>">
+	<div id=modalCandidatoActual value="<%=candidatos.get(i).getCod_candidato()%>" onClick= "botonCandidatoActual(this.id);">
+	
 				
   					<div>
 	  					<div id="boton"  class="accordion" >
@@ -96,17 +97,28 @@ for(int i=0; i < candidatos.size() ;i++){
 			<!--REPETIR EN BUCLE CON TODOS LOS MIEMBROS -->
 
 
-		 </a>
+		 </div>
 <% }%>
 
 </div>
+
+
+<!--  -->
+	<div id=candidatoAux value =0 >
+	<div>
+
 	<%
+	
+	
+	
+	
 	/*Java para seleccionar el candidato Actual*/
 	
 	/*Traemos el candidato correspondiente  */
-	String codigoMiembro=request.getParameter("codMiembro");
-		int cod_miembro= Integer.parseInt(codigoMiembro);
 		
+	
+		int cod_miembro= Integer.parseInt("2");
+		 
 		ArrayList<Candidato> candidatos_modal = controladorBD.dameCandidatos_eleccionesNacionales();
 		Candidato candidatoActual = new Candidato();
 		
@@ -137,7 +149,7 @@ for(int i=0; i < candidatos.size() ;i++){
 			display="none";
 		}
 			
-		
+	
 %>		
 
 
@@ -147,24 +159,31 @@ for(int i=0; i < candidatos.size() ;i++){
 					<!-- CAMBIAR INFORMACION DE LOS CAMPOS -->
 					<div id="fondoModal" class="modal">
 						<div class="contenidoModal">
+						
 							<span class="botonCerrar">X</span>
 
+								
+							<%for(int i=0;i<candidatos.size();i++){ %>
+							
+							<div id="modalCandidatoActual<%=candidatos.get(i).getCod_candidato()%>" style="display: none" class="modalAcambiar">
 								<div style="float: left; height: 100%; width: 40%">
 									<img id="imagenMiembro" src="imagenes/candidatos/<%=candidatoActual.getCod_candidato()%>.jpg" style="height: 100%; width:70%">
 								</div>
 
 								<div style="float: right; margin-right: 10%; height: 50%; width: 50%">
-									<p class="textoMiembro" style="font-size: 30px">Nombre: <%=candidatoActual.getNombre() %></p>
-									<p class="textoMiembro" style=" font-size: 25px">Apellidos: <%=candidatoActual.getApellidos() %></p>
-									<p class="textoMiembro">Fecha de nacimiento: <%=candidatoActual.getFecha_nac() %></p>
-									<p class="textoMiembro">Lugar de nacimiento: <%=candidatoActual.getLugar_nac() %></p>
+									<p class="textoMiembro" style="font-size: 30px">Nombre: <%=candidatos.get(i).getNombre()%></p>
+									<p class="textoMiembro" style=" font-size: 25px">Apellidos: <%=candidatos.get(i).getNombre()%> </p>
+									<p class="textoMiembro">Fecha de nacimiento:  <%=candidatos.get(i).getNombre()%></p>
+									<p class="textoMiembro">Lugar de nacimiento:  <%=candidatos.get(i).getNombre()%></p>
 									<p class="textoMiembro" id="Campania" ">Campaña: Nacional</p>
 									<p class="textoMiembro" id="Campania" ">Ambito: Nacional</p>
 
-									<p style="color: black;">posicion de lista:<%=candidaturaActual.getPosicion() %></p>
+									<p style="color: black;">posicion de lista <%=candidatos.get(i).getNombre()%></p>
 									
 									<p style="color: black; display:<%=display%>;">Cabeza de lista</p>
 								</div>
+							</div>
+							<%} %>
 						</div>
 					</div>
 					<!-- CAMBIAR INFORMACION DE LOS CAMPOS -->
@@ -172,6 +191,7 @@ for(int i=0; i < candidatos.size() ;i++){
 			</div>
 <!-- modal info miembro -->
 <!-- Miembros -->
+
 
 
 
@@ -192,7 +212,8 @@ for(int i=0;i<programas.size();i++){
 						</div>
 					</div>
 			
-<%}; %>
+<%}; 
+%>
 <!-- Repetir --> 
 			</div>	
 
