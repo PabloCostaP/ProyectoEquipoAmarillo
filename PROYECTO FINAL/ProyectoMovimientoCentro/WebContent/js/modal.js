@@ -14,13 +14,9 @@ var valueModalActual;
 function botonCandidatoActual(id){
 	
 	
-	
+	var o = parseInt(id)
 
-
-	
-	
-
-	modales[1].style.display ="block"
+	modales[o].style.display ="block"
 	modal.style.display = "block";
 	
 	

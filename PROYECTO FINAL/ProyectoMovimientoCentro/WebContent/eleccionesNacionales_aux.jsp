@@ -76,7 +76,7 @@ for(int i=0; i < candidatos.size() ;i++){
 
 	
 	<!--REPETIR EN BUCLE CON TODOS LOS MIEMBROS -->
-	<div id=modalCandidatoActual value="<%=candidatos.get(i).getCod_candidato()%>" onClick= "botonCandidatoActual(this.id);">
+	<div id="<%=candidatos.get(i).getCod_candidato()%>"  onClick= "botonCandidatoActual(this.id);">
 	
 				
   					<div>

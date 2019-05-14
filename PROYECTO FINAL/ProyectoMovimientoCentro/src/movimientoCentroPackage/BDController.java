@@ -162,7 +162,7 @@ public class BDController {
 		try {
 			Statement miStatement = this.miConexion.createStatement();
 			ResultSet rs = miStatement.executeQuery("select * from candidaturas");
-<<<<<<< HEAD
+
 			while (rs.next() == true) {
 				candidaturas.add(new Candidatura(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getInt(4)));
 			}
@@ -180,8 +180,7 @@ public class BDController {
 		try {
 			Statement miStatement = this.miConexion.createStatement();
 			ResultSet rs = miStatement.executeQuery("select * from candidaturas where cod_campanna = 1");
-=======
->>>>>>> pruebasbd
+
 			while (rs.next() == true) {
 				candidaturas.add(new Candidatura(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getInt(4)));
 			}
@@ -194,26 +193,10 @@ public class BDController {
 		return candidaturas;
 	}
 	
-<<<<<<< HEAD
-=======
-	public ArrayList<Candidatura> dameCandidaturas_eleccionesNacioales() {
-		ArrayList<Candidatura> candidaturas = new ArrayList<Candidatura>();
-		try {
-			Statement miStatement = this.miConexion.createStatement();
-			ResultSet rs = miStatement.executeQuery("select * from candidaturas where cod_campanna = 1");
-			while (rs.next() == true) {
-				candidaturas.add(new Candidatura(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getInt(4)));
-			}
-			miStatement.close();
-			rs.close();
 
-		} catch (SQLException e) {
-			System.out.println("Error en dameCandidaturas del BDController" + e.getMessage());
-		}
-		return candidaturas;
-	}
+
 	
->>>>>>> pruebasbd
+
 	public ArrayList<Candidatura> dameCandidaturas_eleccioneEuropeas() {
 		ArrayList<Candidatura> candidaturas = new ArrayList<Candidatura>();
 		try {
