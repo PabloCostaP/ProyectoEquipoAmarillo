@@ -68,8 +68,13 @@
 <!-- Miembros -->
 <% 
 BDController controladorBD = new BDController();
-
+/*ARRAYLIST */
 ArrayList<Candidato> candidatos = controladorBD.dameCandidatos_eleccionesNacionales();
+ArrayList<Candidatura> candidaturasNacionales = controladorBD.dameCandidaturas_eleccionesNacioales();
+
+
+
+
 for(int i=0; i < candidatos.size() ;i++){
 
 %>
@@ -77,8 +82,7 @@ for(int i=0; i < candidatos.size() ;i++){
 	
 	<!--REPETIR EN BUCLE CON TODOS LOS MIEMBROS -->
 	<div id="<%=i%>"  onClick= "botonCandidatoActual(this.id);">
-	
-				
+
   					<div>
 	  					<div id="boton"  class="accordion" >
 	  						<div class= "row">
@@ -109,7 +113,7 @@ for(int i=0; i < candidatos.size() ;i++){
 	<%
 	
 		/*candidaturas nacionales*/
-		ArrayList<Candidatura> candidaturasNacionales = controladorBD.dameCandidaturas_eleccionesNacioales();
+		
 		Candidatura candidaturaActual = new Candidatura();
 		
 		

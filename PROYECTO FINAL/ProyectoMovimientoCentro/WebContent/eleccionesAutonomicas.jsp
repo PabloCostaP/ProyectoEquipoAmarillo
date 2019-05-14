@@ -54,13 +54,7 @@
 
 
 
-<h2 class="titulos" style="text-align: center;">Elecciones Autonomicas</h2>
-
-<!--  Introducir dropdown -->
-
-<!--  Introducir dropdown -->
-
-
+<h2 class="titulos" style="text-align: center;">Elecciones Nacionales</h2>	
 
 <!-- MIEMPROS Y PUNTOS -->
 	<div class="container">
@@ -74,8 +68,13 @@
 <!-- Miembros -->
 <% 
 BDController controladorBD = new BDController();
+/*ARRAYLIST */
+ArrayList<Candidato> candidatos = controladorBD.dameCandidatos_eleccionesNacionales();
+ArrayList<Candidatura> candidaturasNacionales = controladorBD.dameCandidaturas_eleccionesNacioales();
 
-ArrayList<Candidato> candidatos = controladorBD.dameCandidatos_eleccionesAutonomicas();
+
+
+
 for(int i=0; i < candidatos.size() ;i++){
 
 %>
@@ -83,8 +82,7 @@ for(int i=0; i < candidatos.size() ;i++){
 	
 	<!--REPETIR EN BUCLE CON TODOS LOS MIEMBROS -->
 	<div id="<%=i%>"  onClick= "botonCandidatoActual(this.id);">
-	
-				
+
   					<div>
 	  					<div id="boton"  class="accordion" >
 	  						<div class= "row">
@@ -115,7 +113,7 @@ for(int i=0; i < candidatos.size() ;i++){
 	<%
 	
 		/*candidaturas nacionales*/
-		ArrayList<Candidatura> candidaturasNacionales = controladorBD.dameCandidaturas_eleccionesAutonomicas();
+		
 		Candidatura candidaturaActual = new Candidatura();
 		
 		
@@ -190,7 +188,7 @@ for(int i=0; i < candidatos.size() ;i++){
 				<div class="container">
 
 <!-- Repetir --> 
-<%ArrayList<Programa> programas = controladorBD.dameProgramasEleccionesAutonomicas();
+<%ArrayList<Programa> programas = controladorBD.dameProgramasEleccionesNacionales();
 for(int i=0;i<programas.size();i++){
 %>
 				

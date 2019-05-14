@@ -102,13 +102,14 @@ public class BDController {
 		return campannas;
 	}
 	
-	public ArrayList<Campanna> dameCampannas_autonomicas() {
+	public Campanna dameCampanna_autonomica_ambito(String ambito) {
 		ArrayList<Campanna> campannas = new ArrayList<Campanna>();
+		Campanna campanna = new Campanna();
 		try {
 			Statement miStatement = this.miConexion.createStatement();
-			ResultSet rs = miStatement.executeQuery("SELECT * FROM campanna where cod_campanna = 3");
-			while (rs.next() == true) {
-				campannas.add(new Campanna(rs.getInt(1), rs.getString(2), rs.getString(3)));
+			ResultSet rs = miStatement.executeQuery("SELECT * FROM campanna where ambito = \"Madrid\"");
+			while (rs.first() == true) {
+				campanna =  new Campanna(rs.getInt(1), rs.getString(2), rs.getString(3));
 			}
 			miStatement.close();
 			rs.close();
@@ -116,7 +117,7 @@ public class BDController {
 		} catch (SQLException e) {
 			System.out.println("Error en dameCampannas autonomicas del BDController" + e.getMessage());
 		}
-		return campannas;
+		return campanna;
 	}
 	
 	
