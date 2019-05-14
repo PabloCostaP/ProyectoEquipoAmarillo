@@ -1,5 +1,6 @@
 
 var modal = document.getElementById('fondoModal');
+
 var modales = document.getElementsByClassName("modalAcambiar")
 
 
@@ -11,12 +12,12 @@ var span = document.getElementsByClassName("botonCerrar")[0];
 var cod_candidato;
 var valueModalActual;
 
-function botonCandidatoActual(id){
+function botonCandidatoActual(clicado){
 	
 	
-	var o = parseInt(id)
 
-	modales[o].style.display ="block"
+
+	modales[clicado].style.display ="block";
 	modal.style.display = "block";
 	
 	

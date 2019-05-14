@@ -76,7 +76,7 @@ for(int i=0; i < candidatos.size() ;i++){
 
 	
 	<!--REPETIR EN BUCLE CON TODOS LOS MIEMBROS -->
-	<div id="<%=candidatos.get(i).getCod_candidato()%>"  onClick= "botonCandidatoActual(this.id);">
+	<div id="<%=i%>"  onClick= "botonCandidatoActual(this.id);">
 	
 				
   					<div>
@@ -165,7 +165,7 @@ for(int i=0; i < candidatos.size() ;i++){
 								
 							<%for(int i=0;i<candidatos.size();i++){ %>
 							
-							<div id="modalCandidatoActual<%=candidatos.get(i).getCod_candidato()%>" style="display: none" class="modalAcambiar">
+							<div id="modalCandidatoActual<%=i%>" style="display: none" class="modalAcambiar">
 								<div style="float: left; height: 100%; width: 40%">
 									<img id="imagenMiembro" src="imagenes/candidatos/<%=candidatoActual.getCod_candidato()%>.jpg" style="height: 100%; width:70%">
 								</div>
