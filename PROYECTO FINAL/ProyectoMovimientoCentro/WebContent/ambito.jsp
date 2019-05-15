@@ -58,17 +58,30 @@
 BDController controladorBD = new BDController();
 //SOLO CAMPAÑAS AUTONOMICAS
 Campanna campanna = new Campanna();
-ArrayList<Campanna> campannas = controladorBD.dameCampannas_autonomicas();
+ArrayList<Campanna> campannas = new ArrayList<Campanna>();
 //
 
 String codCampanna=request.getParameter("codCampanna");
 int cod_campanna = Integer.parseInt(codCampanna);
 //CAMPAÑA ACTUAL SELECCIONADA ENE L DROPDOWN
-campanna = controladorBD.dameCampanna_autonomica_codCampanna(cod_campanna);
-//NECESITO  LOS CANDIDATOS QUE TENGAN EL AMBITO IGUAL A campanna.getAmbito();
-ArrayList<Candidato> candidatos = controladorBD.dameCandidatos_eleccionesAutonomicas(cod_campanna);
-//NECESITO  LOS PROGRAMAS QUE TENGAN EL AMBITO IGUAL A campanna.getAmbito()
-ArrayList<Programa> programas = controladorBD.dameProgramasEleccionesAutonomicas(cod_campanna);
+campanna = controladorBD.dameCampanna_codCampanna(cod_campanna);
+if(campanna.getTipo().equalsIgnoreCase("Autonómica")){
+	campanna = controladorBD.dameCampanna_autonomica_codCampanna(cod_campanna);
+	campannas= controladorBD.dameCampannas_autonomicas();
+	
+}
+if(campanna.getTipo().equalsIgnoreCase("Municipal")){
+	campanna = controladorBD.dameCampanna_municipal_codCampanna(cod_campanna);
+	campannas= controladorBD.dameCampannas_municipales();
+}
+
+
+//NECESITO  LOS CANDIDATOS 
+ArrayList<Candidato> candidatos = controladorBD.dameCandidatos_elecciones_codCampanna(cod_campanna);
+//NECESITO  LOS PROGRAMAS 
+ArrayList<Programa> programas = controladorBD.dameProgramasEleccionesCodCampanna(cod_campanna);
+//NECESITO LAS CANDIDATURAS PARA BUSCAR LA SELECCIONADA E INTROODUCIRLA EN CANDIDATURA ACTUAL ETC
+ArrayList<Candidatura> candidaturasAmbito = controladorBD.dameCandidaturas();
 
 %>
 <h2 class="titulos" style="text-align: center;"><%=campanna.getAmbito() %></h2>
@@ -99,7 +112,7 @@ ArrayList<Programa> programas = controladorBD.dameProgramasEleccionesAutonomicas
 
 /*ARRAYLIST */
 
-ArrayList<Candidatura> candidaturasNacionales = controladorBD.dameCandidaturas_eleccionesNacioales();
+
 
 
 
@@ -159,13 +172,13 @@ for(int i=0; i < candidatos.size() ;i++){
 							<span class="botonCerrar">X</span>								
 							<%for(int i=0;i<candidatos.size();i++){ 
 								
-								for(int j=0; j<candidaturasNacionales.size();j++){
-									if(candidaturasNacionales.get(j).getCod_candidato() == candidatos.get(i).getCod_candidato()){
-										candidaturaActual = candidaturasNacionales.get(j);
+								for(int j=0; j<candidaturasAmbito.size();j++){
+									if(candidaturasAmbito.get(j).getCod_candidato() == candidatos.get(i).getCod_candidato()){
+										candidaturaActual = candidaturasAmbito.get(j);
 									}
 								}
 								
-								Campanna campannaActual = controladorBD.dameCampanna_autonomica_codCampanna(candidaturaActual.getCod_campanna());
+								Campanna campannaActual = controladorBD.dameCampanna_codCampanna(candidaturaActual.getCod_campanna());
 								
 								if(candidaturaActual.getCabeza_lista() == 1){
 									 display = "block";

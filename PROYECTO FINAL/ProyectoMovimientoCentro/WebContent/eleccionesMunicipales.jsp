@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Elecciones Autonomicas</title>
+	<title>Elecciones municipales</title>
 
 	<!-- CSS aÃ±adido por Naggy para el modal y el acordeon -->
 	<link rel="stylesheet" type="text/css" href="css/paginaEleccionesEstilo.css">
@@ -54,7 +54,7 @@
 
 
 
-<h2 class="titulos" style="text-align: center;">Elecciones Autonomicas</h2>	
+<h2 class="titulos" style="text-align: center;">Elecciones Municipales</h2>	
 
 
 <!-- Miembros -->
@@ -65,7 +65,7 @@ BDController controladorBD = new BDController();
 ArrayList<Candidato> candidatos = controladorBD.dameCandidatos();
 ArrayList<Candidatura> candidaturas= controladorBD.dameCandidaturas();
 
-ArrayList<Campanna> campannas = controladorBD.dameCampannas_autonomicas();
+ArrayList<Campanna> campannas = controladorBD.dameCampannas_municipales();
 
 %>
 						
@@ -75,7 +75,7 @@ ArrayList<Campanna> campannas = controladorBD.dameCampannas_autonomicas();
  			 </button>
  		 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
  		 <% for (int i =0;i<campannas.size();i++){%>
-  			  <a class="dropdown-item" href="ambito.jsp?codCampanna=<%=campannas.get(i).getCod_campanna()%>"><%=campannas.get(i).getAmbito()%></a>
+  			  <a class="dropdown-item"  href="ambito.jsp?codCampanna=<%=campannas.get(i).getCod_campanna()%>"><%=campannas.get(i).getAmbito()%></a>
   			  <%}; %>
  		 </div>
 	</div>

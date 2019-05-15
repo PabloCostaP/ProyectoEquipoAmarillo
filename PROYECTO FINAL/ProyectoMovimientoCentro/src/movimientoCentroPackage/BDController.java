@@ -122,6 +122,23 @@ public class BDController {
 		return campannas;
 	}
 	
+	public ArrayList<Campanna> dameCampannas_municipales() {
+		ArrayList<Campanna> campannas = new ArrayList<Campanna>();
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+			ResultSet rs = miStatement.executeQuery("SELECT * FROM campanna where tipo = 'Municipal' ");
+			while (rs.next() == true) {
+				campannas.add(new Campanna(rs.getInt(1), rs.getString(2), rs.getString(3)));
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameCampannas Autonomicas del BDController" + e.getMessage());
+		}
+		return campannas;
+	}
+	
 	public Campanna dameCampanna_autonomica_ambito(String ambito) {
 		ArrayList<Campanna> campannas = new ArrayList<Campanna>();
 		Campanna campanna = new Campanna();
@@ -140,7 +157,7 @@ public class BDController {
 		return campanna;
 	}
 	
-	public Campanna dameCampanna_autonomica_codCampanna(int cod_campanna) {
+	public Campanna dameCampanna_codCampanna(int cod_campanna) {
 		Campanna campanna = new Campanna();
 		try {
 			Statement miStatement = this.miConexion.createStatement();
@@ -153,6 +170,40 @@ public class BDController {
 
 		} catch (SQLException e) {
 			System.out.println("Error en dameCampannas autonomicas por cod campanna del BDController" + e.getMessage());
+		}
+		return campanna;
+	}
+	
+	public Campanna dameCampanna_autonomica_codCampanna(int cod_campanna) {
+		Campanna campanna = new Campanna();
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+			ResultSet rs = miStatement.executeQuery("SELECT * FROM campanna where cod_campanna = "+cod_campanna+" AND tipo = \"Autonómica\"");
+			while (rs.next() == true) {
+				campanna =  new Campanna(rs.getInt(1), rs.getString(2), rs.getString(3));
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameCampannas autonomicas por cod campanna del BDController" + e.getMessage());
+		}
+		return campanna;
+	}
+	
+	public Campanna dameCampanna_municipal_codCampanna(int cod_campanna) {
+		Campanna campanna = new Campanna();
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+			ResultSet rs = miStatement.executeQuery("SELECT * FROM campanna where cod_campanna = "+cod_campanna+" AND tipo = \"Municipal\"");
+			while (rs.next() == true) {
+				campanna =  new Campanna(rs.getInt(1), rs.getString(2), rs.getString(3));
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameCampannas municipal por cod campanna del BDController" + e.getMessage());
 		}
 		return campanna;
 	}
@@ -212,7 +263,7 @@ public class BDController {
 		return candidatos;
 	}
 	
-	public ArrayList<Candidato> dameCandidatos_eleccionesAutonomicas(int cod_campanna){
+	public ArrayList<Candidato> dameCandidatos_elecciones_codCampanna(int cod_campanna){
 		ArrayList<Candidato> candidatos = new ArrayList<Candidato>();
 		try {
 			Statement miStatement = this.miConexion.createStatement();
@@ -226,8 +277,6 @@ public class BDController {
 		} catch (SQLException e) {
 			System.out.println("Error en dameCandidato Autonomicas del BDController" + e.getMessage());
 		}
-		
-		
 		return candidatos;
 	}
 	
@@ -410,7 +459,7 @@ public class BDController {
 	
 	
 	
-	public ArrayList<Programa> dameProgramasEleccionesAutonomicas(int cod_campanna) {
+	public ArrayList<Programa> dameProgramasEleccionesCodCampanna(int cod_campanna) {
 		ArrayList<Programa> programas = new ArrayList<Programa>();
 		try {
 			Statement miStatement = this.miConexion.createStatement();
