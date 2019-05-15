@@ -187,8 +187,8 @@ ul  {
 }
 
 #datosPersonales .bigicon {
-    font-size: 35px;
-    color: #36A0FF;
+    font-size: 27px;
+    color: #303F9F;
 }
 
 
@@ -274,7 +274,9 @@ ul  {
 }
 .estiloDrop{
 	margin: 40px;
-
+}
+#select{
+	height: 40px;
 }
 
 /* Fin Pagina elecciones nacionales*/

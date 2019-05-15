@@ -1,3 +1,6 @@
+<%@page import="movimientoCentroPackage.BDController"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,7 +31,7 @@
 	      	<a href="entradas.html">ELECCIONES</a>
 	      	<div class="dropdown-content">
 	  			<a href="#">Elecciones Nacionales</a>
-				<a href="#">Elecciones AutonÃ³micas</a>
+				<a href="#">Elecciones Autonómicas</a>
 				<a href="#">Elecciones Municipales</a>
 				<a href="#">Elecciones Europeas</a>
 	      	</div>
@@ -41,6 +44,14 @@
 	<!-- Fin Navegador -->
 
 	<!-- Formulario -->
+	
+	<%
+	BDController bdController = new BDController();
+	String tipo="";
+	String voluntario="";
+	String ambito="";
+	
+	%>
 
 	<div class="container" id="formContainer">
 		<div class="container" id="container1">
