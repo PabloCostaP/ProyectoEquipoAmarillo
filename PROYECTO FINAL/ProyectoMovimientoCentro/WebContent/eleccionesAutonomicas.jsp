@@ -111,16 +111,12 @@ for(int i=0; i < candidatos.size() ;i++){
 	
 
 	<%
-	
-		/*candidaturas nacionales*/
-		
-		Candidatura candidaturaActual = new Candidatura();
-		
+		/*candidatura actual*/
+		Candidatura candidaturaActual = new Candidatura();	
 		
 		
 		/*Si es cabeza de lista display block para mostrarlo*/
-			String display = "none";
-	
+			String display = "none";	
 %>		
 
 
@@ -129,19 +125,17 @@ for(int i=0; i < candidatos.size() ;i++){
 <!-- modal info miembro -->
 					<!-- CAMBIAR INFORMACION DE LOS CAMPOS -->
 					<div id="fondoModal" class="modal">
-						<div class="contenidoModal">
-						
-							<span class="botonCerrar">X</span>
-
-								
+						<div class="contenidoModal">						
+							<span class="botonCerrar">X</span>								
 							<%for(int i=0;i<candidatos.size();i++){ 
-							
+								
 								for(int j=0; j<candidaturasNacionales.size();j++){
 									if(candidaturasNacionales.get(j).getCod_candidato() == candidatos.get(i).getCod_candidato()){
 										candidaturaActual = candidaturasNacionales.get(j);
 									}
 								}
 								
+								Campanna campannaActual = controladorBD.dameCampanna_autonomica_codCampanna(candidaturaActual.getCod_campanna());
 								
 								if(candidaturaActual.getCabeza_lista() == 1){
 									 display = "block";
@@ -162,8 +156,8 @@ for(int i=0; i < candidatos.size() ;i++){
 									<p class="textoMiembro" style=" font-size: 25px">Apellidos: <%=candidatos.get(i).getNombre()%> </p>
 									<p class="textoMiembro">Fecha de nacimiento:  <%=candidatos.get(i).getNombre()%></p>
 									<p class="textoMiembro">Lugar de nacimiento:  <%=candidatos.get(i).getNombre()%></p>
-									<p class="textoMiembro" id="Campania" ">Campaña: Nacional</p>
-									<p class="textoMiembro" id="Campania" ">Ambito: Nacional</p>
+									<p class="textoMiembro" id="Campania" "><%=campannaActual.getTipo()%></p>
+									<p class="textoMiembro" id="Campania" ">Ambito:<%=campannaActual.getAmbito()%></p>
 
 									<p style="color: black;">posicion de lista <%=candidaturaActual.getPosicion()%></p>
 									
