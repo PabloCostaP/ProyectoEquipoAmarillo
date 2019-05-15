@@ -16,6 +16,7 @@ public class BDController {
 	private Connection miConexion;
 	
 	
+	
 	/* ------ Conexión a la base de datos ------ */
 	public BDController () {
 		try {
@@ -30,6 +31,9 @@ public class BDController {
 		} catch (SQLException e) {
 			System.out.println("Error en constructor BDController" + e.getMessage());
 		}
+		
+
+	
 	}
 	
 	
@@ -101,13 +105,29 @@ public class BDController {
 		}
 		return campannas;
 	}
+	public ArrayList<Campanna> dameCampannas_autonomicas() {
+		ArrayList<Campanna> campannas = new ArrayList<Campanna>();
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+			ResultSet rs = miStatement.executeQuery("SELECT * FROM campanna where tipo = 'Autonómica' ");
+			while (rs.next() == true) {
+				campannas.add(new Campanna(rs.getInt(1), rs.getString(2), rs.getString(3)));
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameCampannas Autonomicas del BDController" + e.getMessage());
+		}
+		return campannas;
+	}
 	
 	public Campanna dameCampanna_autonomica_ambito(String ambito) {
 		ArrayList<Campanna> campannas = new ArrayList<Campanna>();
 		Campanna campanna = new Campanna();
 		try {
 			Statement miStatement = this.miConexion.createStatement();
-			ResultSet rs = miStatement.executeQuery("SELECT * FROM campanna where ambito = \"Madrid\"");
+			ResultSet rs = miStatement.executeQuery("SELECT * FROM campanna where ambito ="+ambito);
 			while (rs.first() == true) {
 				campanna =  new Campanna(rs.getInt(1), rs.getString(2), rs.getString(3));
 			}
@@ -115,7 +135,7 @@ public class BDController {
 			rs.close();
 
 		} catch (SQLException e) {
-			System.out.println("Error en dameCampannas autonomicas del BDController" + e.getMessage());
+			System.out.println("Error en dameCampannas autonomicas ambito del BDController" + e.getMessage());
 		}
 		return campanna;
 	}
@@ -124,7 +144,7 @@ public class BDController {
 		Campanna campanna = new Campanna();
 		try {
 			Statement miStatement = this.miConexion.createStatement();
-			ResultSet rs = miStatement.executeQuery("SELECT * FROM campanna where cod_campanna= "+cod_campanna);
+			ResultSet rs = miStatement.executeQuery("SELECT * FROM campanna where cod_campanna = "+cod_campanna);
 			while (rs.next() == true) {
 				campanna =  new Campanna(rs.getInt(1), rs.getString(2), rs.getString(3));
 			}
@@ -192,11 +212,11 @@ public class BDController {
 		return candidatos;
 	}
 	
-	public ArrayList<Candidato> dameCandidatos_eleccionesAutonomicas(){
+	public ArrayList<Candidato> dameCandidatos_eleccionesAutonomicas(int cod_campanna){
 		ArrayList<Candidato> candidatos = new ArrayList<Candidato>();
 		try {
 			Statement miStatement = this.miConexion.createStatement();
-			ResultSet rs = miStatement.executeQuery("SELECT * FROM candidatos LEFT JOIN candidaturas ON candidatos.cod_candidato = candidaturas.cod_candidato WHERE candidaturas.cod_campanna = 3");
+			ResultSet rs = miStatement.executeQuery("SELECT * FROM candidatos LEFT JOIN candidaturas ON candidatos.cod_candidato = candidaturas.cod_candidato WHERE candidaturas.cod_campanna ="+cod_campanna);
 			while (rs.next() == true) {
 				candidatos.add(new Candidato(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8)));
 			}
@@ -388,28 +408,13 @@ public class BDController {
 		return programas;
 	}
 	
-	public ArrayList<Programa> dameProgramasEleccionesEurpeas() {
-		ArrayList<Programa> programas = new ArrayList<Programa>();
-		try {
-			Statement miStatement = this.miConexion.createStatement();
-			ResultSet rs = miStatement.executeQuery("select * from programa where cod_campanna = 2 ");
-			while (rs.next() == true) {
-				programas.add(new Programa(rs.getInt(1), rs.getString(2), rs.getInt(3)));
-			}
-			miStatement.close();
-			rs.close();
-
-		} catch (SQLException e) {
-			System.out.println("Error en dameProgramasEleccionesNacionales del BDController" + e.getMessage());
-		}
-		return programas;
-	}
 	
-	public ArrayList<Programa> dameProgramasEleccionesAutonomicas() {
+	
+	public ArrayList<Programa> dameProgramasEleccionesAutonomicas(int cod_campanna) {
 		ArrayList<Programa> programas = new ArrayList<Programa>();
 		try {
 			Statement miStatement = this.miConexion.createStatement();
-			ResultSet rs = miStatement.executeQuery("select * from programa where cod_campanna = 3 ");
+			ResultSet rs = miStatement.executeQuery("select * from programa where cod_campanna ="+cod_campanna);
 			while (rs.next() == true) {
 				programas.add(new Programa(rs.getInt(1), rs.getString(2), rs.getInt(3)));
 			}
