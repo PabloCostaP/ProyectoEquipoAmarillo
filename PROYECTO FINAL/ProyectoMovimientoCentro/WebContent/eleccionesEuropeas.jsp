@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Elecciones Nacionales plantilla</title>
+<title>Elecciones Europeas</title>
 
 <!-- CSS aÃ±adido por Naggy para el modal y el acordeon -->
 <link rel="stylesheet" type="text/css"
@@ -53,7 +53,7 @@
 				<li class="dropdown"><a href="entradas.html">ELECCIONES</a>
 					<div class="dropdown-content">
 						<a href="eleccionesNacionales.jsp">Elecciones Nacionales</a> <a
-							href="eleccionesAutonomicas.jsp">Elecciones Autonómicas</a> <a
+							href="eleccionesAutonomicas.jsp">Elecciones AutonÃ³micas</a> <a
 							href="eleccionesMunicipales.jsp">Elecciones Municipales</a> <a
 							href="eleccionesEuropeas.jsp">Elecciones Europeas</a>>
 					</div></li>
@@ -63,7 +63,7 @@
 		</div>
 	</nav>
 	<!-- Fin Navegador -->
-	<h2 class="titulos" style="text-align: center;">EleccionesNacionales</h2>
+	<h2 class="titulos" style="text-align: center;">Elecciones Europeas</h2>
 	<div class="container">
 		<div class="row">
 			<div class="col-6 ">
@@ -73,9 +73,10 @@
 					<% 
 BDController controladorBD = new BDController();
 /*ARRAYLIST */
-ArrayList<Candidato> candidatos = controladorBD.dameCandidatos_eleccionesNacionales();
-ArrayList<Candidatura> candidaturasNacionales = controladorBD.dameCandidaturas_eleccionesNacioales();
-Campanna campanaActual = controladorBD.dameCampanna_codCampanna(1);
+ArrayList<Candidato> candidatos = controladorBD.dameCandidatos_eleccionesEuropeas();
+ArrayList<Candidatura> candidaturasNacionales = controladorBD.dameCandidaturas_eleccioneEuropeas();
+Campanna campanaActual = controladorBD.dameCampanna_codCampanna(2);
+
 
 
 /*INICIO BUCLE*/
@@ -159,8 +160,8 @@ for(int i=0; i < candidatos.size() ;i++){
 								<p class="textoMiembro">
 									Lugar de nacimiento:
 									<%=candidatos.get(i).getLugar_nac()%></p>
-								<p class="textoMiembro" id="Campania"">Campaña:<%=campanaActual.getTipo()%></p>
-								<p class="textoMiembro" id="Campania"">Ambito: <%=campanaActual.getAmbito()%></p>
+								<p class="textoMiembro" id="Campania">Campaña: <%=campanaActual.getTipo()%>  </p>
+								<p class="textoMiembro" id="Campania">Ambito: <%=campanaActual.getAmbito()%> </p>
 
 								<p style="color: black;">
 									posicion de lista
