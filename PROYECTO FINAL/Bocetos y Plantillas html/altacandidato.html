@@ -1,0 +1,99 @@
+<!DOCTYPE>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  	
+  	
+	<title>Administracion</title>
+	<style>
+	body {
+		background-color: #F3F2F1;
+	}
+	ul {
+	  list-style-type: none;
+	  padding: 0;
+	  overflow: hidden;
+	  background-color: #303F9F;
+	  padding-left: 37%;
+	  
+	}
+
+	li {
+		margin-left: 5%;
+	  	float: left;
+	}
+
+	li a {
+		font-size: 130%;
+	  	display: inline-block;
+	  	color: white;
+	  	text-align: center;
+	  	padding: 14px 16px;
+	  	text-decoration: none !important;
+	}
+
+	li a:hover {
+	  color: #FFC107;
+	}
+
+	a {
+	  color: black;
+	  padding: 12px 16px;
+	  text-decoration: none;
+	  display: block;
+	  text-align: left;
+	}
+	h2 {
+		text-align: center;
+		margin: 5%;
+	}
+	h3 {
+		text-align: center;
+		margin: 2%;
+	}
+</style>
+</head>
+
+<body>
+	<div class="container">
+		<h2>Administración de MovimientoCentro</h2>
+	</div>
+	<ul>
+		<li><a href="altacandidato.html">Alta</a></li>
+		<li><a href="bajacandidato.html">Baja</a></li>
+		<li><a href="modificarcandidato.html">Modificacion</a></li>
+	</ul>
+	<h3>Alta Candidato</h3>
+	<div class="container">
+		<form action="operaciones.jsp?tipo=altajugador" method="post">
+			<div class="row" style="float: left; margin-left: 0.1%;">
+				<div class="col-4"><input type="text" name="nombre" placeholder="Nombre"></div>
+				<div class="col-3"><input type="text" name="apellidos" placeholder="Apellidos"></div>
+				<div class="col-2"><input type="date" name="fecha_nac" placeholder=""></div>
+				<div class="col-3"><input type="text" name="lugar_nac" placeholder="Lugar de nacimiento"></div>
+			</div>
+			<div class="row">
+				<div class="col-4"><input type="text" name="municipio" placeholder="Municipio"></div>
+				<div class="col-3"><input type="text" name="provincia" placeholder="Provincia"></div>
+				<div class="col-2"><input type="text" name="autonomia" placeholder="Autonomia"></div>
+			</div>
+			<div class="mm-dropdown" style="background: #FFC107 ;cursor: pointer;width: 400px;font-size: 20px;font-weight: 300;line-height: 40px;height:53px; margin-top: 2%;">
+				<div class="textfirst" style="border-color:#303F9F; color: white;border-radius: 5px;">Campaña a representar</div>
+				<ul class="scrollable-menu">
+					<%for (int i=0;i<equipos.size();i++){%>
+						<li class="input-option" data-value="<%=equipos.get(i).getCod_equipo()%>" style="border-color:#5c9cd8;">
+							<img src="images/equipos/<%=equipos.get(i).getCod_equipo() %>.png" alt="" width="20" /> <%=equipos.get(i).getNombre()%>
+							<input type="hidden" class="option" name="equipo" value="<%=equipos.get(i).getCod_equipo()%>" />
+						</li>
+					<%} %>
+				</ul>
+			</div>
+			<br>
+			<input type="submit" value="Dar de alta" id="boton" style="margin-top: 2.5%; background-color: black;">
+		</form>
+	</div>
+</body>
+</html>
