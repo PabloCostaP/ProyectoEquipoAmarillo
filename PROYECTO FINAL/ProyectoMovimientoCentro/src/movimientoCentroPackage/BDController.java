@@ -30,10 +30,7 @@ public class BDController {
 			
 		} catch (SQLException e) {
 			System.out.println("Error en constructor BDController" + e.getMessage());
-		}
-		
-
-	
+		}	
 	}
 	
 	
@@ -178,7 +175,7 @@ public class BDController {
 		Campanna campanna = new Campanna();
 		try {
 			Statement miStatement = this.miConexion.createStatement();
-			ResultSet rs = miStatement.executeQuery("SELECT * FROM campanna where cod_campanna = "+cod_campanna+" AND tipo = \"Autonómica\"");
+			ResultSet rs = miStatement.executeQuery("SELECT * FROM campanna where cod_campanna = "+cod_campanna+" AND tipo = 'Autonómica' ");
 			while (rs.next() == true) {
 				campanna =  new Campanna(rs.getInt(1), rs.getString(2), rs.getString(3));
 			}
@@ -195,7 +192,7 @@ public class BDController {
 		Campanna campanna = new Campanna();
 		try {
 			Statement miStatement = this.miConexion.createStatement();
-			ResultSet rs = miStatement.executeQuery("SELECT * FROM campanna where cod_campanna = "+cod_campanna+" AND tipo = \"Municipal\"");
+			ResultSet rs = miStatement.executeQuery("SELECT * FROM campanna where cod_campanna = "+cod_campanna+" AND tipo = 'Municipal' ");
 			while (rs.next() == true) {
 				campanna =  new Campanna(rs.getInt(1), rs.getString(2), rs.getString(3));
 			}

@@ -40,8 +40,8 @@
 	      	<a href="entradas.html">ELECCIONES</a>
 	      	<div class="dropdown-content">
 	  			<a href="eleccionesNacionales.jsp">Elecciones Nacionales</a>
-				<a href="eleccionesAutonomicas.html">Elecciones AutonÃ³micas</a>
-				<a href="eleccionesMunicipales.html">Elecciones Municipales</a>
+				<a href="eleccionesAutonomicas.jsp">Elecciones AutonÃ³micas</a>
+				<a href="eleccionesMunicipales.jsp">Elecciones Municipales</a>
 				<a href="eleccionesEuropeas.jsp">Elecciones Europeas</a>>
 	      	</div>
 	      </li>
