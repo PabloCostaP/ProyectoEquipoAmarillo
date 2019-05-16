@@ -154,6 +154,7 @@ public class BDController {
 		return campanna;
 	}
 	
+	
 	public Campanna dameCampanna_codCampanna(int cod_campanna) {
 		Campanna campanna = new Campanna();
 		try {
@@ -241,6 +242,7 @@ public class BDController {
 		return candidatos;
 	}
 	
+	
 	public ArrayList<Candidato> dameCandidatos_eleccionesEuropeas(){
 		ArrayList<Candidato> candidatos = new ArrayList<Candidato>();
 		try {
@@ -309,6 +311,23 @@ public class BDController {
 
 		} catch (SQLException e) {
 			System.out.println("Error en dameCandidaturas del BDController" + e.getMessage());
+		}
+		return candidaturas;
+	}
+	public ArrayList<Candidatura> dameCandidaturas_cabezaDeLista() {
+		ArrayList<Candidatura> candidaturas = new ArrayList<Candidatura>();
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+			ResultSet rs = miStatement.executeQuery("select * FROM candidaturas WHERE cabeza_lista = 1");
+
+			while (rs.next() == true) {
+				candidaturas.add(new Candidatura(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getInt(4)));
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameCandidaturas cabeza de lista del BDController" + e.getMessage());
 		}
 		return candidaturas;
 	}

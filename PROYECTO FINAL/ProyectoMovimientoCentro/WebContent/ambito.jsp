@@ -83,6 +83,10 @@ ArrayList<Programa> programas = controladorBD.dameProgramasEleccionesCodCampanna
 //NECESITO LAS CANDIDATURAS PARA BUSCAR LA SELECCIONADA E INTROODUCIRLA EN CANDIDATURA ACTUAL ETC
 ArrayList<Candidatura> candidaturasAmbito = controladorBD.dameCandidaturas();
 
+ArrayList<Candidatura> candidaturasCabezaDeLista = controladorBD.dameCandidaturas_cabezaDeLista();
+
+Candidato candidatoCabeza = new Candidato();
+
 %>
 <h2 class="titulos" style="text-align: center;"><%=campanna.getAmbito() %></h2>
 
@@ -113,16 +117,42 @@ ArrayList<Candidatura> candidaturasAmbito = controladorBD.dameCandidaturas();
 /*ARRAYLIST */
 
 
+for(int i=0; i< candidatos.size();i++){
+for(int j=0;j<candidaturasCabezaDeLista.size();j++) {
+	if(candidaturasCabezaDeLista.get(j).getCod_candidato() == candidatos.get(i).getCod_candidato()){%>
+		
 
+		<div id="<%=i%>" onClick="botonCandidatoActual(this.id);">
 
+						<div>
+							<div id="boton" class="accordion">
+								<div class="row">
+									<div class="col-6">
+										<img id="imagenMiembro"
+											src="imagenes/candidatos/<%=candidatos.get(i).getCod_candidato()%>.jpg"
+											style="height: 100px; width: 150px;">
+									</div>
+									<div class="col-6" style="margin-top: 15px;">
+										<p style="text-align: center;"><%=candidatos.get(i).getNombre() %></p>
+										<p style="text-align: center;"><%=candidatos.get(i).getApellidos() %></p>
+									</div>
 
-
-
+								</div>
+							</div>
+						</div>
+					</div>
+		
+<% 
+		candidatoCabeza = candidatos.get(i);
+	}
+}
+}
+/*INICIO BUCLE*/
 for(int i=0; i < candidatos.size() ;i++){
-
+	if(candidatos.get(i).getCod_candidato()==candidatoCabeza.getCod_candidato()){
+		
+	}else{
 %>
-
-	
 	<!--REPETIR EN BUCLE CON TODOS LOS MIEMBROS -->
 	<div id="<%=i%>"  onClick= "botonCandidatoActual(this.id);">
 
@@ -140,31 +170,18 @@ for(int i=0; i < candidatos.size() ;i++){
 	  						</div>
 	  				    </div>
 					</div>
-				
 			<!--REPETIR EN BUCLE CON TODOS LOS MIEMBROS -->
-
-
 		 </div>
-<% }%>
+<%} };%>
 
 </div>
-
-
 <!--  -->
-	
-
 	<%
 		/*candidatura actual*/
 		Candidatura candidaturaActual = new Candidatura();	
-		
-		
 		/*Si es cabeza de lista display block para mostrarlo*/
 			String display = "none";	
 %>		
-
-
-
-
 <!-- modal info miembro -->
 					<!-- CAMBIAR INFORMACION DE LOS CAMPOS -->
 					<div id="fondoModal" class="modal">
