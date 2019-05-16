@@ -76,11 +76,45 @@ BDController controladorBD = new BDController();
 ArrayList<Candidato> candidatos = controladorBD.dameCandidatos_eleccionesEuropeas();
 ArrayList<Candidatura> candidaturasNacionales = controladorBD.dameCandidaturas_eleccioneEuropeas();
 Campanna campanaActual = controladorBD.dameCampanna_codCampanna(2);
+ArrayList<Candidatura> candidaturasCabezaDeLista = controladorBD.dameCandidaturas_cabezaDeLista();
 
+Candidato candidatoCabeza = new Candidato();
 
+for(int i=0; i< candidatos.size();i++){
+for(int j=0;j<candidaturasCabezaDeLista.size();j++) {
+	if(candidaturasCabezaDeLista.get(j).getCod_candidato() == candidatos.get(i).getCod_candidato()){%>
+		
 
+		<div id="<%=i%>" onClick="botonCandidatoActual(this.id);">
+
+						<div>
+							<div id="boton" class="accordion">
+								<div class="row">
+									<div class="col-6">
+										<img id="imagenMiembro"
+											src="imagenes/candidatos/<%=candidatos.get(i).getCod_candidato()%>.jpg"
+											style="height: 100px; width: 150px;">
+									</div>
+									<div class="col-6" style="margin-top: 15px;">
+										<p style="text-align: center;"><%=candidatos.get(i).getNombre() %></p>
+										<p style="text-align: center;"><%=candidatos.get(i).getApellidos() %></p>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+		
+<% 
+		candidatoCabeza = candidatos.get(i);
+	}
+}
+}
 /*INICIO BUCLE*/
 for(int i=0; i < candidatos.size() ;i++){
+	if(candidatos.get(i).getCod_candidato()==candidatoCabeza.getCod_candidato()){
+		
+	}else{
 %>
 
 					<div id="<%=i%>" onClick="botonCandidatoActual(this.id);">
@@ -102,7 +136,7 @@ for(int i=0; i < candidatos.size() ;i++){
 							</div>
 						</div>
 					</div>
-					<% }%>
+					<% }}%>
 				</div>
 				<!-- CANDIDATOS  -->
 
