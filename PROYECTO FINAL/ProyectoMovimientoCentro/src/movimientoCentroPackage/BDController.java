@@ -395,7 +395,7 @@ public class BDController {
 			Statement miStatement = this.miConexion.createStatement();
 			ResultSet rs = miStatement.executeQuery("select* from eventos");
 			while (rs.next() == true) {
-				eventos.add(new Evento(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5), rs.getString(6), rs.getString(7),rs.getString(8), rs.getInt(9)));
+				eventos.add(new Evento(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7),rs.getString(8), rs.getInt(9)));
 			}
 			miStatement.close();
 			rs.close();
@@ -526,6 +526,23 @@ public class BDController {
 		return voluntarios;
 	}
 	
+	/* Comprobar si exite voluntario por su email */
+	public boolean existeVoluntario (String email) {
+		boolean existe=false;
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+			ResultSet rs = miStatement.executeQuery("SELECT * from voluntarios WHERE email='"+email+"'");
+			if (rs.first() == true) {
+				existe=true;
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameUltimoCodCandidato del BDController" + e.getMessage());
+		}
+		return existe;
+	}
 	/* ------ Altas en la base de datos ------ */
 	
 	

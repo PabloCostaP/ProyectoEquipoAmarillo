@@ -33,13 +33,7 @@ function next(boton) {
 			$("#containerVoluntarios1").css("display", "initial");
 		}else if(element==="asistente") {
 			$("#container1").css("display", "none");
-			$("#datosPersonales").css("display", "initial");
-		}else if(element==="europeas") {
-			$("#containerVoluntarios1").css("display", "none");
-			$("#datosPersonales").css("display", "initial");
-		}else if(element==="nacionales"){
-			$("#containerVoluntarios1").css("display", "none");
-			$("#containerNacionaes").css("display", "initial"); 
+			$("#containerAsistentes").css("display", "inline");
 		}
 	$("div.seleccionado").removeClass("seleccionado");
 }
