@@ -5,7 +5,7 @@ public class Evento {
 	private int cod_evento;
 	private String descripcion;
 	private String ubicacion;
-	private int dia;
+	private String dia;
 	private String hora;
 	private String nombre;
 	private String tipo;
@@ -13,7 +13,7 @@ public class Evento {
 	private int cod_campanna;
 	
 	
-	public Evento(int cod_evento, String descripcion, String ubicacion, int dia, String hora, String nombre,
+	public Evento(int cod_evento, String descripcion, String ubicacion, String dia, String hora, String nombre,
 			String tipo, String municipio, int cod_campanna) {
 		super();
 		this.cod_evento = cod_evento;
@@ -45,10 +45,10 @@ public class Evento {
 	public void setUbicacion(String ubicacion) {
 		this.ubicacion = ubicacion;
 	}
-	public int getDia() {
+	public String getDia() {
 		return dia;
 	}
-	public void setDia(int dia) {
+	public void setDia(String dia) {
 		this.dia = dia;
 	}
 	public String getHora() {

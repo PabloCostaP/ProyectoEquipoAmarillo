@@ -1,6 +1,7 @@
-<%@page import="movimientoCentroPackage.BDController"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ page import="movimientoCentroPackage.*" %>
+<%@ page import="java.util.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,18 +27,18 @@
 	<nav class="navbar">
 	  <div class="container-fluid" id="navegador">
 	    <ul class="nav navbar-nav">
-	      <li><a href="index.html"><b>INICIO</b></a></li>
+	      <li><a href="index.jsp"><b>INICIO</b></a></li>
 	      <li class="dropdown">
 	      	<a href="entradas.html">ELECCIONES</a>
 	      	<div class="dropdown-content">
-	  			<a href="#">Elecciones Nacionales</a>
-				<a href="#">Elecciones Autonómicas</a>
-				<a href="#">Elecciones Municipales</a>
-				<a href="#">Elecciones Europeas</a>
+	  			<a href="eleccionesNacionales.jsp">Elecciones Nacionales</a> <a
+							href="eleccionesAutonomicas.jsp">Elecciones Autonómicas</a> <a
+							href="eleccionesMunicipales.jsp">Elecciones Municipales</a> <a
+							href="eleccionesEuropeas.jsp">Elecciones Europeas</a>>
 	      	</div>
 	      </li>
 	      <li><a href="artistas.html">PROXIMOS EVENTOS</a></li>
-	      <li><a href="participa.html">PARTICIPA</a></li>
+	      <li><a href="participa.jsp">PARTICIPA</a></li>
 	    </ul>
 	  </div>
 	</nav>
@@ -47,9 +48,7 @@
 	
 	<%
 	BDController bdController = new BDController();
-	String tipo="";
-	String voluntario="";
-	String ambito="";
+	ArrayList<Evento> eventos = bdController.dameEventos();
 	
 	%>
 
@@ -74,102 +73,77 @@
 		<div class="container" id="containerVoluntarios1" style="display:none">
 			<div class="row">
 				<div class="col-sm-2"></div>
-		        <div class="col-sm-8 opcion"  value="nacionales">
+		        <a class="col-sm-8" href="index.jsp"><div class="opcion"  value="nacionales">
 		          <h5>Elecciones Nacionales</h5>
-		        </div>
+		        </div></a>
 		        <div class="col-sm-2"></div>
 		      </div>
 		      <div class="row">
 				<div class="col-sm-2"></div>
-		        <div class="col-sm-8 opcion"  value="autonomica">
-		          <h5>Elecciones Autonomica</h5>
-		        </div>
+		        <a class="col-sm-8" href="index.jsp"><div class="opcion"  value="autonomica">
+		           <h5>Elecciones Autonomica</h5>
+		        </div></a>
 		        <div class="col-sm-2"></div>
 		      </div>
 		      <div class="row">
 				<div class="col-sm-2"></div>
-		        <div class="col-sm-8 opcion"  value="municipales">
+		        <a class="col-sm-8" href="index.jsp"><div class="opcion"  value="municipales">
 		          <h5>Elecciones Municipales</h5>
-		        </div>
+		        </div></a>
 		        <div class="col-sm-2"></div>
 		      </div>
 		      <div class="row">
 		      	<div class="col-sm-2"></div>
-		        <div class="col-sm-8 opcion"  value="europeas">
-		          <h5>Elecciones Europeas</h5>
-		        </div>
+		        <a class="col-sm-8" href="index.jsp"><div class="opcion"  value="europeas">
+		           <h5>Elecciones Europeas</h5>
+		        </div></a>
 		        <div class="col-sm-2"></div>
 			</div>
-			<button id="boton2" class="boton btn btn-primary">Siguiente</button>
 		</div>
-		<div class="container" id="containerNacionales" style="display:none">
-			
-			<button id="boton2" class="boton btn btn-primary">Siguiente</button>
-		</div>
-
-		<div class="container"  id="datosPersonales" style="display:none">
-   			<div class="row">
-		        <div class="col-md-12">
-		            <div class="well well-sm">
-		                <form class="form-horizontal" method="post">
-		                    <fieldset>
-		                        <legend class="text-center header">Datos Personales</legend>
-		                        <div class="form-group">
-		                        	<h3>Selecione </h3>
-		                    		<div class="col-md-12">
-						    			<select class="form-control" id="select">
-						      				<option>1</option>
-						      				<option>2</option>
-						      				<option>3</option>
-						      				<option>4</option>
-						      				<option>5</option>
-						    			</select>
-					    			</div>
-  								</div>
-		                        <div class="form-group">
-		                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
-		                            <div class="col-md-8">
-		                                <input id="nombre" name="nombre" type="text" placeholder="Nombre" class="form-control" required>
-		                            </div>
-		                        </div>
-		                        <div class="form-group">
-		                            <span class="col-md-1 col-md-offset-2 text-center"></span>
-		                            <div class="col-md-8">
-		                                <input id="apellidos" name="apellidos" type="text" placeholder="Apellidos" class="form-control" required>
-		                            </div>
-		                        </div>
-		 						<div class="form-group">
-		                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-calendar bigicon"></i></span>
-		                            <div class="col-md-8">
-		                                <input id="nacimiento" name="nacimiento" type="date" placeholder="Telefono" class="form-control" required>
-		                            </div>
-		                        </div>
-		                        <div class="form-group">
-		                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope bigicon"></i></span>
-		                            <div class="col-md-8">
-		                                <input id="email" name="email" type="text" placeholder="Email" class="form-control" required>
-		                            </div>
-		                        </div>
-
-		                        <div class="form-group">
-		                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-phone-square bigicon"></i></span>
-		                            <div class="col-md-8">
-		                                <input id="telefono" name="telefono" type="text" placeholder="Telefono" class="form-control" required>
-		                            </div>
-		                        </div>
-		                        <div class="form-group">
-		                            <div class="col-md-12 text-center">
-		                                <button type="submit" class="btn btn-primary btn-lg">enviar</button>
-		                            </div>
-		                        </div>
-		                    </fieldset>
-		                </form>
-		            </div>
-		        </div>
-    		</div>
+		<div id="containerAsistentes" style="display:none; margin-bottom:50%; color:black;">
+			<%for(int i = 0; i < eventos.size(); i++) {
+				if(i==eventos.size()-1) {%>
+				<div class="row">
+					<div class="col-md-4">
+						<img src="foto.jpg" style="width: 350px; float: left;">
+					</div>
+					<div class="col-md-8">
+						<div class="row">
+							<div class="col-md-12"><h4><%=eventos.get(i).getTipo()%></h4></div>
+		        			<div class="col-md-12"><h3><%=eventos.get(i).getNombre()%></h3></div>
+		        			<div class="col-md-12"><date><%=eventos.get(i).getDia()%></date></div>
+		        			<div class="col-md-12"><p><%=eventos.get(i).getDescripcion()%></p></div>
+		        			<div class="col-md-12"><p><%=eventos.get(i).getUbicacion()%> - <%=eventos.get(i).getMunicipio()%></p></div>
+	        			</div>
+	        			<a href=# ><button class="boton btn btn-primary">Asistir</button></a>
+        			</div>
+        		</div>
+				<%}else{%>
+					<div class="row">
+					<div class="col-md-4">
+						<img src="foto.jpg" style="width: 350px; float: left;">
+					</div>
+					<div class="col-md-8">
+						<div class="row">
+							<div class="col-md-12"><h4><%=eventos.get(i).getTipo()%></h4></div>
+		        			<div class="col-md-12"><h3><%=eventos.get(i).getNombre()%></h3></div>
+		        			<div class="col-md-12"><date><%=eventos.get(i).getDia()%></date></div>
+		        			<div class="col-md-12"><p><%=eventos.get(i).getDescripcion()%></p></div>
+		        			<div class="col-md-12"><p><%=eventos.get(i).getUbicacion()%> - <%=eventos.get(i).getMunicipio()%></p></div>
+	        			</div>
+	        			<a href=# ><button class="boton btn btn-primary">Asistir</button></a>
+        			</div>
+        		</div>
+        		<hr>
+					<%}%>
+				
+			<%}%>
 		</div>
 	</div>
 	<!-- Fin Formulario -->
+	<!-- FOOTER -->
+
+<!-- FIN FOOTER -->
 <script src="js/formulario.js"></script>
 </body>
 </html>

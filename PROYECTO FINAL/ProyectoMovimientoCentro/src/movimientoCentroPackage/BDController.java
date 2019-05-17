@@ -154,6 +154,7 @@ public class BDController {
 		return campanna;
 	}
 	
+	
 	public Campanna dameCampanna_codCampanna(int cod_campanna) {
 		Campanna campanna = new Campanna();
 		try {
@@ -241,6 +242,7 @@ public class BDController {
 		return candidatos;
 	}
 	
+	
 	public ArrayList<Candidato> dameCandidatos_eleccionesEuropeas(){
 		ArrayList<Candidato> candidatos = new ArrayList<Candidato>();
 		try {
@@ -312,6 +314,23 @@ public class BDController {
 		}
 		return candidaturas;
 	}
+	public ArrayList<Candidatura> dameCandidaturas_cabezaDeLista() {
+		ArrayList<Candidatura> candidaturas = new ArrayList<Candidatura>();
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+			ResultSet rs = miStatement.executeQuery("select * FROM candidaturas WHERE cabeza_lista = 1");
+
+			while (rs.next() == true) {
+				candidaturas.add(new Candidatura(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getInt(4)));
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameCandidaturas cabeza de lista del BDController" + e.getMessage());
+		}
+		return candidaturas;
+	}
 	/*no se usa de momento*/
 	public Candidatura dameCandidatura_por_codCampanna(int cod_campanna) {
 		Candidatura candidatura = new Candidatura();
@@ -376,7 +395,7 @@ public class BDController {
 			Statement miStatement = this.miConexion.createStatement();
 			ResultSet rs = miStatement.executeQuery("select* from eventos");
 			while (rs.next() == true) {
-				eventos.add(new Evento(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5), rs.getString(6), rs.getString(7),rs.getString(8), rs.getInt(9)));
+				eventos.add(new Evento(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7),rs.getString(8), rs.getInt(9)));
 			}
 			miStatement.close();
 			rs.close();
@@ -507,6 +526,23 @@ public class BDController {
 		return voluntarios;
 	}
 	
+	/* Comprobar si exite voluntario por su email */
+	public boolean existeVoluntario (String email) {
+		boolean existe=false;
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+			ResultSet rs = miStatement.executeQuery("SELECT * from voluntarios WHERE email='"+email+"'");
+			if (rs.first() == true) {
+				existe=true;
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameUltimoCodCandidato del BDController" + e.getMessage());
+		}
+		return existe;
+	}
 	/* ------ Altas en la base de datos ------ */
 	
 	
