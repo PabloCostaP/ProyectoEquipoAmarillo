@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Hashtable;
 
 
 
@@ -524,6 +525,26 @@ public class BDController {
 			System.out.println("Error en dameVoluntario del BDController" + e.getMessage());
 		}
 		return voluntarios;
+	}
+	
+	
+	/* Metodo que devuelve un Hashtable con codigo de voluntario */
+	
+	public Hashtable<String, String> dameVoluntario(String email) {
+		Hashtable<String, String> voluntario=new Hashtable<String,String>();
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+			ResultSet rs = miStatement.executeQuery("select cod_voluntario from voluntarios where email='"+email+"'");
+			while (rs.next() == true) {
+				voluntario.put("100", Integer.toString(rs.getInt(1)));
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameVoluntario del BDController" + e.getMessage());
+		}
+		return voluntario;
 	}
 	
 	/* Comprobar si exite voluntario por su email */
