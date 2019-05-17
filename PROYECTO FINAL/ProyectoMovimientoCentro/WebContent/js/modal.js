@@ -3,10 +3,6 @@ var modal = document.getElementById('fondoModal');
 
 var modales = document.getElementsByClassName("modalAcambiar")
 
-
-//var btn = document.getElementById("boton");
-
-
 var span = document.getElementsByClassName("botonCerrar")[0];
 
 var cod_candidato;
@@ -22,14 +18,6 @@ function botonCandidatoActual(clicado){
 	modal.style.display = "block";
 	
 }
-
-
-
-
-//btn.onclick = function() {
-  //	modal.style.display = "block";
-//}
-
 
 span.onclick = function() {
   modal.style.display = "none";

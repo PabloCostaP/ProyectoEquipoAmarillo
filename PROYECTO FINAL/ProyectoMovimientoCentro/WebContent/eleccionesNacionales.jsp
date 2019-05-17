@@ -178,10 +178,11 @@ for(int i=0; i < candidatos.size() ;i++){
 						%>
 						<div id="modalCandidatoActual<%=i%>" style="display: none"
 							class="modalAcambiar">
-							
+
 							<div style="float: left; height: 100%; width: 40%">
 								<img id="imagenMiembro"
-									src="imagenes/candidatos/<%=candidatos.get(i).getCod_candidato()%>.jpg" style="height: 100%; width: 70%">
+									src="imagenes/candidatos/<%=candidatos.get(i).getCod_candidato()%>.jpg"
+									style="border-radius: 53px 53px 53px 53px; -moz-border-radius: 53px 53px 53px 53px; -webkit-border-radius: 53px 53px 53px 53px; border: 0px solid #000000; height: 100%; width: 70%">
 							</div>
 
 							<div
