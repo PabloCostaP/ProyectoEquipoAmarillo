@@ -18,6 +18,7 @@ function botonCandidatoActual(clicado){
 	click = clicado;
 	
 	modales[click].style.display ="block";
+	
 	modal.style.display = "block";
 	
 }

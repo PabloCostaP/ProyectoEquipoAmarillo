@@ -76,6 +76,7 @@ BDController controladorBD = new BDController();
 ArrayList<Candidato> candidatos = controladorBD.dameCandidatos_eleccionesNacionales();
 ArrayList<Candidatura> candidaturasNacionales = controladorBD.dameCandidaturas_eleccionesNacioales();
 Campanna campanaActual = controladorBD.dameCampanna_codCampanna(1);
+
 ArrayList<Candidatura> candidaturasCabezaDeLista = controladorBD.dameCandidaturas_cabezaDeLista();
 
 Candidato candidatoCabeza = new Candidato();
@@ -177,6 +178,7 @@ for(int i=0; i < candidatos.size() ;i++){
 						%>
 						<div id="modalCandidatoActual<%=i%>" style="display: none"
 							class="modalAcambiar">
+							
 							<div style="float: left; height: 100%; width: 40%">
 								<img id="imagenMiembro"
 									src="imagenes/candidatos/<%=candidatos.get(i).getCod_candidato()%>.jpg" style="height: 100%; width: 70%">
