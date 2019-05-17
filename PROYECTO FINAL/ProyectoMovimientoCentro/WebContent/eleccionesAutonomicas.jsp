@@ -35,7 +35,7 @@
 	<nav class="navbar">
 	  <div class="container-fluid" id="navegador">
 	    <ul class="nav navbar-nav">
-	      <li><a href="index.html"><b>INICIO</b></a></li>
+	      <li><a href="index.jsp"><b>INICIO</b></a></li>
 	      <li class="dropdown">
 	      	<a href="entradas.html">ELECCIONES</a>
 	      	<div class="dropdown-content">
@@ -46,7 +46,7 @@
 	      	</div>
 	      </li>
 	      <li><a href="artistas.html">PROXIMOS EVENTOS</a></li>
-	      <li><a href="recinto.html">PARTICIPA</a></li>
+	      <li><a href="participa.jsp">PARTICIPA</a></li>
 	    </ul>
 	  </div>
 	</nav>
