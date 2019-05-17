@@ -73,28 +73,28 @@
 		<div class="container" id="containerVoluntarios1" style="display:none">
 			<div class="row">
 				<div class="col-sm-2"></div>
-		        <a class="col-sm-8" href="index.jsp"><div class="opcion"  value="nacionales">
+		        <a class="col-sm-8" href="formularioEmail.jsp?tipo=nacionales"><div class="opcion"  value="nacionales">
 		          <h5>Elecciones Nacionales</h5>
 		        </div></a>
 		        <div class="col-sm-2"></div>
 		      </div>
 		      <div class="row">
 				<div class="col-sm-2"></div>
-		        <a class="col-sm-8" href="index.jsp"><div class="opcion"  value="autonomica">
+		        <a class="col-sm-8" href="formularioEmail.jsp?tipo=autonomicas"><div class="opcion"  value="autonomica">
 		           <h5>Elecciones Autonomica</h5>
 		        </div></a>
 		        <div class="col-sm-2"></div>
 		      </div>
 		      <div class="row">
 				<div class="col-sm-2"></div>
-		        <a class="col-sm-8" href="index.jsp"><div class="opcion"  value="municipales">
+		        <a class="col-sm-8" href="formularioEmail.jsp?tipo=municipales"><div class="opcion"  value="municipales">
 		          <h5>Elecciones Municipales</h5>
 		        </div></a>
 		        <div class="col-sm-2"></div>
 		      </div>
 		      <div class="row">
 		      	<div class="col-sm-2"></div>
-		        <a class="col-sm-8" href="index.jsp"><div class="opcion"  value="europeas">
+		        <a class="col-sm-8" href="formularioEmail.jsp?tipo=europeas"><div class="opcion"  value="europeas">
 		           <h5>Elecciones Europeas</h5>
 		        </div></a>
 		        <div class="col-sm-2"></div>
@@ -105,7 +105,7 @@
 				if(i==eventos.size()-1) {%>
 				<div class="row">
 					<div class="col-md-4">
-						<img src="foto.jpg" style="width: 350px; float: left;">
+						<img src="imagenes/eventos/<%=eventos.get(i).getCod_evento() %>.PNG" style="width: 350px; float: left;">
 					</div>
 					<div class="col-md-8">
 						<div class="row">
@@ -115,13 +115,13 @@
 		        			<div class="col-md-12"><p><%=eventos.get(i).getDescripcion()%></p></div>
 		        			<div class="col-md-12"><p><%=eventos.get(i).getUbicacion()%> - <%=eventos.get(i).getMunicipio()%></p></div>
 	        			</div>
-	        			<a href=# ><button class="boton btn btn-primary">Asistir</button></a>
+	        			<a href="formularioEmail.jsp?cod_evento=<%=eventos.get(i).getCod_evento()%>?tipo=asistentes" ><button class="boton btn btn-primary">Asistir</button></a>
         			</div>
         		</div>
 				<%}else{%>
 					<div class="row">
 					<div class="col-md-4">
-						<img src="foto.jpg" style="width: 350px; float: left;">
+						<img src="imagenes/eventos/<%=eventos.get(i).getCod_evento() %>.PNG" style="width: 350px; float: left;">
 					</div>
 					<div class="col-md-8">
 						<div class="row">
@@ -131,7 +131,7 @@
 		        			<div class="col-md-12"><p><%=eventos.get(i).getDescripcion()%></p></div>
 		        			<div class="col-md-12"><p><%=eventos.get(i).getUbicacion()%> - <%=eventos.get(i).getMunicipio()%></p></div>
 	        			</div>
-	        			<a href=# ><button class="boton btn btn-primary">Asistir</button></a>
+	        			<a href="formularioEmail.jsp?cod_evento=<%=eventos.get(i).getCod_evento()%>?tipo=asistentes" ><button class="boton btn btn-primary">Asistir</button></a>
         			</div>
         		</div>
         		<hr>
