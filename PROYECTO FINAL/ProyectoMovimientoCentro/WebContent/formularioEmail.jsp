@@ -75,7 +75,7 @@
 		 						<div class="form-group">
 		                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-calendar bigicon"></i></span>
 		                            <div class="col-md-8">
-		                                <input id="nacimiento" name="nacimiento" type="date" placeholder="Telefono" class="form-control" required>
+		                                <input id="nacimiento" name="nacimiento" type="date" placeholder="Fecha de nacimiento" class="form-control" required>
 		                            </div>
 		                        </div>
 		                        <div class="form-group">
@@ -122,7 +122,7 @@
 		                         <div class="form-group">
 		                            <span class="col-md-1 col-md-offset-2 text-center"></span>
 		                            <div class="col-md-8">
-		                             	<select name="Ambito" style="background: #FFC107 ;cursor: pointer;width: 340px;font-size: 20px;font-weight: 300;line-height: 40px; margin-top: 2%;">
+		                             	<select name="ambito" style="background: #FFC107 ;cursor: pointer;width: 340px;font-size: 20px;font-weight: 300;line-height: 40px; margin-top: 2%;">
 											<option disabled selected>Selecciona una opción</option>
 											<%for (int i=0;i<campannas.size();i++){%>
 												<option value="<%=campannas.get(i).getCod_campanna()%>"><%=campannas.get(i).getAmbito()%></option>
@@ -194,7 +194,7 @@
 		                        <div class="form-group">
 		                            <span class="col-md-1 col-md-offset-2 text-center"></span>
 		                            <div class="col-md-8">
-		                             	<select name="Ambito" style="background: #FFC107 ;cursor: pointer;width: 340px;font-size: 20px;font-weight: 300;line-height: 40px; margin-top: 2%;">
+		                             	<select name="ambito" style="background: #FFC107 ;cursor: pointer;width: 340px;font-size: 20px;font-weight: 300;line-height: 40px; margin-top: 2%;">
 											<option disabled selected>Selecciona una opción</option>
 											<%for (int i=0;i<campannas.size();i++){%>
 												<option value="<%=campannas.get(i).getCod_campanna()%>"><%=campannas.get(i).getAmbito()%></option>
@@ -315,7 +315,7 @@
 			<div class="row">
 	   			<div class="col-md-12">
 	        		<div class="well well-sm">
-	            		<form class="form-horizontal" action="operacionesFormulario.jsp?tipo=evento" method="post">
+	            		<form class="form-horizontal" action="operacionesFormulario.jsp?tipo=evento&evento=<%=cod_evento%>" method="post">
 	                		<fieldset>
 		                        <legend class="text-center header">Datos Personales</legend>
 		                        <div class="form-group">

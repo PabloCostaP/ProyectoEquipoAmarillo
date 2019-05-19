@@ -53,76 +53,127 @@
 	String tipo = request.getParameter("tipo");
 	String nombre = request.getParameter("nombre");
 	String apellidos = request.getParameter("apellidos");
-	String fecha = request.getParameter("fecha");
+	String fecha = request.getParameter("nacimiento");
 	String email = request.getParameter("email");
+	int ambito;
 	String telefono = request.getParameter("telefono");
-	String cod_evento= request.getParameter("cod_evento");
+	int cod_evento;
 	final String de = "movimientocentronoreply@gmail.com";
 	final String clave = "Nelson2000";
 	Email emailF = new Email();
 	Correo correo = new Correo();
-	boolean  resultado; 
-	
+	boolean  resultado = false;
 	if(tipo.equalsIgnoreCase("nacionales")) { %>
-		<div class="container">
-				<% Voluntario voluntario = new Voluntario(bdController.dameUltimoCodVoluntario(), nombre, apellidos, fecha, email, telefono, 1, 1);
-				Campanna campanna = bdController.dameCampanna_nacional();
-				Voluntariado voluntariado = new Voluntariado(voluntario.getCod_voluntario(), campanna.getCod_campanna());
-				resultado= emailF.enviarCorreo(voluntario.getEmail(), correo.correoNacionales(voluntario, campanna), campanna.getTipo());
-				if(resultado) {%>
-				
-			<%}else{
-				
-			}%>
+		<div class="container" id="datosPersonales">
+					<% 
+					Voluntario voluntario = new Voluntario(bdController.dameUltimoCodVoluntario(), nombre, apellidos, fecha, email, telefono, 1, 1);
+					bdController.altaVoluntario(voluntario);
+					Campanna campanna = bdController.dameCampanna_nacional();
+					Voluntariado voluntariado = new Voluntariado(voluntario.getCod_voluntario(), campanna.getCod_campanna());
+					bdController.altaVoluntariado(voluntariado);
+					resultado = emailF.enviarCorreo(voluntario.getEmail(), correo.correoNacionales(voluntario, campanna), campanna.getTipo());
+					if(resultado) {%>
+						<div class="row">
+							<div class="col-md-12"><h3>El registro se ha completo correctamente</h3></div>
+							<div class="col-md-12"><h3>En breves le llegará un email a <%=voluntario.getEmail() %> con los detalles</h3></div>
+						</div>
+					<%}else{%>
+					<div class="row">
+						<div class="col-md-12"><h3>Ha ocurrido un error</h3></div>
+						<div class="col-md-12"><h3>Nuestros servidores estan demasiado ocupados.</h3></div>
+						<div class="col-md-12"><h3>Vuelva a intentarlo en unos momentos.</h3></div>
+					</div>
+					<%}%>
 		</div>
 		<%} else if(tipo.equalsIgnoreCase("municipales")) {%>
 			<div class="container">
-					<% Voluntario voluntario = new Voluntario(bdController.dameUltimoCodVoluntario(), nombre, apellidos, fecha, email, telefono, 1, 1);
-				Campanna campanna = bdController.dameCampanna_nacional();
-				Voluntariado voluntariado = new Voluntariado(voluntario.getCod_voluntario(), campanna.getCod_campanna());
-				resultado= emailF.enviarCorreo(voluntario.getEmail(), correo.correoNacionales(voluntario, campanna), campanna.getTipo());
-				if(resultado) {%>
-				
-			<%}else{
-				
-			}%>
+					<% 
+					ambito = Integer.parseInt(request.getParameter("ambito"));
+					Voluntario voluntario = new Voluntario(bdController.dameUltimoCodVoluntario(), nombre, apellidos, fecha, email, telefono, 1, 1);
+					bdController.altaVoluntario(voluntario);
+					Campanna campanna = bdController.dameCampanna_municipal_codCampanna(ambito);
+					Voluntariado voluntariado = new Voluntariado(voluntario.getCod_voluntario(), campanna.getCod_campanna());
+					bdController.altaVoluntariado(voluntariado);
+					resultado= emailF.enviarCorreo(voluntario.getEmail(), correo.correoMunicipales(voluntario, campanna), campanna.getTipo());
+					if(resultado) {%>
+					<div class="row">
+						<div class="col-md-12"><h3>El registro se ha completo correctamente</h3></div>
+						<div class="col-md-12"><h3>En breves le llegará un email a <%=voluntario.getEmail() %> con los detalles</h3></div>
+					</div>
+					<%}else{%>
+						<div class="row">
+						<div class="col-md-12"><h3>Ha ocurrido un error</h3></div>
+						<div class="col-md-12"><h3>Nuestros servidores estan demasiado ocupados.</h3></div>
+						<div class="col-md-12"><h3>Vuelva a intentarlo en unos momentos.</h3></div>
+					</div>
+					<%}%>
 			</div>
 		<%}else if(tipo.equalsIgnoreCase("autonomicas")) {%>
 			<div class="container">
-				<% Voluntario voluntario = new Voluntario(bdController.dameUltimoCodVoluntario(), nombre, apellidos, fecha, email, telefono, 1, 1);
-				Campanna campanna = bdController.dameCampanna_nacional();
+				<% 
+				ambito = Integer.parseInt(request.getParameter("ambito"));
+				Voluntario voluntario = new Voluntario(bdController.dameUltimoCodVoluntario(), nombre, apellidos, fecha, email, telefono, 1, 1);
+				bdController.altaVoluntario(voluntario);
+				Campanna campanna = bdController.dameCampanna_autonomica_codCampanna(ambito);
 				Voluntariado voluntariado = new Voluntariado(voluntario.getCod_voluntario(), campanna.getCod_campanna());
-				resultado= emailF.enviarCorreo(voluntario.getEmail(), correo.correoNacionales(voluntario, campanna), campanna.getTipo());
+				bdController.altaVoluntariado(voluntariado);
+				resultado= emailF.enviarCorreo(voluntario.getEmail(), correo.correoAutonomicas(voluntario, campanna), campanna.getTipo());
 				if(resultado) {%>
-				
-			<%}else{
-				
-			}%>
+					<div class="row">
+						<div class="col-md-12"><h3>El registro se ha completo correctamente</h3></div>
+						<div class="col-md-12"><h3>En breves le llegará un email a <%=voluntario.getEmail() %> con los detalles</h3></div>
+					</div>
+				<%}else{%>
+					<div class="row">
+						<div class="col-md-12"><h3>Ha ocurrido un error</h3></div>
+						<div class="col-md-12"><h3>Nuestros servidores estan demasiado ocupados.</h3></div>
+						<div class="col-md-12"><h3>Vuelva a intentarlo en unos momentos.</h3></div>
+					</div>
+				<%}%>
 			</div>
 		<%} else if(tipo.equalsIgnoreCase("europeas")) {%>
 			<div class="container">
 				<% Voluntario voluntario = new Voluntario(bdController.dameUltimoCodVoluntario(), nombre, apellidos, fecha, email, telefono, 1, 1);
-				Campanna campanna = bdController.dameCampanna_nacional();
+				bdController.altaVoluntario(voluntario);
+				Campanna campanna = bdController.dameCampanna_europea();
 				Voluntariado voluntariado = new Voluntariado(voluntario.getCod_voluntario(), campanna.getCod_campanna());
-				resultado= emailF.enviarCorreo(voluntario.getEmail(), correo.correoNacionales(voluntario, campanna), campanna.getTipo());
+				bdController.altaVoluntariado(voluntariado);
+				resultado= emailF.enviarCorreo(voluntario.getEmail(), correo.correoEuropeas(voluntario, campanna), campanna.getTipo());
 				if(resultado) {%>
-				
-			<%}else{
-				
-			}%>
+					<div class="row">
+						<div class="col-md-12"><h3>El registro se ha completo correctamente</h3></div>
+						<div class="col-md-12"><h3>En breves le llegará un email a <%=voluntario.getEmail() %> con los detalles</h3></div>
+					</div>
+				<%}else{%>
+					<div class="row">
+						<div class="col-md-12"><h3>Ha ocurrido un error</h3></div>
+						<div class="col-md-12"><h3>Nuestros servidores estan demasiado ocupados.</h3></div>
+						<div class="col-md-12"><h3>Vuelva a intentarlo en unos momentos.</h3></div>
+					</div>
+				<%}%>
 			</div>
-		<%} else if(tipo.equalsIgnoreCase("eventos")) {
+		<%} else if(tipo.equalsIgnoreCase("evento")) {
 			;%>
 			<div class="container">
-				<% Voluntario voluntario = new Voluntario(bdController.dameUltimoCodVoluntario(), nombre, apellidos, fecha, email, telefono, 1, 1);
-				Campanna campanna = bdController.dameCampanna_nacional();
-				Voluntariado voluntariado = new Voluntariado(voluntario.getCod_voluntario(), campanna.getCod_campanna());
-				resultado= emailF.enviarCorreo(voluntario.getEmail(), correo.correoNacionales(voluntario, campanna), campanna.getTipo());
+				<%cod_evento = Integer.parseInt(request.getParameter("evento")); 
+				Voluntario voluntario = new Voluntario(bdController.dameUltimoCodVoluntario(), nombre, apellidos, fecha, email, telefono, 1, 1);
+				bdController.altaVoluntario(voluntario);
+				Evento evento = bdController.dameEvento(cod_evento);
+				Asistente asistente = new Asistente(voluntario.getCod_voluntario(), evento.getCod_evento());
+				bdController.altaAsistente(asistente);
+				resultado= emailF.enviarCorreo(voluntario.getEmail(), correo.correoEvento(voluntario, evento), evento.getNombre());
 				if(resultado) {%>
-				
-			<%}else{
-				
-			}%>
+				<div class="row">
+					<div class="col-md-12"><h3>El registro se ha completo correctamente</h3></div>
+					<div class="col-md-12"><h3>En breves le llegará un email a <%=voluntario.getEmail() %> con los detalles</h3></div>
+				</div>
+				<%}else{%>
+					<div class="row">
+						<div class="col-md-12"><h3>Ha ocurrido un error</h3></div>
+						<div class="col-md-12"><h3>Nuestros servidores estan demasiado ocupados.</h3></div>
+						<div class="col-md-12"><h3>Vuelva a intentarlo en unos momentos.</h3></div>
+					</div>
+				<%}%>
 			</div>
 		<%} %>
 	</div>

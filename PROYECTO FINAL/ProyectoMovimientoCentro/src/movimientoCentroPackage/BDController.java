@@ -442,7 +442,7 @@ public class BDController {
 		return eventos;
 	}
 	
-	public Evento dameEvento(String cod_evento) {
+	public Evento dameEvento(int cod_evento) {
 		Evento evento = new Evento();
 		try {
 			Statement miStatement = this.miConexion.createStatement();
@@ -832,7 +832,8 @@ public class BDController {
 	
 	/* VOLUNTARIOS, VOLUNTARIADOS Y ASISTENTES */
 	
-	public void altaVoluntario (Voluntario voluntario) {
+	public boolean altaVoluntario (Voluntario voluntario) {
+		boolean alta = false;
 		try {
 			Statement miStatement = this.miConexion.createStatement();
 			String sql = "INSERT INTO voluntarios VALUES ("+ voluntario.getCod_voluntario() + ", '" + voluntario.getNombre() + "', '"+ voluntario.getApellidos() +"', '"+voluntario.getFecha_nac()+
@@ -844,6 +845,7 @@ public class BDController {
 			// TODO Auto-generated catch block
 			System.out.println("Error en altaVoluntario del BDController" + e.getMessage());
 		}
+		return alta;
 	}
 	
 	public int dameUltimoCodVoluntario () {
@@ -863,7 +865,8 @@ public class BDController {
 		return codigo;
 	}
 	
-	public void altaVoluntariado (Voluntariado voluntariado) {
+	public boolean altaVoluntariado (Voluntariado voluntariado) {
+		boolean alta = false;
 		try {
 			Statement miStatement = this.miConexion.createStatement();
 			String sql = "INSERT INTO voluntariados VALUES ("+ voluntariado.getCod_voluntario() + ", " + voluntariado.getCod_campanna() + ")";
@@ -874,6 +877,7 @@ public class BDController {
 			// TODO Auto-generated catch block
 			System.out.println("Error en altaVoluntariado del BDController" + e.getMessage());
 		}
+		return alta;
 	}
 	
 	public void altaAsistente (Asistente asistente) {

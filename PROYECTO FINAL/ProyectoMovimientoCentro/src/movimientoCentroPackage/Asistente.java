@@ -1,6 +1,6 @@
 package movimientoCentroPackage;
 
-public class Asistente extends Voluntario {
+public class Asistente {
 	
 	private int cod_voluntario;
 	private int cod_evento;
