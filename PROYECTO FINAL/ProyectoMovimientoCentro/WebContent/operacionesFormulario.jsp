@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="ISO-8859-1"%>
     <%@ page import="movimientoCentroPackage.*" %>
 <%@ page import="java.util.*" %>
@@ -10,8 +10,9 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/dropdown.css" />
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<style>
 		
 	</style>
@@ -27,138 +28,105 @@
 	<nav class="navbar">
 	  <div class="container-fluid" id="navegador">
 	    <ul class="nav navbar-nav">
-	      <li><a href="index.html"><b>INICIO</b></a></li>
+	       <li><a href="index.jsp"><b>INICIO</b></a></li>
 	      <li class="dropdown">
 	      	<a href="entradas.html">ELECCIONES</a>
 	      	<div class="dropdown-content">
-	  			<a href="#">Elecciones Nacionales</a>
-				<a href="#">Elecciones Autonómicas</a>
-				<a href="#">Elecciones Municipales</a>
-				<a href="#">Elecciones Europeas</a>
+	  			<a href="eleccionesNacionales.jsp">Elecciones Nacionales</a> <a
+							href="eleccionesAutonomicas.jsp">Elecciones Autonómicas</a> <a
+							href="eleccionesMunicipales.jsp">Elecciones Municipales</a> <a
+							href="eleccionesEuropeas.jsp">Elecciones Europeas</a>>
 	      	</div>
 	      </li>
 	      <li><a href="artistas.html">PROXIMOS EVENTOS</a></li>
-	      <li><a href="participa.html">PARTICIPA</a></li>
+	      <li><a href="participa.jsp">PARTICIPA</a></li>
 	    </ul>
 	  </div>
 	</nav>
 	<!-- Fin Navegador -->
 
 	<!-- Formulario -->
-
 	<div class="container" id="formContainer">
 	<%
 	BDController bdController = new BDController();
 	ArrayList<Evento> eventos = bdController.dameEventos();
 	String tipo = request.getParameter("tipo");
-	%>
-	<div class="container"  id="datosPersonales">
-   			<div class="row">
-		        <div class="col-md-12">
-		            <div class="well well-sm">
-		                <form class="form-horizontal" method="post">
-		                    <fieldset>
-		                        <legend class="text-center header">Email</legend>
-		                        <div class="form-group">
-		                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope bigicon"></i></span>
-		                            <div class="col-md-8">
-		                                <input id="email" name="email" type="text" placeholder="Email" class="form-control" required>
-		                            </div>
-		                        </div>
-		                        <div class="form-group">
-		                            <div class="col-md-12 text-center">
-		                                <button type="submit" class="btn btn-primary btn-lg">enviar</button>
-		                            </div>
-		                        </div>
-		                    </fieldset>
-		                </form>
-		            </div>
-		        </div>
-    		</div>
+	String nombre = request.getParameter("nombre");
+	String apellidos = request.getParameter("apellidos");
+	String fecha = request.getParameter("fecha");
+	String email = request.getParameter("email");
+	String telefono = request.getParameter("telefono");
+	String cod_evento= request.getParameter("cod_evento");
+	final String de = "movimientocentronoreply@gmail.com";
+	final String clave = "Nelson2000";
+	Email emailF = new Email();
+	Correo correo = new Correo();
+	boolean  resultado; 
+	
+	if(tipo.equalsIgnoreCase("nacionales")) { %>
+		<div class="container">
+				<% Voluntario voluntario = new Voluntario(bdController.dameUltimoCodVoluntario(), nombre, apellidos, fecha, email, telefono, 1, 1);
+				Campanna campanna = bdController.dameCampanna_nacional();
+				Voluntariado voluntariado = new Voluntariado(voluntario.getCod_voluntario(), campanna.getCod_campanna());
+				resultado= emailF.enviarCorreo(voluntario.getEmail(), correo.correoNacionales(voluntario, campanna), campanna.getTipo());
+				if(resultado) {%>
+				
+			<%}else{
+				
+			}%>
 		</div>
+		<%} else if(tipo.equalsIgnoreCase("municipales")) {%>
+			<div class="container">
+					<% Voluntario voluntario = new Voluntario(bdController.dameUltimoCodVoluntario(), nombre, apellidos, fecha, email, telefono, 1, 1);
+				Campanna campanna = bdController.dameCampanna_nacional();
+				Voluntariado voluntariado = new Voluntariado(voluntario.getCod_voluntario(), campanna.getCod_campanna());
+				resultado= emailF.enviarCorreo(voluntario.getEmail(), correo.correoNacionales(voluntario, campanna), campanna.getTipo());
+				if(resultado) {%>
+				
+			<%}else{
+				
+			}%>
+			</div>
+		<%}else if(tipo.equalsIgnoreCase("autonomicas")) {%>
+			<div class="container">
+				<% Voluntario voluntario = new Voluntario(bdController.dameUltimoCodVoluntario(), nombre, apellidos, fecha, email, telefono, 1, 1);
+				Campanna campanna = bdController.dameCampanna_nacional();
+				Voluntariado voluntariado = new Voluntariado(voluntario.getCod_voluntario(), campanna.getCod_campanna());
+				resultado= emailF.enviarCorreo(voluntario.getEmail(), correo.correoNacionales(voluntario, campanna), campanna.getTipo());
+				if(resultado) {%>
+				
+			<%}else{
+				
+			}%>
+			</div>
+		<%} else if(tipo.equalsIgnoreCase("europeas")) {%>
+			<div class="container">
+				<% Voluntario voluntario = new Voluntario(bdController.dameUltimoCodVoluntario(), nombre, apellidos, fecha, email, telefono, 1, 1);
+				Campanna campanna = bdController.dameCampanna_nacional();
+				Voluntariado voluntariado = new Voluntariado(voluntario.getCod_voluntario(), campanna.getCod_campanna());
+				resultado= emailF.enviarCorreo(voluntario.getEmail(), correo.correoNacionales(voluntario, campanna), campanna.getTipo());
+				if(resultado) {%>
+				
+			<%}else{
+				
+			}%>
+			</div>
+		<%} else if(tipo.equalsIgnoreCase("eventos")) {
+			;%>
+			<div class="container">
+				<% Voluntario voluntario = new Voluntario(bdController.dameUltimoCodVoluntario(), nombre, apellidos, fecha, email, telefono, 1, 1);
+				Campanna campanna = bdController.dameCampanna_nacional();
+				Voluntariado voluntariado = new Voluntariado(voluntario.getCod_voluntario(), campanna.getCod_campanna());
+				resultado= emailF.enviarCorreo(voluntario.getEmail(), correo.correoNacionales(voluntario, campanna), campanna.getTipo());
+				if(resultado) {%>
+				
+			<%}else{
+				
+			}%>
+			</div>
+		<%} %>
 	</div>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-		<div class="container"  id="datosPersonales" style="display: none;">
-   			<div class="row">
-		        <div class="col-md-12">
-		            <div class="well well-sm">
-		                <form class="form-horizontal" method="post">
-		                    <fieldset>
-		                        <legend class="text-center header">Datos Personales</legend>
-		                        <div class="form-group">
-		                        	<h3>Selecione </h3>
-		                    		<div class="col-md-12">
-						    			<select class="form-control" id="select">
-						      				<option>1</option>
-						      				<option>2</option>
-						      				<option>3</option>
-						      				<option>4</option>
-						      				<option>5</option>
-						    			</select>
-					    			</div>
-  								</div>
-		                        <div class="form-group">
-		                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
-		                            <div class="col-md-8">
-		                                <input id="nombre" name="nombre" type="text" placeholder="Nombre" class="form-control" required>
-		                            </div>
-		                        </div>
-		                        <div class="form-group">
-		                            <span class="col-md-1 col-md-offset-2 text-center"></span>
-		                            <div class="col-md-8">
-		                                <input id="apellidos" name="apellidos" type="text" placeholder="Apellidos" class="form-control" required>
-		                            </div>
-		                        </div>
-		 						<div class="form-group">
-		                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-calendar bigicon"></i></span>
-		                            <div class="col-md-8">
-		                                <input id="nacimiento" name="nacimiento" type="date" placeholder="Telefono" class="form-control" required>
-		                            </div>
-		                        </div>
-		                        <div class="form-group">
-		                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope bigicon"></i></span>
-		                            <div class="col-md-8">
-		                                <input id="email" name="email" type="text" placeholder="Email" class="form-control" required>
-		                            </div>
-		                        </div>
-
-		                        <div class="form-group">
-		                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-phone-square bigicon"></i></span>
-		                            <div class="col-md-8">
-		                                <input id="telefono" name="telefono" type="text" placeholder="Telefono" class="form-control" required>
-		                            </div>
-		                        </div>
-		                        <div class="form-group">
-		                            <div class="col-md-12 text-center">
-		                                <button type="submit" class="btn btn-primary btn-lg">enviar</button>
-		                            </div>
-		                        </div>
-		                    </fieldset>
-		                </form>
-		            </div>
-		        </div>
-    		</div>
-		</div>
-	</div>
-	<!-- Fin Formulario -->
-<script src="js/formulario.js"></script>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/dropdown.js"></script>
 </body>
 </html>

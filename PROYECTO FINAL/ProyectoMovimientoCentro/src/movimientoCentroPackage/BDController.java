@@ -87,6 +87,23 @@ public class BDController {
 		return campannas;
 	}
 	
+	public Campanna dameCampanna_nacional() {
+		Campanna campanna = new Campanna();
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+			ResultSet rs = miStatement.executeQuery("SELECT * FROM campanna where cod_campanna = 1");
+			while (rs.next() == true) {
+				campanna = new Campanna(rs.getInt(1), rs.getString(2), rs.getString(3));
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameCampannas del BDController" + e.getMessage());
+		}
+		return campanna;
+	}
+	
 	public ArrayList<Campanna> dameCampannas_europeas() {
 		ArrayList<Campanna> campannas = new ArrayList<Campanna>();
 		try {
@@ -103,6 +120,24 @@ public class BDController {
 		}
 		return campannas;
 	}
+	
+	public Campanna dameCampanna_europea() {
+		Campanna campanna = new Campanna();
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+			ResultSet rs = miStatement.executeQuery("SELECT * FROM campanna where cod_campanna = 2");
+			while (rs.next() == true) {
+				campanna = new Campanna(rs.getInt(1), rs.getString(2), rs.getString(3));
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameCampannas Europeas del BDController" + e.getMessage());
+		}
+		return campanna;
+	}
+	
 	public ArrayList<Campanna> dameCampannas_autonomicas() {
 		ArrayList<Campanna> campannas = new ArrayList<Campanna>();
 		try {
@@ -425,6 +460,23 @@ public class BDController {
 		return eventos;
 	}
 	
+	public Evento dameEvento(String cod_evento) {
+		Evento evento = new Evento();
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+			ResultSet rs = miStatement.executeQuery("select* from eventos where cod_evento="+cod_evento);
+			while (rs.next() == true) {
+				evento = new Evento(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7),rs.getString(8), rs.getInt(9));
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameEvento del BDController" + e.getMessage());
+		}
+		return evento;
+	}
+	
 	public ArrayList<Noticia> dameNoticias() {
 		ArrayList<Noticia> noticias = new ArrayList<Noticia>();
 		try {
@@ -548,13 +600,13 @@ public class BDController {
 	
 	/* Metodo que devuelve un Hashtable con codigo de voluntario */
 	
-	public Hashtable<String, String> dameVoluntario(String email) {
-		Hashtable<String, String> voluntario=new Hashtable<String,String>();
+	public Voluntario dameVoluntario(String email) {
+		Voluntario voluntario = new Voluntario();
 		try {
 			Statement miStatement = this.miConexion.createStatement();
-			ResultSet rs = miStatement.executeQuery("select cod_voluntario from voluntarios where email='"+email+"'");
+			ResultSet rs = miStatement.executeQuery("select * from voluntarios where email='"+email+"'");
 			while (rs.next() == true) {
-				voluntario.put("100", Integer.toString(rs.getInt(1)));
+				voluntario = new Voluntario(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7), rs.getInt(8));
 			}
 			miStatement.close();
 			rs.close();
