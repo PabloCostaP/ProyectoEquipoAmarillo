@@ -105,33 +105,35 @@
 				if(i==eventos.size()-1) {%>
 				<div class="row">
 					<div class="col-md-4">
-						<img src="imagenes/eventos/<%=eventos.get(i).getCod_evento() %>.PNG" style="width: 350px; float: left;">
+						<img src="imagenes/eventos/<%=eventos.get(i).getCod_evento() %>.PNG" style="width: 100%; float: left;">
 					</div>
 					<div class="col-md-8">
 						<div class="row">
 							<div class="col-md-12"><h4><%=eventos.get(i).getTipo()%></h4></div>
-		        			<div class="col-md-12"><h3><%=eventos.get(i).getNombre()%></h3></div>
+		        			<div class="col-md-12"><h2><%=eventos.get(i).getNombre()%></h2></div>
 		        			<div class="col-md-12"><date><%=eventos.get(i).getDia()%></date></div>
 		        			<div class="col-md-12"><p><%=eventos.get(i).getDescripcion()%></p></div>
 		        			<div class="col-md-12"><p><%=eventos.get(i).getUbicacion()%> - <%=eventos.get(i).getMunicipio()%></p></div>
+		        			<a href="formularioEmail.jsp?tipo=evento&cod_evento=<%=eventos.get(i).getCod_evento()%>" ><button class="boton btn btn-primary">Asistir</button></a>
 	        			</div>
-	        			<a href="formularioEmail.jsp?cod_evento=<%=eventos.get(i).getCod_evento()%>?tipo=asistentes" ><button class="boton btn btn-primary">Asistir</button></a>
+	        			
         			</div>
         		</div>
 				<%}else{%>
 					<div class="row">
 					<div class="col-md-4">
-						<img src="imagenes/eventos/<%=eventos.get(i).getCod_evento() %>.PNG" style="width: 350px; float: left;">
+						<img src="imagenes/eventos/<%=eventos.get(i).getCod_evento() %>.PNG" style="width: 100%; float: left;">
 					</div>
 					<div class="col-md-8">
 						<div class="row">
 							<div class="col-md-12"><h4><%=eventos.get(i).getTipo()%></h4></div>
-		        			<div class="col-md-12"><h3><%=eventos.get(i).getNombre()%></h3></div>
+		        			<div class="col-md-12"><h2><%=eventos.get(i).getNombre()%></h2></div>
 		        			<div class="col-md-12"><date><%=eventos.get(i).getDia()%></date></div>
 		        			<div class="col-md-12"><p><%=eventos.get(i).getDescripcion()%></p></div>
 		        			<div class="col-md-12"><p><%=eventos.get(i).getUbicacion()%> - <%=eventos.get(i).getMunicipio()%></p></div>
+		        			<a href="formularioEmail.jsp?tipo=evento&cod_evento=<%=eventos.get(i).getCod_evento()%>" ><button class="boton btn btn-primary">Asistir</button></a>
 	        			</div>
-	        			<a href="formularioEmail.jsp?cod_evento=<%=eventos.get(i).getCod_evento()%>?tipo=asistentes" ><button class="boton btn btn-primary">Asistir</button></a>
+	        			
         			</div>
         		</div>
         		<hr>

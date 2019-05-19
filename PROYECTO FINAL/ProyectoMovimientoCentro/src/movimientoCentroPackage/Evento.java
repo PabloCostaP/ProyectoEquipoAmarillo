@@ -13,6 +13,11 @@ public class Evento {
 	private int cod_campanna;
 	
 	
+	
+	
+	public Evento() {
+	}
+
 	public Evento(int cod_evento, String descripcion, String ubicacion, String dia, String hora, String nombre,
 			String tipo, String municipio, int cod_campanna) {
 		super();
