@@ -259,6 +259,24 @@ public class BDController {
 		}
 		return candidatos;
 	}
+	
+	public Candidato dameCandidato(int codigo) {
+		Candidato candidato = new Candidato();
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+			ResultSet rs = miStatement.executeQuery("select* from candidatos where cod_candidato="+codigo);
+			while (rs.next() == true) {
+				candidato=new Candidato(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8));
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameCandidatos del BDController" + e.getMessage());
+		}
+		return candidato;
+	}
+	
 	public ArrayList<Candidato> dameCandidatos_eleccionesNacionales(){
 		ArrayList<Candidato> candidatos = new ArrayList<Candidato>();
 		try {
@@ -687,11 +705,11 @@ public class BDController {
 	/* FIN CANDIDATOS */
 	
 	/* CANDIDATURAS */
-	public void altaCandidatura (Candidato candidato, Campanna campanna, int cabezaLista, int posicion) {
+	public void altaCandidatura (Candidatura candidatura) {
 		try {
 			Statement miStatement = this.miConexion.createStatement();
-			String sql = "INSERT INTO candidaturas VALUES (" + candidato.getCod_candidato() + "," + campanna.getCod_campanna() + ", " + cabezaLista + ", "
-					+ posicion + ")";
+			String sql = "INSERT INTO candidaturas VALUES (" + candidatura.getCod_candidato() + "," + candidatura.getCod_campanna() + ", " + candidatura.getCabeza_lista() + ", "
+					+ candidatura.getPosicion() + ")";
 			miStatement.executeUpdate(sql);
 			// esto se cierra para dejar de consumir memoria
 			miStatement.close();
