@@ -29,10 +29,11 @@ ArrayList<Campanna> campannas = controladorBD.dameCampannas();
 	</ul>
 	<h3 style="text-align:center; margin-top: 2%; margin-bottom: 2%;">Alta Candidato</h3>
 	<div class="container">
+	<hr>
 		<form action="operaciones.jsp?tipo=altacandidato" method="post">
 			<div class="row">
 				<div class="col-sm-3"><input type="text" name="nombre" placeholder="Nombre" required pattern="([A-Z]{1}[a-z]{2,})"></div>
-				<div class="col-sm-3"><input type="text" name="apellidos" placeholder="Apellidos" required pattern="([A-Z]{1}[a-z]{2,})"></div>
+				<div class="col-sm-3"><input type="text" name="apellidos" placeholder="Apellidos" required pattern="([A-Z]{1}[a-z]{2,}+[A-Z]{1}[a-z]{2,})"></div>
 				<div class="col-sm-3"><input type="date" name="fecha_nac" style="padding-right: 21px;" required></div>
 				<div class="col-sm-3"><input type="text" name="lugar_nac" placeholder="Lugar de nacimiento" required pattern="([A-Z]{1}[a-z]{2,})"></div>
 			</div>
@@ -42,19 +43,17 @@ ArrayList<Campanna> campannas = controladorBD.dameCampannas();
 				<div class="col-sm-3"><input type="text" name="autonomia" placeholder="Autonomia" required pattern="([A-Z]{1}[a-z]{2,})"></div>
 				<div class="col-sm-3"><input type="checkbox" name="lista" id="box"><label for="box" style="padding-left: 10px; font-size: 110%;">¿Cabeza de lista?</label></div>
 			</div>
-			<div class="mm-dropdown" style="background: #FFC107 ;cursor: pointer;width: 400px;font-size: 20px;font-weight: 300;line-height: 40px;height:53px; margin-top: 2%;">
-				<div class="textfirst" style="border-color:#303F9F; color: white;border-radius: 5px; padding-left: 10px;">Campaña a representar</div>
-				<ul class="scrollable-menu">
-				<%for (int i=0;i<campannas.size();i++){%>
-					<li class="input-option col-md-12" data-value="<%=campannas.get(i).getCod_campanna()%>" style="border-color:#5c9cd8; z-index: 1;">
-						<%=campannas.get(i).getTipo()%><span> - </span><%=campannas.get(i).getAmbito()%>
-						<input required type="hidden" class="option" name="campanna" value="<%=campannas.get(i).getCod_campanna()%> " />
-					</li>
-				<%} %>
-				</ul>
+			<div class="row" style="margin-top: 2%;">
+				<div class="col-sm-3"><input type="number" name="posicion" placeholder="Posicion en lista" required)"></div>
 			</div>
-			<br>
-			<input type="submit" value="Dar de alta" id="boton" style="margin-top: 2.5%;margin-left:45%; padding:10px; background-color: #303F9F; color: white;">
+				<select name="campanna" style="background: #FFC107 ;cursor: pointer;width: 400px;font-size: 20px;font-weight: 300;line-height: 40px;height:53px; margin-top: 2%; color:white;">
+				<option disabled selected>Selecciona una campaña</option>
+				<%for (int i=0;i<campannas.size();i++){%>
+					<option value="<%=campannas.get(i).getCod_campanna()%>" style="color: white;"><%=campannas.get(i).getTipo()%> - <%=campannas.get(i).getAmbito()%></option>
+				<%} %>
+				</select>
+				<br>
+				<input type="submit" value="Dar de alta" id="boton" style="margin-top: 2.5%; padding:10px; background-color: #303F9F; color: white;">
 		</form>
 	</div>
 	<script src="js/jquery.min.js"></script>
