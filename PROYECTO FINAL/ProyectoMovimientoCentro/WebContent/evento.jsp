@@ -46,30 +46,30 @@
 
 	<%
 	BDController bdController = new BDController();
-	ArrayList<Evento> eventos = bdController.dameEventos();
-	ArrayList<Candidato> candidatos = bdController.dameCandidatos();
-	
+	int cod_candidato = Integer.parseInt(request.getParameter("cod_evento"));
+	Candidato candidato = bdController.dameCandidato(cod_candidato);
 	%>
 
-	<div class="container" id="eventosContainer">
+	<div class="container" id="eventoContainer">
 		<div class="row">
-			<%for(int i = 0; i < candidatos.size(); i++){ %>
-				<div class="col-md-4 " >
-					<a href="evento.jsp?cod_evento=<%=candidatos.get(i).getCod_candidato()%>"><div class="container opcion">
-						<div class="row eventos ">
-							<div class="col-md-12"><img src="imagenes/candidatos/<%=candidatos.get(i).getCod_candidato()%>.JPG"></div>
-							<div class="col-md-12"><h4><%=candidatos.get(i).getNombre()%></h4></div>
-							<div class="col-md-12"><p><%=candidatos.get(i).getMunicipio()%></p></div>
-							<div class="col-md-12">
-								<div class=row>
-									<div class="col-md-9"><p><%=candidatos.get(i).getFecha_nac()%></p></div>
-									<div class="col-md-3"><p><%=candidatos.get(i).getMunicipio()%></p></div>
-								</div>
-							</div>
-						</div>
-					</div></a>
+			<div class="col-md-12">
+				<h2><%=candidato.getNombre() %></h2>
+			</div>
+			<div class="col-md-12">
+				<img src="imagenes/candidatos/<%=candidato.getCod_candidato()%>.JPG">
+			</div>
+			<div class="col-md-12">
+				<p><%=candidato.getNombre() %></p>
+			</div>
+			<div class="col-md-12">
+				<div class="row">
+					<div class="col-md-6" style="text-aling: left;"><p><%=candidato.getNombre() %></p></div>
+					<div class="col-md-6" style="text-aling: right;"><p><%=candidato.getNombre() %></p></div>
 				</div>
-			<%} %>
+			</div>
+			<div class="col-md-12">
+				<a href="formularioEmail.jsp?tipo=evento&cod_evento=<%=candidato.getCod_candidato()%>"><button class="boton btn btn-primary">Apuntarse a este evento</button></a>
+			</div>
 		</div>
 	</div>
 	<!-- Fin Eventos -->
