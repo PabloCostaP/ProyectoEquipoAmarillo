@@ -1,4 +1,4 @@
--- phpMyAdmin SQL Dump
+﻿-- phpMyAdmin SQL Dump
 -- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
@@ -20,7 +20,8 @@ SET time_zone = "+00:00";
 
 --
 -- Base de datos: `movimientobd`
---
+CREATE database movimientobd;
+use movimientobd;
 
 -- --------------------------------------------------------
 CREATE database movimientobd;

@@ -209,6 +209,8 @@ footer .fab {
 	box-shadow: 10px 10px 5px 2px rgba(209, 209, 209, 0.5);
 }
 
+
+
 a:link {
 	text-decoration: none;
 }
@@ -258,6 +260,27 @@ a:visited {
 
 /* -- Fin Formulario participa -- */
 
+/* -- Eventos -- */
+#eventosContainer .container {
+	position: relative;
+	background-color: white;
+	text-align: center;
+	width: 75%;
+	border: 1px solid #ccc;
+	margin-top: 10%;
+	padding: 5%;
+	-webkit-box-shadow: 10px 10px 5px 2px rgba(209, 209, 209, 0.5);
+	-moz-box-shadow: 10px 10px 5px 2px rgba(209, 209, 209, 0.5);
+	box-shadow: 10px 10px 5px 2px rgba(209, 209, 209, 0.5);
+}
+
+#eventoContainer {
+	width: 60%;
+	text-align: center;
+	color: black;
+}
+
+/* -- Fin eventos -- */
 /* Pagina elecciones nacionales*/
 
 /* Fondo */

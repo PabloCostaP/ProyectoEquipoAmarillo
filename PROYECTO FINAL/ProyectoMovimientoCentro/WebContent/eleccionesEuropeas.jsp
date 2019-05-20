@@ -57,7 +57,7 @@
 							href="eleccionesMunicipales.jsp">Elecciones Municipales</a> <a
 							href="eleccionesEuropeas.jsp">Elecciones Europeas</a>
 					</div></li>
-				<li><a href="#">PROXIMOS EVENTOS</a></li>
+				<li><a href="eventos.jsp">PROXIMOS EVENTOS</a></li>
 				<li><a href="participa.jsp">PARTICIPA</a></li>
 			</ul>
 		</div>
@@ -92,7 +92,7 @@ for(int j=0;j<candidaturasCabezaDeLista.size();j++) {
 								<div class="row">
 									<div class="col-6">
 										<img id="imagenMiembro"
-											src="imagenes/candidatos/<%=candidatos.get(i).getCod_candidato()%>.jpg"
+											src="imagenes/candidatos/<%=candidatos.get(i).getCod_candidato()%>.JPG"
 											style="height: 100px; width: 150px;">
 									</div>
 									<div class="col-6" style="margin-top: 15px;">

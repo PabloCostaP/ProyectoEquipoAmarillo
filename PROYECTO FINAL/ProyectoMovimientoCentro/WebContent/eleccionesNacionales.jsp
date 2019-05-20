@@ -57,7 +57,7 @@
 							href="eleccionesMunicipales.jsp">Elecciones Municipales</a> <a
 							href="eleccionesEuropeas.jsp">Elecciones Europeas</a>
 					</div></li>
-				<li><a href="#">PROXIMOS EVENTOS</a></li>
+				<li><a href="eventos.jsp">PROXIMOS EVENTOS</a></li>
 				<li><a href="participa.jsp">PARTICIPA</a></li>
 			</ul>
 		</div>
