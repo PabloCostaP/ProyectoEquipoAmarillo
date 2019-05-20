@@ -20,7 +20,7 @@
 	<!-- Logo -->
 	<div class="container">
 		<div class="row logo">
-			<div class="col-2"><img src="imagenes/logo/logo.png"></div>
+			<div class="col-8"><img src="imagenes/logo/logo.png"></div>
 		</div>
 	</div>
 	<!-- Fin Logo -->

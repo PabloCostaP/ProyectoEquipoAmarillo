@@ -143,8 +143,8 @@ eventos = controladorBD.dame5UltimosEventos();
 							</div>
 							<div class="col-6 col-sm-6 col-lg-8 col-xl-8">
 								<div class="row">
-									<div class="col-12 col-lg-12 col-sm-12 col-md-12 col-xl-12"><h4><%=eventos.get(i).getNombre()%></h4></div>
-									<div class="d-lg-inline d-md-inline d-xl-inline d-none col-lg-12 col-sm-12 col-md-12 col-xl-12"><p><%=eventos.get(i).getDescripcion() %></p></div>
+									<div class="col-12 col-lg-12 col-sm-12 col-md-12 col-xl-12"><h3><%=eventos.get(i).getNombre()%></h3></div>
+									<div class="d-lg-inline d-md-inline d-xl-inline d-none col-lg-12 col-sm-12 col-md-12 col-xl-12"><h4><%=eventos.get(i).getDescripcion() %></h4></div>
 								</div>
 							</div>
 						</div>

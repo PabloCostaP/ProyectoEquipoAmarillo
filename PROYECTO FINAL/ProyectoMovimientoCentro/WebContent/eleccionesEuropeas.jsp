@@ -39,7 +39,7 @@
 	<!-- Logo -->
 	<div class="container">
 		<div class="row logo">
-			<div class="col-2">
+			<div class="col-8">
 				<img src="imagenes/logo/logo.png">
 			</div>
 		</div>
@@ -124,7 +124,7 @@ for(int i=0; i < candidatos.size() ;i++){
 								<div class="row">
 									<div class="col-6">
 										<img id="imagenMiembro"
-											src="imagenes/candidatos/<%=candidatos.get(i).getCod_candidato()%>.jpg"
+											src="imagenes/candidatos/<%=candidatos.get(i).getCod_candidato()%>.JPG"
 											style="height: 100px; width: 150px;">
 									</div>
 									<div class="col-6" style="margin-top: 15px;">
