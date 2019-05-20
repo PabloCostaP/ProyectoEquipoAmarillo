@@ -47,23 +47,22 @@
 	<%
 	BDController bdController = new BDController();
 	ArrayList<Evento> eventos = bdController.dameEventos();
-	ArrayList<Candidato> candidatos = bdController.dameCandidatos();
 	
 	%>
 
 	<div class="container" id="eventosContainer">
 		<div class="row">
-			<%for(int i = 0; i < candidatos.size(); i++){ %>
+			<%for(int i = 0; i < eventos.size(); i++){ %>
 				<div class="col-md-4 " >
-					<a href="evento.jsp?cod_evento=<%=candidatos.get(i).getCod_candidato()%>"><div class="container opcion">
+					<a href="evento.jsp?cod_evento=<%=eventos.get(i).getCod_evento()%>"><div class="container opcion">
 						<div class="row eventos ">
-							<div class="col-md-12"><img src="imagenes/candidatos/<%=candidatos.get(i).getCod_candidato()%>.JPG"></div>
-							<div class="col-md-12"><h4><%=candidatos.get(i).getNombre()%></h4></div>
-							<div class="col-md-12"><p><%=candidatos.get(i).getMunicipio()%></p></div>
+							<div class="col-md-12"><img src="imagenes/eventos/<%=eventos.get(i).getCod_evento()%>.jpg"></div>
+							<div class="col-md-12"><h4><%=eventos.get(i).getNombre()%></h4></div>
+							<div class="col-md-12"><p><%=eventos.get(i).getMunicipio()%></p></div>
 							<div class="col-md-12">
 								<div class=row>
-									<div class="col-md-9"><p><%=candidatos.get(i).getFecha_nac()%></p></div>
-									<div class="col-md-3"><p><%=candidatos.get(i).getMunicipio()%></p></div>
+									<div class="col-md-9"><p>Dia:<%=eventos.get(i).getDia()%> Hora:<%=eventos.get(i).getHora()%></p></div>
+									<div class="col-md-3"><p><%=eventos.get(i).getMunicipio()%></p></div>
 								</div>
 							</div>
 						</div>

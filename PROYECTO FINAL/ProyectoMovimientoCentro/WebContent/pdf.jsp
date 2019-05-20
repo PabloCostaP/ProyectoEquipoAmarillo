@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@ page import="movimientoCentroPackage.*" %>
-<%@ page import="java.util.*" %>
+<%@ page import="java.awt.Desktop" %>
+        <%@ page import="java.net.*" %> 
+<%@ page import="java.io.*,java.util.*, javax.servlet.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,35 +48,16 @@
 
 	<%
 	BDController bdController = new BDController();
-	int cod_evento = Integer.parseInt(request.getParameter("cod_evento"));
-	Evento evento = bdController.dameEvento(cod_evento);
+	GeneratePDFFileIText generatePDFFileIText = new GeneratePDFFileIText();
+	ArrayList<Candidato> candidatos = bdController.dameCandidatos();
+	generatePDFFileIText.createPDFCandidatos(new File("C:/Users/Sergio%20Alvarez/Desktop/proyecto/ProyectoEquipoAmarillo/PROYECTO%20FINAL/ProyectoMovimientoCentro/WebContent/pdf/candidatos.pdf"), candidatos);
+	URI uriBase = new URI("C:/Users/Sergio%20Alvarez/Desktop/proyecto/ProyectoEquipoAmarillo/PROYECTO%20FINAL/ProyectoMovimientoCentro/WebContent/pdf/candidatos.pdf");
+	d.browse(uriBase);
+	response.sendRedirect("index.jsp");
+	
 	%>
 
-	<div class="container" id="eventoContainer">
-		<div class="row">
-			<div class="col-md-12">
-				<h2 style="margin-bottom: 5%; padding-top: 2%;"><%=evento.getNombre() %></h2>
-			</div>
-			<div class="col-md-12">
-				<img src="imagenes/eventos/<%=evento.getCod_evento()%>.jpg">
-			</div>
-			<div class="col-md-12">
-				<p style="text-align: left; margin-left: 12%; margin-right: 15%;"><%=evento.getDescripcion() %></p>
-			</div>
-			<div class="col-md-12">
-				<div class="row">
-					<div class="col-md-6" style="text-aling: left;"><p><b>Dia:</b> <%=evento.getDia()%> <b>- Hora:</b> <%=evento.getHora()%></p></div>
-					<div class="col-md-6" style="text-aling: right;"><p><b>Tipo:</b><%=evento.getTipo() %></p></div>
-				</div>
-			</div>
-			<div class="col-md-12">
-				<p style="text-align: left; margin-left: 12%;"><b>Ubicacion:</b> <%=evento.getUbicacion()%></p>
-			</div>
-			<div class="col-md-12" style="margin-top: 10%;">
-				<a href="formularioEmail.jsp?tipo=evento&cod_evento=<%=evento.getCod_evento()%>"><button class="boton btn btn-primary">Apuntarse a este evento</button></a>
-			</div>
-		</div>
-	</div>
+	
 	<!-- Fin Eventos -->
 <!-- FOOTER -->
 <footer>
