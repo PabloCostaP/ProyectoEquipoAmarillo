@@ -65,9 +65,9 @@ String codCampanna=request.getParameter("codCampanna");
 int cod_campanna = Integer.parseInt(codCampanna);
 //CAMPAÑA ACTUAL SELECCIONADA ENE L DROPDOWN
 campanna = controladorBD.dameCampanna_codCampanna(cod_campanna);
-if(campanna.getTipo().equalsIgnoreCase("Autonómica")){
+if(campanna.getTipo().equalsIgnoreCase("Autonomica")){
 	campanna = controladorBD.dameCampanna_autonomica_codCampanna(cod_campanna);
-	campannas= controladorBD.dameCampannas_autonomicas();
+	campannas = controladorBD.dameCampannas_autonomicas();
 	
 }
 if(campanna.getTipo().equalsIgnoreCase("Municipal")){
@@ -86,6 +86,7 @@ ArrayList<Candidatura> candidaturasAmbito = controladorBD.dameCandidaturas();
 ArrayList<Candidatura> candidaturasCabezaDeLista = controladorBD.dameCandidaturas_cabezaDeLista();
 
 Candidato candidatoCabeza = new Candidato();
+
 
 %>
 <h2 class="titulos" style="text-align: center;"><%=campanna.getAmbito() %></h2>
