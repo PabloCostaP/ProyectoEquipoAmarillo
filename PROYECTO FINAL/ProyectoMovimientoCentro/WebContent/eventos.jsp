@@ -197,23 +197,22 @@
 	<h1 style="color: #212121; text-align: center; font-size: 350%; margin-top: 3%;"><b>"ESLOGAN"</b></h1>
 <!-- FOOTER -->
 <footer>
-	<div class="row">
+	
 		<!-- Icons -->
-		
-			<ul class="icons col-md-12">
-				<li style="margin-left: 32%;"><a href="#" ><i class="fab fa-twitter"></i><span class="label">Twitter</span></a></li>
+			<ul class="icons">
+				<li><a href="#" ><i class="fab fa-twitter"></i><span class="label">Twitter</span></a></li>
 				<li><a href="#" ><i class="fab fa-facebook"></i><span class="label">Facebook</span></a></li>
 				<li><a href="#" ><i class="fab fa-github"></i><span class="label">GitHub</span></a></li>
 				<li><a href="#" ><i class="fab fa-linkedin"></i><span class="label">LinkedIn</span></a></li>
 				<li><a href="#" ><i class="fab fa-google-plus"></i><span class="label">Google+</span></a></li>
 			</ul>
 		<!-- Copyright -->
-			<div class="copyright col-md-12">
+			<div class="copyright">
 				<ul class="menu">
 					<li>&copy; Movimiento Centro. Todos los derechos reservados</li><li>Design: Equipo Amarillo</li>
 				</ul>
 			</div>
-	</div>
+	
 	</footer>
 <!-- FIN FOOTER -->
 </body>

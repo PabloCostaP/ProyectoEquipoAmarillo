@@ -10,8 +10,8 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<style>
 		
 	</style>
@@ -143,9 +143,29 @@
 		</div>
 	</div>
 	<!-- Fin Formulario -->
-	<!-- FOOTER -->
-
+<!-- FOOTER -->
+<footer>
+	<div class="row">
+		<!-- Icons -->
+		
+			<ul class="icons col-md-12">
+				<li style="margin-left: 32%;"><a href="#" ><i class="fab fa-twitter"></i><span class="label">Twitter</span></a></li>
+				<li><a href="#" ><i class="fab fa-facebook"></i><span class="label">Facebook</span></a></li>
+				<li><a href="#" ><i class="fab fa-github"></i><span class="label">GitHub</span></a></li>
+				<li><a href="#" ><i class="fab fa-linkedin"></i><span class="label">LinkedIn</span></a></li>
+				<li><a href="#" ><i class="fab fa-google-plus"></i><span class="label">Google+</span></a></li>
+			</ul>
+		<!-- Copyright -->
+			<div class="copyright col-md-12">
+				<ul class="menu">
+					<li>&copy; Movimiento Centro. Todos los derechos reservados</li><li>Design: Equipo Amarillo</li>
+				</ul>
+			</div>
+	</div>
+	</footer>
 <!-- FIN FOOTER -->
+
 <script src="js/formulario.js"></script>
 </body>
+
 </html>
