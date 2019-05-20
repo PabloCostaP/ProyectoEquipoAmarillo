@@ -23,10 +23,10 @@ BDController controladorBD = new BDController();
 /*ARRAYLIST */
 //Solo es necesatio cambiar los candidatos por dameCandidatos por ambito
 ArrayList<Noticia> noticias = new ArrayList <Noticia>();
-noticias = controladorBD.dameNoticias();
+noticias = controladorBD.dame4UltimasNoticiasEuropeas();
 
 ArrayList<Evento> eventos = new ArrayList <Evento>();
-eventos = controladorBD.dameEventos();
+eventos = controladorBD.dame5UltimosEventos();
 
 
 
@@ -109,13 +109,18 @@ eventos = controladorBD.dameEventos();
 				<h2 class="titulos" style="text-align: center;">Últimas noticias</h2>
 				<div class="row">
 					<div class="col-6 col-sm-6 col-lg-12 col-md-6 col-xl-12">
-					<%for(int i=0; i<noticias.size();i++){ %>
+					
+					<% for (int i =0; i<noticias.size();i++){%>
+					
 						<div class="col-lg-6 col-sm-12 col-md-12 col-xl-12">
-							<div class="col-lg-12 col-sm-12 col-md-12 col-xl-12"><img src="imagenes/fest1.jpg"></div>
-							<div class="col-lg-12 col-sm-12 col-md-12 col-xl-12"><h3><%=noticias.get(i).getTitulo() %></h3></div>
-							<div class="d-lg-inline d-md-inline d-xl-inline d-none col-lg-12 col-md-12 col-xl-12"><p><%=noticias.get(i).getCuerpo() %></p></div>
+							<div class="col-lg-12 col-sm-12 col-md-12 col-xl-12"><img src="imagenes/noticias/<%=noticias.get(i).getCod_noticia()%>.jpg"></div>
+							<div class="col-lg-12 col-sm-12 col-md-12 col-xl-12"><h3><%=noticias.get(i).getTitulo()%></h3></div>
+							<div class="d-lg-inline d-md-inline d-xl-inline d-none col-lg-12 col-md-12 col-xl-12"><p><%=noticias.get(i).getCuerpo()%></p></div>
 						</div>
+				
+						
 					<%}; %>
+					
 					
 					</div>
 					<div class="col-6 col-sm-6 col-lg-12 col-md-6 col-xl-12">
@@ -130,16 +135,16 @@ eventos = controladorBD.dameEventos();
 				<div class="row">
 				
 				
-				<%for (int i =0; i<noticias.size();i++){ %>
+				<%for (int i =0; i<eventos.size();i++){ %>
 					<div class="col-12 col-sm-12 col-lg-12 col-xl-12">
 						<div class="row">
 							<div class="col-6 col-sm-6 col-lg-4 col-xl-4">
-								<div class="col-12 col-lg-12 col-sm-12 col-md-12 col-xl-12"><img src="imagenes/eventos/evento.png"></div>
+								<div class="col-12 col-lg-12 col-sm-12 col-md-12 col-xl-12"><img src="imagenes/eventos/<%=eventos.get(i).getCod_campanna()%>.jpg"></div>
 							</div>
 							<div class="col-6 col-sm-6 col-lg-8 col-xl-8">
 								<div class="row">
-									<div class="col-12 col-lg-12 col-sm-12 col-md-12 col-xl-12"><h4><%=noticias.get(i).getTitulo() %></h4></div>
-									<div class="d-lg-inline d-md-inline d-xl-inline d-none col-lg-12 col-sm-12 col-md-12 col-xl-12"><p><%=noticias.get(i).getTitulo() %></p></div>
+									<div class="col-12 col-lg-12 col-sm-12 col-md-12 col-xl-12"><h4><%=eventos.get(i).getNombre()%></h4></div>
+									<div class="d-lg-inline d-md-inline d-xl-inline d-none col-lg-12 col-sm-12 col-md-12 col-xl-12"><p><%=eventos.get(i).getDescripcion() %></p></div>
 								</div>
 							</div>
 						</div>
