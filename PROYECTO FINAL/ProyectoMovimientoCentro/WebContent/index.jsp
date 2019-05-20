@@ -139,7 +139,7 @@ eventos = controladorBD.dame5UltimosEventos();
 					<div class="col-12 col-sm-12 col-lg-12 col-xl-12">
 						<div class="row">
 							<div class="col-6 col-sm-6 col-lg-4 col-xl-4">
-								<div class="col-12 col-lg-12 col-sm-12 col-md-12 col-xl-12"><img src="imagenes/eventos/<%=eventos.get(i).getCod_campanna()%>.jpg"></div>
+								<div class="col-12 col-lg-12 col-sm-12 col-md-12 col-xl-12"><img src="imagenes/eventos/<%=eventos.get(i).getCod_evento()%>.jpg"></div>
 							</div>
 							<div class="col-6 col-sm-6 col-lg-8 col-xl-8">
 								<div class="row">
