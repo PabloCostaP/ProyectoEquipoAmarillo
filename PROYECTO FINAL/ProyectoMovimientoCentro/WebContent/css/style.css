@@ -299,10 +299,33 @@ a:visited {
 	box-shadow: 10px 10px 5px 2px rgba(209, 209, 209, 0.5);
 }
 
+#eventosContainer img {
+	border-radius: 20px;
+	margin-left: 15px;
+}
+
+#eventoContainer img {
+	border-radius: 20px;
+}
+
 #eventoContainer {
+	position: relative;
 	width: 60%;
 	text-align: center;
 	color: black;
+	background-color: white;
+	height: 1100px;
+	padding-bottom: 100px;
+	border-radius: 20px;
+}
+
+#eventoContainer p{
+	margin-top: 5%;
+	font-size: 20px;
+}
+
+#eventoContainer button{
+	font-size: 40px;
 }
 
 /* -- Fin eventos -- */

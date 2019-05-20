@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@ page import="movimientoCentroPackage.*" %>
-<%@ page import="java.util.*" %>
+<%@ page import="java.awt.Desktop" %>
+        <%@ page import="java.net.*" %> 
+<%@ page import="java.io.*,java.util.*, javax.servlet.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +22,7 @@
 	<!-- Logo -->
 	<div class="container">
 		<div class="row logo">
-			<div class="col-8"><img src="imagenes/logo/logo.png"></div>
+			<div class="col-2"><img src="imagenes/logo/logo.png"></div>
 		</div>
 	</div>
 	<!-- Fin Logo -->
@@ -33,7 +35,7 @@
 	      	<a href="#">ELECCIONES</a>
 	      	<div class="dropdown-content">
 	  			<a href="eleccionesNacionales.jsp">Elecciones Nacionales</a> <a
-							href="eleccionesAutonomicas.jsp">Elecciones Autonnómicas</a> <a
+							href="eleccionesAutonomicas.jsp">Elecciones AutonÃ³micas</a> <a
 							href="eleccionesMunicipales.jsp">Elecciones Municipales</a> <a
 							href="eleccionesEuropeas.jsp">Elecciones Europeas</a>>
 					</div></li>
@@ -46,31 +48,16 @@
 
 	<%
 	BDController bdController = new BDController();
-	ArrayList<Evento> eventos = bdController.dameEventos();
+	GeneratePDFFileIText generatePDFFileIText = new GeneratePDFFileIText();
+	ArrayList<Candidato> candidatos = bdController.dameCandidatos();
+	generatePDFFileIText.createPDFCandidatos(new File("C:/Users/Sergio%20Alvarez/Desktop/proyecto/ProyectoEquipoAmarillo/PROYECTO%20FINAL/ProyectoMovimientoCentro/WebContent/pdf/candidatos.pdf"), candidatos);
+	URI uriBase = new URI("C:/Users/Sergio%20Alvarez/Desktop/proyecto/ProyectoEquipoAmarillo/PROYECTO%20FINAL/ProyectoMovimientoCentro/WebContent/pdf/candidatos.pdf");
+	d.browse(uriBase);
+	response.sendRedirect("index.jsp");
 	
 	%>
 
-	<div class="container" id="eventosContainer">
-		<div class="row">
-			<%for(int i = 0; i < eventos.size(); i++){ %>
-				<div class="col-md-4 " >
-					<a href="evento.jsp?cod_evento=<%=eventos.get(i).getCod_evento()%>"><div class="container opcion">
-						<div class="row eventos ">
-							<div class="col-md-12"><img src="imagenes/eventos/<%=eventos.get(i).getCod_evento()%>.jpg"></div>
-							<div class="col-md-12"><h4><%=eventos.get(i).getNombre()%></h4></div>
-							<div class="col-md-12"><p><%=eventos.get(i).getMunicipio()%></p></div>
-							<div class="col-md-12">
-								<div class=row>
-									<div class="col-md-9"><p>Dia:<%=eventos.get(i).getDia()%> Hora:<%=eventos.get(i).getHora()%></p></div>
-									<div class="col-md-3"><p><%=eventos.get(i).getMunicipio()%></p></div>
-								</div>
-							</div>
-						</div>
-					</div></a>
-				</div>
-			<%} %>
-		</div>
-	</div>
+	
 	<!-- Fin Eventos -->
 <!-- FOOTER -->
 <footer>

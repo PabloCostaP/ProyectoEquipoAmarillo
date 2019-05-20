@@ -46,29 +46,32 @@
 
 	<%
 	BDController bdController = new BDController();
-	int cod_candidato = Integer.parseInt(request.getParameter("cod_evento"));
-	Candidato candidato = bdController.dameCandidato(cod_candidato);
+	int cod_evento = Integer.parseInt(request.getParameter("cod_evento"));
+	Evento evento = bdController.dameEvento(cod_evento);
 	%>
 
 	<div class="container" id="eventoContainer">
 		<div class="row">
 			<div class="col-md-12">
-				<h2><%=candidato.getNombre() %></h2>
+				<h2 style="margin-bottom: 5%; padding-top: 2%;"><%=evento.getNombre() %></h2>
 			</div>
 			<div class="col-md-12">
-				<img src="imagenes/candidatos/<%=candidato.getCod_candidato()%>.JPG">
+				<img src="imagenes/eventos/<%=evento.getCod_evento()%>.jpg">
 			</div>
 			<div class="col-md-12">
-				<p><%=candidato.getNombre() %></p>
+				<p style="text-align: left; margin-left: 12%; margin-right: 15%;"><%=evento.getDescripcion() %></p>
 			</div>
 			<div class="col-md-12">
 				<div class="row">
-					<div class="col-md-6" style="text-aling: left;"><p><%=candidato.getNombre() %></p></div>
-					<div class="col-md-6" style="text-aling: right;"><p><%=candidato.getNombre() %></p></div>
+					<div class="col-md-6" style="text-aling: left;"><p><b>Dia:</b> <%=evento.getDia()%> <b>- Hora:</b> <%=evento.getHora()%></p></div>
+					<div class="col-md-6" style="text-aling: right;"><p><b>Tipo:</b><%=evento.getTipo() %></p></div>
 				</div>
 			</div>
 			<div class="col-md-12">
-				<a href="formularioEmail.jsp?tipo=evento&cod_evento=<%=candidato.getCod_candidato()%>"><button class="boton btn btn-primary">Apuntarse a este evento</button></a>
+				<p style="text-align: left; margin-left: 12%;"><b>Ubicacion:</b> <%=evento.getUbicacion()%></p>
+			</div>
+			<div class="col-md-12" style="margin-top: 10%;">
+				<a href="formularioEmail.jsp?tipo=evento&cod_evento=<%=evento.getCod_evento()%>"><button class="boton btn btn-primary">Apuntarse a este evento</button></a>
 			</div>
 		</div>
 	</div>
