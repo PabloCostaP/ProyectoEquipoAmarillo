@@ -306,12 +306,14 @@ a:visited {
 	width: 80%;
 	height: 60%;
 	margin-bottom: 100px;
+	
 	transition: margin 0.2s ease-out;
-	border-radius: 53px 53px 53px 53px;
-	-moz-border-radius: 53px 53px 53px 53px;
-	-webkit-border-radius: 53px 53px 53px 53px;
-	border: 0px solid #000000;
+	border-radius: 14px 14px 14px 14px;
+-moz-border-radius: 14px 14px 14px 14px;
+-webkit-border-radius: 14px 14px 14px 14px;
+border: 0px solid #000000;
 }
+
 
 /* Boton cerrar */
 .botonCerrar {

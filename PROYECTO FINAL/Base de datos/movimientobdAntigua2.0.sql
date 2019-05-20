@@ -1,11 +1,11 @@
--- phpMyAdmin SQL Dump
--- version 4.8.4
+﻿-- phpMyAdmin SQL Dump
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-05-2019 a las 17:06:15
--- Versión del servidor: 10.1.37-MariaDB
--- Versión de PHP: 7.3.1
+-- Tiempo de generación: 20-05-2019 a las 03:49:00
+-- Versión del servidor: 10.1.28-MariaDB
+-- Versión de PHP: 7.1.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -20,9 +20,12 @@ SET time_zone = "+00:00";
 
 --
 -- Base de datos: `movimientobd`
---
+CREATE database movimientobd;
+use movimientobd;
 
 -- --------------------------------------------------------
+CREATE database movimientobd;
+use movimientobd;
 
 --
 -- Estructura de tabla para la tabla `asistentes`
@@ -223,23 +226,6 @@ CREATE TABLE `eventos` (
   `cod_campanna` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Volcado de datos para la tabla `eventos`
---
-
-INSERT INTO `eventos` (`cod_evento`, `descripcion`, `ubicacion`, `dia`, `hora`, `nombre`, `tipo`, `municipio`, `cod_campanna`) VALUES
-(1, 'Paellas en el centro ven con todos tus familiares y amigos a la plaza mayor para disfrutar de nuestra mejor paella, Estais todos invitados', 'Calle Señorita Phyllips B.Turnbull, 12, 28791 Soto del Real', 10, '12:00:00', 'Fiesta ', 'Autonomica', 'Madrid', 1),
-(2, 'La reconocida orquesta ofrece un concierto especial dedicado al maestro de las bandas sonoras ', 'Passeig Esplanada d\'Espanya, 11', 11, '23:13:00', 'Concierto', 'Generales', 'Alicante', 1),
-(3, 'Recogida de alimentos y paseo con perros en adopción', 'Plaza Puerta del Sol, s/n, 28013 Madrid.', 12, '14:00:00', 'Amigos perrunos', 'Generales', 'Madrid', 1),
-(4, 'No hay planeta B. Pautas para un consumo responsable', 'Plaza de Isabel II, 8, 28013 Madrid', 13, '12:00:00', 'Concienciacion ', 'Generales', 'Madrid', 1),
-(5, 'conquistemos las calles con nuestras bicis', '\r\nPlaza del Callao 28013 Madrid\r\n', 14, '12:00:00', 'Bicicletada', 'Generales', 'Madrid', 1),
-(6, 'Gran manifestación: POR LA PROHIBICIÓN DE LAS BECERRADAS', 'Plaza de Felipe II, 88, 28013 Madrid', 16, '12:00:00', 'Manifestacion', 'Generales', 'Madrid', 1),
-(7, 'Acto con afiliados y simpatizantes del Partido en Villa del Prado', '\r\nVilla del Prado 28630, Madrid\r\n', 20, '14:00:00', 'Acto ', 'Generales', 'Madrid', 1),
-(8, 'Reunión con los vecinos afectados por el problema de convivencia motivado por los estupefacientes.', 'Narcotour. MADRID', 21, '16:00:00', 'Reunion ', 'General', 'Madrid', 1),
-(9, 'Presentación candidatura del MC en Mejorada del Campo', 'Avenida Constitución, 34 MEJORADA DEL CAMPO', 22, '12:00:00', 'Presentacion', 'General', 'Madrid', 1),
-(10, 'Caravana de coches y reparto de propaganda electoral en el Distrito de Barajas', 'BARAJAS', 25, '14:00:00', 'Caravana', 'General', 'Madrid', 1),
-(11, 'Reunion con antiguos alumnos del centro Nelson.', 'Avenida Constitución, 10. EL ESCORIAL', 28, '14:00:00', 'Reunion Alumnos', 'Generales', 'Madrid', 1);
-
 -- --------------------------------------------------------
 
 --
@@ -258,13 +244,7 @@ CREATE TABLE `noticias` (
 --
 
 INSERT INTO `noticias` (`cod_noticia`, `titulo`, `cuerpo`, `cod_campanna`) VALUES
-(1, 'Modificaremos la Ley de Víctimas del Terrorismo', '“Modificaremos la Ley de Víctimas del Terrorismo para que no se puedan realizar homenajes a ningún terrorista en ningún pueblo de España”.', 2),
-(2, 'Nace la plataforma #SickOfWaiting, para denunciar el incumplimiento del programa de reubicación de refugiados en Europa\r\n', 'Iniciada por el partido político Por Un MC, nace con el objetivo de denunciar el incumplimiento del Programa de Reubicación de refugiados en Europa..', 2),
-(3, 'Ya lo hicimos y ahora MC sigue creciendo y ya sólo le frena la Ley Electoral. Arriba España!', 'Así es este sistema es un sistema corrupto hoy en día a MC solo le frena la Ley Electoral, nuestro sistema electoral es un fraude.', 2),
-(4, 'Medidas para el Mundo Rural\r\n', 'Nosotros apoyamos las movilizaciones que reclaman igualdad de oportunidades y reparto equitativo de la riqueza para el entorno rural.', 2),
-(5, 'Construir un proyecto de igualdad', 'El presidente de Mc arranca la campaña electoral en el municipio segoviano de Pedraza mostrando su compromiso con la España vaciada', 2),
-(6, 'Coalicion animalista conseguiremos estar en los parlamentos de Europa', 'Once partidos animalistas europeos se unen para la campaña electoral y presentan hoy un manifiesto conjunto.Debemos asegurar la seguridad de los animales', 2),
-(7, 'Por qué MC sí puede conseguir representación en Europa', 'En el sistema electoral europeo, con circunscripción electoral única, todos los votos cuentan, por lo que MC tendría representación si mantiene su actual crecimiento.', 2);
+(1, 'Modificaremos la Ley de Víctimas del Terrorismo', '“Modificaremos la Ley de Víctimas del Terrorismo para que no se puedan realizar homenajes a ningún terrorista en ningún pueblo de España”. Así lo ha dicho el Presidente de Movimiento Centro, Jose Antonio Perico, en el acto “En marcha por la libertad” realizado en Estella junto a Maria Sanchez, candidata al Parlamento Europeo, y Rodrigo Garcia.', 1);
 
 -- --------------------------------------------------------
 
