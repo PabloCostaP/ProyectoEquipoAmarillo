@@ -65,7 +65,7 @@ String codCampanna=request.getParameter("codCampanna");
 int cod_campanna = Integer.parseInt(codCampanna);
 //CAMPAÑA ACTUAL SELECCIONADA ENE L DROPDOWN
 campanna = controladorBD.dameCampanna_codCampanna(cod_campanna);
-if(campanna.getTipo().equalsIgnoreCase("Autonómica")){
+if(campanna.getTipo().equalsIgnoreCase("Autonomica")){
 	campanna = controladorBD.dameCampanna_autonomica_codCampanna(cod_campanna);
 	campannas= controladorBD.dameCampannas_autonomicas();
 	
