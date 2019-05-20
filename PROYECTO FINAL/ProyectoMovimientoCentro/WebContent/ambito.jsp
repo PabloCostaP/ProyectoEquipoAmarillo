@@ -131,7 +131,7 @@ for(int j=0;j<candidaturasCabezaDeLista.size();j++) {
 									<div class="col-6">
 										<img id="imagenMiembro"
 											src="imagenes/candidatos/<%=candidatos.get(i).getCod_candidato()%>.JPG"
-											style="  border-radius: 5px; height: 100px; width: 150px;">
+											style=" border-radius: 5px; height: 100px; width: 150px;">
 									</div>
 									<div class="col-6" style="margin-top: 15px;">
 										<p style="text-align: center;"><%=candidatos.get(i).getNombre() %></p>

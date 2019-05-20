@@ -65,7 +65,7 @@
 	<!-- Fin Navegador -->
 	
 	<a href="GenerarPdf.jsp" ><img src="imagenes/logo/PDF.png" /></a>
-	<h2 class="titulos" style="text-align: center;">EleccionesNacionales</h2>
+	<h2 class="titulos" style="text-align: center;">Elecciones Nacionales</h2>
 	<div class="container">
 		<div class="row">
 			<div class="col-6 ">
