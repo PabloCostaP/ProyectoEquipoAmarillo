@@ -30,10 +30,10 @@ function next(boton) {
 	var element = getSelectedElement();
 		if(element==="voluntario") {
 			$("#container1").css("display", "none");
-			$("#containerVoluntarios1").css("display", "initial");
+			$("#containerVoluntarios1").css("display", "block");
 		}else if(element==="asistente") {
 			$("#container1").css("display", "none");
-			$("#containerAsistentes").css("display", "inline");
+			$("#containerAsistentes").css("display", "block");
 		}
 	$("div.seleccionado").removeClass("seleccionado");
 }

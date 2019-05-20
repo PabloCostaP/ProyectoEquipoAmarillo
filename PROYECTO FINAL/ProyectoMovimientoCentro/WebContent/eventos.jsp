@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
@@ -26,14 +26,14 @@
 	<nav class="navbar">
 	  <div class="container-fluid" id="navegador">
 	    <ul class="nav navbar-nav">
-	      <li><a href="index.jsp"><b>INICIO</b></a></li>
+	      <li><a href="index.html"><b>INICIO</b></a></li>
 	      <li class="dropdown">
 	      	<a href="#">ELECCIONES</a>
 	      	<div class="dropdown-content">
 	  			<a href="eleccionesNacionales.jsp">Elecciones Nacionales</a> <a
 							href="eleccionesAutonomicas.jsp">Elecciones Autonómicas</a> <a
 							href="eleccionesMunicipales.jsp">Elecciones Municipales</a> <a
-							href="eleccionesEuropeas.jsp">Elecciones Europeas</a>
+							href="eleccionesEuropeas.jsp">Elecciones Europeas</a>>
 					</div></li>
 				<li><a href="eventos.jsp">PROXIMOS EVENTOS</a></li>
 				<li><a href="participa.jsp">PARTICIPA</a></li>
@@ -197,23 +197,22 @@
 	<h1 style="color: #212121; text-align: center; font-size: 350%; margin-top: 3%;"><b>"ESLOGAN"</b></h1>
 <!-- FOOTER -->
 <footer>
-	<div class="row">
+	
 		<!-- Icons -->
-		
-			<ul class="icons col-md-12">
-				<li style="margin-left: 32%;"><a href="#" ><i class="fab fa-twitter"></i><span class="label">Twitter</span></a></li>
+			<ul class="icons">
+				<li><a href="#" ><i class="fab fa-twitter"></i><span class="label">Twitter</span></a></li>
 				<li><a href="#" ><i class="fab fa-facebook"></i><span class="label">Facebook</span></a></li>
 				<li><a href="#" ><i class="fab fa-github"></i><span class="label">GitHub</span></a></li>
 				<li><a href="#" ><i class="fab fa-linkedin"></i><span class="label">LinkedIn</span></a></li>
 				<li><a href="#" ><i class="fab fa-google-plus"></i><span class="label">Google+</span></a></li>
 			</ul>
 		<!-- Copyright -->
-			<div class="copyright col-md-12">
+			<div class="copyright">
 				<ul class="menu">
 					<li>&copy; Movimiento Centro. Todos los derechos reservados</li><li>Design: Equipo Amarillo</li>
 				</ul>
 			</div>
-	</div>
+	
 	</footer>
 <!-- FIN FOOTER -->
 </body>
