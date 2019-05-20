@@ -63,12 +63,15 @@
 		</div>
 	</nav>
 	<!-- Fin Navegador -->
+	
+	<a href="GenerarPdf.jsp" ><img src="imagenes/logo/PDF.png" /></a>
 	<h2 class="titulos" style="text-align: center;">EleccionesNacionales</h2>
 	<div class="container">
 		<div class="row">
 			<div class="col-6 ">
 				<h2 class="titulos" style="text-align: center;">Miembros</h2>
 				<div style="with: 40%;" class="container">
+				
 					<!-- MIEMEBROS   -->
 					<% 
 BDController controladorBD = new BDController();
