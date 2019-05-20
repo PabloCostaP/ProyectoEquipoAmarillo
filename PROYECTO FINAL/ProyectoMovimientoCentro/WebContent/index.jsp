@@ -37,7 +37,7 @@ eventos = controladorBD.dame5UltimosEventos();
 	<!-- Logo -->
 	<div class="container">
 		<div class="row logo">
-			<div class="col-2"><img src="imagenes/logo/logo.png"></div>
+			<div class="col-8"><img src="imagenes/logo/logo.png"></div>
 		</div>
 	</div>
 	<!-- Fin Logo -->
@@ -62,7 +62,7 @@ eventos = controladorBD.dame5UltimosEventos();
 	<!-- Fin Navegador -->
 
 	<!-- Carrusel -->
-	<div id="myCarousel" class="carousel slide" data-ride="carousel">
+	<div id="myCarousel" class="carousel slide" data-ride="carousel" style="margin-top:-25px;">
 	  <!-- Indicators -->
 	  <ol class="carousel-indicators">
 	    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -72,13 +72,13 @@ eventos = controladorBD.dame5UltimosEventos();
 	  <!-- Wrapper for slides -->
 	  <div class="carousel-inner">
 	    <div class="item active">
-	      <img src="imagenes/fest1.jpg">
+	      <img src="imagenes/carrusel1.jpg">
 	    </div>
 	    <div class="item">
-	      <img src="imagenes/fest1.jpg">
+	      <img src="imagenes/carrusel2.jpg">
 	    </div>
 	    <div class="item">
-	      <img src="imagenes/fest1.jpg">
+	      <img src="imagenes/carrusel3.jpg">
 	    </div>
 	  </div>
 	  <!-- Left and right controls -->
@@ -163,7 +163,7 @@ eventos = controladorBD.dame5UltimosEventos();
 	<!-- Fin Noticias y eventos -->
 	
 	<hr style="width: 70%;">
-	<h1 style="color: #212121; text-align: center; font-size: 350%; margin-top: 3%;"><b>"ESLOGAN"</b></h1>
+	<h1 style="color: #212121; text-align: center; font-size: 350%; margin-top: 3%;"><b>"NOS MOVEMOS JUNTOS"</b></h1>
 <!-- FOOTER -->
 <footer>
 	<div class="row">
