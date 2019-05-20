@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="utf-8"%>
+<%@ page import="movimientoCentroPackage.*" %>
+<%@ page import="java.util.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,6 +17,23 @@
 		
 	</style>
 <body>
+
+<% 
+BDController controladorBD = new BDController();
+/*ARRAYLIST */
+//Solo es necesatio cambiar los candidatos por dameCandidatos por ambito
+ArrayList<Noticia> noticias = new ArrayList <Noticia>();
+noticias = controladorBD.dame4UltimasNoticiasEuropeas();
+
+ArrayList<Evento> eventos = new ArrayList <Evento>();
+eventos = controladorBD.dame5UltimosEventos();
+
+
+
+
+%>
+
+
 	<!-- Logo -->
 	<div class="container">
 		<div class="row logo">
@@ -31,7 +50,7 @@
 	      	<a href="#">ELECCIONES</a>
 	      	<div class="dropdown-content">
 	  			<a href="eleccionesNacionales.jsp">Elecciones Nacionales</a> <a
-							href="eleccionesAutonomicas.jsp">Elecciones Autonómicas</a> <a
+							href="eleccionesAutonomicas.jsp">Elecciones AutonÃ³micas</a> <a
 							href="eleccionesMunicipales.jsp">Elecciones Municipales</a> <a
 							href="eleccionesEuropeas.jsp">Elecciones Europeas</a>
 					</div></li>
@@ -85,114 +104,64 @@
 			</div>
 		</div>
 		<div class="row">
+		
 			<div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 noticias">
-				<h2 class="titulos" style="text-align: center;">�ltimas noticias</h2>
+				<h2 class="titulos" style="text-align: center;">Últimas noticias</h2>
 				<div class="row">
 					<div class="col-6 col-sm-6 col-lg-12 col-md-6 col-xl-12">
+					
+					<% for (int i =0; i<noticias.size();i++){%>
+					
 						<div class="col-lg-6 col-sm-12 col-md-12 col-xl-12">
-							<div class="col-lg-12 col-sm-12 col-md-12 col-xl-12"><img src="imagenes/eventos/evento.png"></div>
-							<div class="col-lg-12 col-sm-12 col-md-12 col-xl-12"><h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit</h3></div>
-							<div class="d-lg-inline d-md-inline d-xl-inline d-none col-lg-12 col-md-12 col-xl-12"><p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p></div>
+							<div class="col-lg-12 col-sm-12 col-md-12 col-xl-12"><img src="imagenes/noticias/<%=noticias.get(i).getCod_noticia()%>.jpg"></div>
+							<div class="col-lg-12 col-sm-12 col-md-12 col-xl-12"><h3><%=noticias.get(i).getTitulo()%></h3></div>
+							<div class="d-lg-inline d-md-inline d-xl-inline d-none col-lg-12 col-md-12 col-xl-12"><p><%=noticias.get(i).getCuerpo()%></p></div>
 						</div>
-						<div class="col-lg-6 col-sm-12 col-md-12 col-xl-12">
-							<div class="col-lg-12 col-sm-12 col-md-12 col-xl-12"><img src="imagenes/eventos/evento.png"></div>
-							<div class="col-lg-12 col-sm-12 col-md-12 col-xl-12"><h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit</h3></div>
-							<div class="d-lg-inline d-md-inline d-xl-inline d-none col-lg-12 col-sm-12 col-md-12 col-xl-12"><p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p></div>
-						</div>
+				
+						
+					<%}; %>
+					
+					
 					</div>
 					<div class="col-6 col-sm-6 col-lg-12 col-md-6 col-xl-12">
-						<div class="col-lg-6 col-sm-12 col-md-12 col-xl-12">
-							<div class="col-lg-12 col-sm-12 col-md-12 col-xl-12"><img src="imagenes/eventos/evento.png"></div>
-							<div class="col-lg-12 col-sm-12 col-md-12 col-xl-12"><h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit</h3></div>
-							<div class="d-lg-inline d-md-inline d-xl-inline d-none col-lg-12 col-md-12 col-xl-12"><p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p></div>
-						</div>
-						<div class="col-lg-6 col-sm-12 col-md-12 col-xl-12">
-							<div class="col-lg-12 col-sm-12 col-md-12 col-xl-12"><img src="imagenes/eventos/evento.png"></div>
-							<div class="col-lg-12 col-sm-12 col-md-12 col-xl-12"><h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit</h3></div>
-							<div class="d-lg-inline d-md-inline d-xl-inline d-none col-lg-12 col-sm-12 col-md-12 col-xl-12"><p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p></div>
-						</div>
+						
 					</div>
 				</div>
 			</div>
-
+				
+			<!-- eventos  -->
 			<div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 eventos">
-				<h2 class="titulos">Pr�ximos eventos</h2>
+				<h2 class="titulos">Próximos eventos</h2>
 				<div class="row">
+				
+				
+				<%for (int i =0; i<eventos.size();i++){ %>
 					<div class="col-12 col-sm-12 col-lg-12 col-xl-12">
 						<div class="row">
 							<div class="col-6 col-sm-6 col-lg-4 col-xl-4">
-								<div class="col-12 col-lg-12 col-sm-12 col-md-12 col-xl-12"><img src="imagenes/eventos/evento.png"></div>
+								<div class="col-12 col-lg-12 col-sm-12 col-md-12 col-xl-12"><img src="imagenes/eventos/<%=eventos.get(i).getCod_campanna()%>.jpg"></div>
 							</div>
 							<div class="col-6 col-sm-6 col-lg-8 col-xl-8">
 								<div class="row">
-									<div class="col-12 col-lg-12 col-sm-12 col-md-12 col-xl-12"><h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit</h4></div>
-									<div class="d-lg-inline d-md-inline d-xl-inline d-none col-lg-12 col-sm-12 col-md-12 col-xl-12"><p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p></div>
+									<div class="col-12 col-lg-12 col-sm-12 col-md-12 col-xl-12"><h4><%=eventos.get(i).getNombre()%></h4></div>
+									<div class="d-lg-inline d-md-inline d-xl-inline d-none col-lg-12 col-sm-12 col-md-12 col-xl-12"><p><%=eventos.get(i).getDescripcion() %></p></div>
 								</div>
 							</div>
 						</div>
 					</div>
+					
+					
+					<%}; %>
+					
 
-					<div class="col-12 col-sm-12 col-lg-12 col-xl-12">
-						<div class="row">
-							<div class="col-6 col-sm-6 col-lg-4 col-xl-4">
-								<div class="col-12 col-lg-12 col-sm-12 col-md-12 col-xl-12"><img src="imagenes/eventos/evento.png"></div>
-							</div>
-							<div class="col-6 col-sm-6 col-lg-8 col-xl-8">
-								<div class="row">
-									<div class="col-12 col-lg-12 col-sm-12 col-md-12 col-xl-12"><h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit</h4></div>
-									<div class="d-lg-inline d-md-inline d-xl-inline d-none col-lg-12 col-sm-12 col-md-12 col-xl-12"><p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p></div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-12 col-sm-12 col-lg-12 col-xl-12">
-						<div class="row">
-							<div class="col-6 col-sm-6 col-lg-4 col-xl-4">
-								<div class="col-12col-lg-12 col-sm-12 col-md-12 col-xl-12"><img src="imagenes/eventos/evento.png"></div>
-							</div>
-							<div class="col-6 col-sm-6 col-lg-8 col-xl-8">
-								<div class="row">
-									<div class="col-12 col-lg-12 col-sm-12 col-md-12 col-xl-12"><h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit</h4></div>
-									<div class="d-lg-inline d-md-inline d-xl-inline d-none col-lg-12 col-sm-12 col-md-12 col-xl-12"><p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p></div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-12 col-sm-12 col-lg-12 col-xl-12">
-						<div class="row">
-							<div class="col-6 col-sm-6 col-lg-4 col-xl-4">
-								<div class="col-12 col-lg-12 col-sm-12 col-md-12 col-xl-12"><img src="imagenes/eventos/evento.png"></div>
-							</div>
-							<div class="col-6 col-sm-6 col-lg-8 col-xl-8">
-								<div class="row">
-									<div class="col-12 col-lg-12 col-sm-12 col-md-12 col-xl-12"><h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit</h4></div>
-									<div class="d-lg-inline d-md-inline d-xl-inline d-none col-lg-12 col-sm-12 col-md-12 col-xl-12"><p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p></div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-12 col-sm-12 col-lg-12 col-xl-12">
-						<div class="row">
-							<div class="col-6 col-sm-6 col-lg-4 col-xl-4">
-								<div class="col-12 col-lg-12 col-sm-12 col-md-12 col-xl-12"><img src="imagenes/eventos/evento.png"></div>
-							</div>
-							<div class="col-6 col-sm-6 col-lg-8 col-xl-8">
-								<div class="row">
-									<div class="col-12 col-lg-12 col-sm-12 col-md-12 col-xl-12"><h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit</h4></div>
-									<div class="d-lg-inline d-md-inline d-xl-inline d-none col-lg-12 col-sm-12 col-md-12 col-xl-12"><p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p></div>
-								</div>
-							</div>
-						</div>
-					</div>
+					
 
 				</div>
 			</div>
 		</div>
 	</div>
 	<!-- Fin Noticias y eventos -->
+	
 	<hr style="width: 70%;">
 	<h1 style="color: #212121; text-align: center; font-size: 350%; margin-top: 3%;"><b>"ESLOGAN"</b></h1>
 <!-- FOOTER -->

@@ -447,7 +447,24 @@ public class BDController {
 		ArrayList<Evento> eventos = new ArrayList<Evento>();
 		try {
 			Statement miStatement = this.miConexion.createStatement();
-			ResultSet rs = miStatement.executeQuery("select* from eventos");
+			ResultSet rs = miStatement.executeQuery("select * from eventos");
+			while (rs.next() == true) {
+				eventos.add(new Evento(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7),rs.getString(8), rs.getInt(9)));
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameEventos del BDController" + e.getMessage());
+		}
+		return eventos;
+	}
+	
+	public ArrayList<Evento> dame5UltimosEventos() {
+		ArrayList<Evento> eventos = new ArrayList<Evento>();
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+			ResultSet rs = miStatement.executeQuery("SELECT * FROM eventos ORDER BY dia DESC LIMIT 5");
 			while (rs.next() == true) {
 				eventos.add(new Evento(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7),rs.getString(8), rs.getInt(9)));
 			}
@@ -477,11 +494,13 @@ public class BDController {
 		return evento;
 	}
 	
+	
+	
 	public ArrayList<Noticia> dameNoticias() {
 		ArrayList<Noticia> noticias = new ArrayList<Noticia>();
 		try {
 			Statement miStatement = this.miConexion.createStatement();
-			ResultSet rs = miStatement.executeQuery("select* from noticias");
+			ResultSet rs = miStatement.executeQuery("select * from noticias");
 			while (rs.next() == true) {
 				noticias.add(new Noticia(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4)));
 			}
@@ -490,6 +509,23 @@ public class BDController {
 
 		} catch (SQLException e) {
 			System.out.println("Error en dameNoticias del BDController" + e.getMessage());
+		}
+		return noticias;
+	}
+	
+	public ArrayList<Noticia> dame4UltimasNoticiasEuropeas() {
+		ArrayList<Noticia> noticias = new ArrayList<Noticia>();
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+			ResultSet rs = miStatement.executeQuery("SELECT * FROM noticias WHERE cod_campanna= 2 ORDER BY cod_noticia DESC LIMIT 4");
+			while (rs.next() == true) {
+				noticias.add(new Noticia(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4)));
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameNoticias 4 ultimas noticias del BDController" + e.getMessage());
 		}
 		return noticias;
 	}
