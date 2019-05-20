@@ -23,6 +23,8 @@ SET time_zone = "+00:00";
 --
 
 -- --------------------------------------------------------
+CREATE database movimientobd;
+use movimientobd;
 
 --
 -- Estructura de tabla para la tabla `asistentes`
