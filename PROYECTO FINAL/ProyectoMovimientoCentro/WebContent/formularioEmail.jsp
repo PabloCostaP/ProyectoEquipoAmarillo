@@ -34,10 +34,10 @@
 	  			<a href="eleccionesNacionales.jsp">Elecciones Nacionales</a> <a
 							href="eleccionesAutonomicas.jsp">Elecciones Autonómicas</a> <a
 							href="eleccionesMunicipales.jsp">Elecciones Municipales</a> <a
-							href="eleccionesEuropeas.jsp">Elecciones Europeas</a>>
+							href="eleccionesEuropeas.jsp">Elecciones Europeas</a>
 	      	</div>
 	      </li>
-	      <li><a href="artistas.html">PROXIMOS EVENTOS</a></li>
+	      <li><a href="#">PROXIMOS EVENTOS</a></li>
 	      <li><a href="participa.jsp">PARTICIPA</a></li>
 	    </ul>
 	  </div>

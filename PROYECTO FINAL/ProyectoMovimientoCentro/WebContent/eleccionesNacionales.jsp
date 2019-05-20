@@ -50,14 +50,14 @@
 		<div class="container-fluid" id="navegador">
 			<ul class="nav navbar-nav">
 				<li><a href="index.jsp"><b>INICIO</b></a></li>
-				<li class="dropdown"><a href="entradas.html">ELECCIONES</a>
+				<li class="dropdown"><a href="#">ELECCIONES</a>
 					<div class="dropdown-content">
 						<a href="eleccionesNacionales.jsp">Elecciones Nacionales</a> <a
 							href="eleccionesAutonomicas.jsp">Elecciones Autonómicas</a> <a
 							href="eleccionesMunicipales.jsp">Elecciones Municipales</a> <a
-							href="eleccionesEuropeas.jsp">Elecciones Europeas</a>>
+							href="eleccionesEuropeas.jsp">Elecciones Europeas</a>
 					</div></li>
-				<li><a href="artistas.html">PROXIMOS EVENTOS</a></li>
+				<li><a href="#">PROXIMOS EVENTOS</a></li>
 				<li><a href="participa.jsp">PARTICIPA</a></li>
 			</ul>
 		</div>
@@ -181,7 +181,7 @@ for(int i=0; i < candidatos.size() ;i++){
 
 							<div style="float: left; height: 100%; width: 40%">
 								<img id="imagenMiembro"
-									src="imagenes/candidatos/<%=candidatos.get(i).getCod_candidato()%>.jpg"
+									src="imagenes/candidatos/<%=candidatos.get(i).getCod_candidato()%>.JPG"
 									style="border-radius: 53px 53px 53px 53px; -moz-border-radius: 53px 53px 53px 53px; -webkit-border-radius: 53px 53px 53px 53px; border: 0px solid #000000; height: 100%; width: 70%">
 							</div>
 
@@ -232,7 +232,7 @@ for(int i=0; i < candidatos.size() ;i++){
 					<!-- Repetir -->
 					<%
 						ArrayList<Programa> programas = controladorBD.dameProgramasEleccionesNacionales();
-						for (int i = 0; i < programas.size(); i++) {
+						for (int i = 0; i < 10; i++) {
 					%>
 					<div>
 						<button class="accordion">

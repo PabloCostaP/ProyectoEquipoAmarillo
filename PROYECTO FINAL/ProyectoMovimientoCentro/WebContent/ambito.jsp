@@ -35,18 +35,18 @@
 	<nav class="navbar">
 	  <div class="container-fluid" id="navegador">
 	    <ul class="nav navbar-nav">
-	      <li><a href="index.html"><b>INICIO</b></a></li>
+	      <li><a href="index.jsp"><b>INICIO</b></a></li>
 	      <li class="dropdown">
-	      	<a href="entradas.html">ELECCIONES</a>
+	      	<a href="#">ELECCIONES</a>
 	      	<div class="dropdown-content">
 	  			<a href="eleccionesNacionales.jsp">Elecciones Nacionales</a>
 				<a href="eleccionesAutonomicas.jsp">Elecciones Autonómicas</a>
 				<a href="eleccionesMunicipales.jsp">Elecciones Municipales</a>
-				<a href="eleccionesEuropeas.jsp">Elecciones Europeas</a>>
+				<a href="eleccionesEuropeas.jsp">Elecciones Europeas</a>
 	      	</div>
 	      </li>
-	      <li><a href="artistas.html">PROXIMOS EVENTOS</a></li>
-	      <li><a href="recinto.html">PARTICIPA</a></li>
+	      <li><a href="#">PROXIMOS EVENTOS</a></li>
+	      <li><a href="participa.jsp">PARTICIPA</a></li>
 	    </ul>
 	  </div>
 	</nav>
@@ -129,7 +129,7 @@ for(int j=0;j<candidaturasCabezaDeLista.size();j++) {
 								<div class="row">
 									<div class="col-6">
 										<img id="imagenMiembro"
-											src="imagenes/candidatos/<%=candidatos.get(i).getCod_candidato()%>.jpg"
+											src="imagenes/candidatos/<%=candidatos.get(i).getCod_candidato()%>.JPG"
 											style="height: 100px; width: 150px;">
 									</div>
 									<div class="col-6" style="margin-top: 15px;">
@@ -160,7 +160,7 @@ for(int i=0; i < candidatos.size() ;i++){
 	  					<div id="boton"  class="accordion" >
 	  						<div class= "row">
 	  							<div class= "col-6">
-	  								<img id="imagenMiembro" src="imagenes/candidatos/<%=candidatos.get(i).getCod_candidato()%>.jpg" style="height: 100px; width:150px;">
+	  								<img id="imagenMiembro" src="imagenes/candidatos/<%=candidatos.get(i).getCod_candidato()%>.JPG" style="height: 100px; width:150px;">
 	  							</div>
 	  							<div class="col-6" style="margin-top: 15px;">
 	  								<p style="text-align: center;"><%=candidatos.get(i).getNombre() %></p>
@@ -208,18 +208,18 @@ for(int i=0; i < candidatos.size() ;i++){
 							
 							<div id="modalCandidatoActual<%=i%>" style="display: none" class="modalAcambiar">
 								<div style="float: left; height: 100%; width: 40%">
-									<img id="imagenMiembro" src="imagenes/candidatos/<%=candidatos.get(i).getCod_candidato()%>.jpg" style="height: 100%; width:70%">
+									<img id="imagenMiembro" src="imagenes/candidatos/<%=candidatos.get(i).getCod_candidato()%>.JPG" style="height: 100%; width:70%">
 								</div>
 
 								<div style="float: right; margin-right: 10%; height: 50%; width: 50%">
-									<p class="textoMiembro" style="font-size: 30px">Nombre: <%=candidatos.get(i).getNombre()%></p>
-									<p class="textoMiembro" style=" font-size: 25px">Apellidos: <%=candidatos.get(i).getNombre()%> </p>
-									<p class="textoMiembro">Fecha de nacimiento:  <%=candidatos.get(i).getNombre()%></p>
-									<p class="textoMiembro">Lugar de nacimiento:  <%=candidatos.get(i).getNombre()%></p>
-									<p class="textoMiembro" id="Campania" "><%=campannaActual.getTipo()%></p>
-									<p class="textoMiembro" id="Campania" ">Ambito:<%=campannaActual.getAmbito()%></p>
+									<p class="textoMiembro" style="font-size: 25px"><b>Nombre:</b> <%=candidatos.get(i).getNombre()%></p>
+									<p class="textoMiembro" style=" font-size: 25px"><b>Apellidos:</b> <%=candidatos.get(i).getApellidos()%> </p>
+									<p class="textoMiembro"><b>Fecha de nacimiento:</b>  <%=candidatos.get(i).getFecha_nac()%></p>
+									<p class="textoMiembro"><b>Lugar de nacimiento:</b>  <%=candidatos.get(i).getLugar_nac()%></p>
+									<p class="textoMiembro" id="Campania"><b>Tipo:</b> <%=campannaActual.getTipo()%></p>
+									<p class="textoMiembro" id="Campania"><b>Ambito: </b><%=campannaActual.getAmbito()%></p>
 
-									<p style="color: black;">posicion de lista <%=candidaturaActual.getPosicion()%></p>
+									<p style="color: black;"><b>Posicion de lista:</b> <%=candidaturaActual.getPosicion()%></p>
 									
 									<p style="color: black; display:<%=display%>;">Cabeza de lista</p>
 								</div>
