@@ -5,27 +5,27 @@
 	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v7.0"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="D:/Descargas/commons-fileupload-1.4.jar">
+	<classpathentry kind="lib" path="C:/Users/Naggy/Desktop/CLASSROOM/PROGRAMACION/commons-fileupload-1.4.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="D:/Descargas/commons-io-2.6.jar">
+	<classpathentry kind="lib" path="C:/Users/Naggy/Desktop/CLASSROOM/PROGRAMACION/commons-io-2.6.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="D:/Descargas/itextpdf-5.1.0.jar">
+	<classpathentry kind="lib" path="C:/Users/Naggy/Desktop/CLASSROOM/PROGRAMACION/itextpdf-5.1.0.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="D:/Descargas/javax.mail.jar">
+	<classpathentry kind="lib" path="C:/Users/Naggy/Desktop/CLASSROOM/PROGRAMACION/javax.mail.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="D:/Descargas/mysql-connector-java-5.1.47.jar">
+	<classpathentry kind="lib" path="C:/Users/Naggy/Desktop/CLASSROOM/PROGRAMACION/mysql-connector-java-5.1.47.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
