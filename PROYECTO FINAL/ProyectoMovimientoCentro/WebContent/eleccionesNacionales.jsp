@@ -92,12 +92,12 @@ for(int j=0;j<candidaturasCabezaDeLista.size();j++) {
 		<div id="<%=i%>" onClick="botonCandidatoActual(this.id);">
 
 						<div>
-							<div id="boton" class="accordion">
+							<div id="boton" class="accordion2">
 								<div class="row">
 									<div class="col-6">
 										<img id="imagenMiembro"
 											src="imagenes/candidatos/<%=candidatos.get(i).getCod_candidato()%>.JPG"
-											style="height: 100px; width: 150px;">
+											style="height: 100px; width: 150px;border-radius: 5px; ">
 									</div>
 									<div class="col-6" style="margin-top: 15px;">
 										<p style="text-align: center;"><%=candidatos.get(i).getNombre() %></p>
@@ -130,7 +130,7 @@ for(int i=0; i < candidatos.size() ;i++){
 									<div class="col-6">
 										<img id="imagenMiembro"
 											src="imagenes/candidatos/<%=candidatos.get(i).getCod_candidato()%>.JPG"
-											style="height: 100px; width: 150px;">
+											style="border-radius: 5px; height: 100px; width: 150px;">
 									</div>
 									<div class="col-6" style="margin-top: 15px;">
 										<p style="text-align: center;"><%=candidatos.get(i).getNombre() %></p>
@@ -190,27 +190,27 @@ for(int i=0; i < candidatos.size() ;i++){
 
 							<div
 								style="float: right; margin-right: 10%; height: 50%; width: 50%">
-								<p class="textoMiembro" style="font-size: 30px">
-									Nombre:
+								<p class="textoMiembro" style="font-size: 25px">
+									<b>Nombre: </b>
 									<%=candidatos.get(i).getNombre()%></p>
 								<p class="textoMiembro" style="font-size: 25px">
-									Apellidos:
+									<b>Apellidos: </b> 
 									<%=candidatos.get(i).getApellidos()%>
 								</p>
 								<p class="textoMiembro">
-									Fecha de nacimiento:
+									<b>Fecha de nacimiento: </b>
 									<%=candidatos.get(i).getFecha_nac()%></p>
 								<p class="textoMiembro">
-									Lugar de nacimiento:
+									<b>Lugar de nacimiento: </b>
 									<%=candidatos.get(i).getLugar_nac()%></p>
-								<p class="textoMiembro" id="Campania"">Campaña:<%=campanaActual.getTipo()%></p>
-								<p class="textoMiembro" id="Campania"">Ambito: <%=campanaActual.getAmbito()%></p>
+								<p class="textoMiembro" id="Campania""><b>Campaña: </b><%=campanaActual.getTipo()%></p>
+								<p class="textoMiembro" id="Campania""><b>Ambito: </b><img style="margin-left:15px; height: 30px; width: 60px; border-radius: 16px; " src="imagenes/ambito/<%=campanaActual.getAmbito()%>.jpg"/></p>
 
 								<p style="color: black;">
-									posicion de lista
+									<b>Posicion de lista:</b>
 									<%=candidaturaActual.getPosicion()%></p>
 
-								<p style="color: black; display:<%=display%>;">Cabeza de
+								<p style="color: black; display:<%=display%>;"><b>Cabeza de</b>
 									lista</p>
 							</div>
 						</div>
